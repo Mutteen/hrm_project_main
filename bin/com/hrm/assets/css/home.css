@@ -1,0 +1,16 @@
+#btnDashboard,
+#btnEmployee,
+#btnDepartment,
+#btnPrincipal,
+#btnSalary{
+	-fx-background-color: white;
+}
+
+#btnDashboard:hover,
+#btnEmployee:hover,
+#btnDepartment:hover,
+#btnPrincipal:hover,
+#btnSalary:hover{
+	-fx-background-color: gray;
+	-fx-opacity:0.8;
+}
