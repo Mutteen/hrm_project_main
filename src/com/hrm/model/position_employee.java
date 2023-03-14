@@ -9,12 +9,13 @@ public class position_employee {
 	private String description;
 	private Date created_at;
 	private int flag;
-	
+
 	public position_employee() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public position_employee(int position_employee_id, int employee_id, int position_id, String description,Date created_at, int flag) {
+	public position_employee(int position_employee_id, int employee_id, int position_id, String description,
+			Date created_at, int flag) {
 		this.position_employee_id = position_employee_id;
 		this.employee_id = employee_id;
 		this.position_id = position_id;
