@@ -5,11 +5,11 @@ public class module {
 	private String module_name;
 	private String description;
 	private int flag;
-	
+
 	public module() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public module(int module_id, String module_name, String description, int flag) {
 		this.module_id = module_id;
 		this.module_name = module_name;
@@ -49,5 +49,4 @@ public class module {
 		this.flag = flag;
 	}
 
-	
 }

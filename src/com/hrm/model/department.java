@@ -12,7 +12,7 @@ public class department {
 	public department() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public department(int department_Id, String department_name, String description, Date created_at, int flag) {
 		this.department_Id = department_Id;
 		this.department_name = department_name;
@@ -60,7 +60,5 @@ public class department {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
-	
-	
 
 }
