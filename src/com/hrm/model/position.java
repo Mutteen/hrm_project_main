@@ -8,7 +8,7 @@ public class position {
 	private String description;
 	private Date created_at;
 	private int flag;
-	
+
 	public position() {
 		// TODO Auto-generated constructor stub
 	}
@@ -60,7 +60,5 @@ public class position {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
-	
-	
 
 }
