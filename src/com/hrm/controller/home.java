@@ -1,9 +1,16 @@
 package com.hrm.controller;
 
-import java.net.URL;
 
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import com.hrm.model.usersession;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
@@ -28,7 +36,10 @@ public class home implements Initializable {
 
 	@FXML
 	public Button btnInfo;
-
+	@FXML
+	private Label name_user;
+	@FXML
+	private Label timenow;
 	@FXML
 	public Button btnDashboard;
 
@@ -153,9 +164,22 @@ public class home implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
+	public void initialize(URL location, ResourceBundle resources) {
+	    initClock();
+	    name_user.setText("Hi " + usersession.getUserName() + "  ");
 	}
+
+	private void initClock() {
+
+	    Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	        timenow.setText(LocalDateTime.now().format(formatter));
+	    }), new KeyFrame(Duration.seconds(1)));
+	    clock.setCycleCount(Animation.INDEFINITE);
+	    clock.play();
+	    
+	   
+	}
+	
 
 }

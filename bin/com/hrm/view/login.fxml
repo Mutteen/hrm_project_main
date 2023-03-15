@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPaneLogin" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.login">
+<BorderPane fx:id="borderPaneLogin" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="619.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.login">
    <left>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="480.0" style="-fx-background-color: white;" styleClass="card-form" stylesheets="@../assets/css/login.css" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="490.0" style="-fx-background-color: white;" styleClass="card-form" stylesheets="@../assets/css/login.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="368.0" fitWidth="507.0" layoutX="7.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,18 +25,18 @@
          </children></AnchorPane>
    </left>
    <center>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="482.0" style="-fx-background-color: white;" stylesheets="@../assets/css/login.css" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="327.0" style="-fx-background-color: white;" stylesheets="@../assets/css/login.css" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="tfUsername" layoutX="127.0" layoutY="281.0" prefHeight="29.0" prefWidth="229.0" promptText="Username" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-            <Hyperlink fx:id="btnForgotPassword" focusTraversable="false" layoutX="125.0" layoutY="392.0" onAction="#btnForgotPasswordOnAction" prefHeight="25.0" prefWidth="185.0" text="Forgot password" underline="true">
+            <TextField fx:id="tfUsername" layoutX="74.0" layoutY="281.0" prefHeight="29.0" prefWidth="229.0" promptText="Username" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+            <Hyperlink fx:id="btnForgotPassword" focusTraversable="false" layoutX="69.0" layoutY="397.0" onAction="#btnForgotPasswordOnAction" prefHeight="25.0" prefWidth="185.0" text="Forgot password" underline="true">
                <font>
                   <Font name="System Italic" size="14.0" />
                </font>
             </Hyperlink>
-            <PasswordField fx:id="tfPassword" layoutX="125.0" layoutY="342.0" prefHeight="29.0" prefWidth="234.0" promptText="Password" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-            <Button layoutX="128.0" layoutY="467.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" prefWidth="229.0" styleClass="login-btn" stylesheets="@../assets/css/login.css" text="Login" />
+            <PasswordField fx:id="tfPassword" layoutX="72.0" layoutY="347.0" prefHeight="29.0" prefWidth="234.0" promptText="Password" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+            <Button layoutX="73.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" prefWidth="229.0" styleClass="login-btn" stylesheets="@../assets/css/login.css" text="Login" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="41.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
-            <Pane layoutX="159.0" layoutY="46.0" prefHeight="159.0" prefWidth="168.0" styleClass="login-icon" stylesheets="@../assets/css/login.css">
+            <Pane layoutX="104.0" layoutY="44.0" prefHeight="159.0" prefWidth="168.0" styleClass="login-icon" stylesheets="@../assets/css/login.css">
                <children>
                   <FontAwesomeIcon fill="#f8f7f7" glyphName="USER" layoutX="-13.0" layoutY="122.0" size="10em" text="" textAlignment="CENTER" wrappingWidth="194.57142639160156" />
                </children>
