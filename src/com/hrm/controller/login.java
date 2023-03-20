@@ -67,6 +67,12 @@ public class login implements Initializable {
 		}
 	}
 
-	public void btnForgotPasswordOnAction(ActionEvent event) {
+	public void btnForgotPasswordOnAction(ActionEvent event) throws IOException {
+		homePage = (Pane) FXMLLoader.load(getClass().getResource("../view/forgotpassword.fxml"));
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(homePage);
+//		scene.getStylesheets().add(getClass().getResource("../assets/css/home.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
 	}
 }
