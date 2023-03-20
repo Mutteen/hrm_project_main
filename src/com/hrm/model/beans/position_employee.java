@@ -1,24 +1,43 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 import java.sql.Date;
 
-public class position {
+public class position_employee {
+	private int id;
+	private int employee_id;
 	private int position_id;
-	private String position_name;
 	private String description;
 	private Date created_at;
 	private int flag;
 
-	public position() {
+	public position_employee() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public position(int position_id, String position_name, String description, Date created_at, int flag) {
+	public position_employee(int id, int employee_id, int position_id, String description,
+			Date created_at, int flag) {
+		this.id = id;
+		this.employee_id = employee_id;
 		this.position_id = position_id;
-		this.position_name = position_name;
 		this.description = description;
 		this.created_at = created_at;
 		this.flag = flag;
+	}
+
+	public int getid() {
+		return id;
+	}
+
+	public void setid(int id) {
+		this.id = id;
+	}
+
+	public int getEmployee_id() {
+		return employee_id;
+	}
+
+	public void setEmployee_id(int employee_id) {
+		this.employee_id = employee_id;
 	}
 
 	public int getPosition_id() {
@@ -27,14 +46,6 @@ public class position {
 
 	public void setPosition_id(int position_id) {
 		this.position_id = position_id;
-	}
-
-	public String getPosition_name() {
-		return position_name;
-	}
-
-	public void setPosition_name(String position_name) {
-		this.position_name = position_name;
 	}
 
 	public String getDescription() {

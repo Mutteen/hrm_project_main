@@ -1,7 +1,7 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 public class module_role {
-	private int module_role_id;
+	private int id;
 	private int module_id;
 	private int role_id;
 	private String description;
@@ -11,21 +11,21 @@ public class module_role {
 		// TODO Auto-generated constructor stub
 	}
 
-	public module_role(int module_role_id, int module_id, int role_id, String description, int flag) {
+	public module_role(int id, int module_id, int role_id, String description, int flag) {
 		super();
-		this.module_role_id = module_role_id;
+		this.id = id;
 		this.module_id = module_id;
 		this.role_id = role_id;
 		this.description = description;
 		this.flag = flag;
 	}
 
-	public int getModule_role_id() {
-		return module_role_id;
+	public int getid() {
+		return id;
 	}
 
-	public void setModule_role_id(int module_role_id) {
-		this.module_role_id = module_role_id;
+	public void setid(int id) {
+		this.id = id;
 	}
 
 	public int getModule_id() {
