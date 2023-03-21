@@ -53,7 +53,7 @@ public class login implements Initializable {
 	public void btnLoginOnAction(ActionEvent event) throws IOException {
 		String username = tfUsername.getText();
 		String password = tfPassword.getText();
-		if (username.equals("Hung") && password.equals("Thuan123")) {
+		if (username.equals("Thuan") && password.equals("Thuan123")) {
 			usersession.getInstace(username, null);
 			homePage = (Pane) FXMLLoader.load(getClass().getResource("../view/home.fxml"));
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

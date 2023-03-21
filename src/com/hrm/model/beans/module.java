@@ -1,7 +1,7 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 public class module {
-	private int module_id;
+	private int id;
 	private String module_name;
 	private String description;
 	private int flag;
@@ -10,19 +10,19 @@ public class module {
 		// TODO Auto-generated constructor stub
 	}
 
-	public module(int module_id, String module_name, String description, int flag) {
-		this.module_id = module_id;
+	public module(int id, String module_name, String description, int flag) {
+		this.id = id;
 		this.module_name = module_name;
 		this.description = description;
 		this.flag = flag;
 	}
 
-	public int getModule_id() {
-		return module_id;
+	public int getid() {
+		return id;
 	}
 
-	public void setModule_id(int module_id) {
-		this.module_id = module_id;
+	public void setid(int id) {
+		this.id = id;
 	}
 
 	public String getModule_name() {
