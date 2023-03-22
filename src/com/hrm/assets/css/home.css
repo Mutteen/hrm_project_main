@@ -11,6 +11,11 @@ and open the template in the editor.
 	-fx-font-size:14px;
 	-fx-padding:0 8 0 0;
 }
+.image_info{
+	-fx-background-color:#366d9d;
+    -fx-background-radius:10px;
+    -fx-cursor:hand;
+}
 .top-form{
     -fx-background-color:#fff;
     -fx-border-color:#000;

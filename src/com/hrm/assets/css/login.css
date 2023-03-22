@@ -32,7 +32,16 @@ and open the template in the editor.
 .close:hover{
     -fx-background-color:#f13f57;
 }
-
+.menu-btn{
+	 
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: #468ec2;
+    
+    -fx-background-radius:10px;
+    -fx-cursor:hand;
+   
+}
 .minimize{
     -fx-background-color:transparent;
     -fx-cursor:hand;
@@ -70,7 +79,7 @@ and open the template in the editor.
     -fx-background-radius:10px;
     -fx-cursor:hand;
     -fx-text-fill:#fff;
-    -fx-font-size:17px;
+    -fx-font-size:15px;
  
 }
 
