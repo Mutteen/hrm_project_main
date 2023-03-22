@@ -91,8 +91,21 @@ public class home implements Initializable {
 	public home() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		initClock();
+		name_user.setText("Hi " + usersession.getUserName() + "  ");
+	}
 
-	public void btnInfoOnAction(ActionEvent event) {
+	private void initClock() {
+
+		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			timenow.setText(LocalDateTime.now().format(formatter));
+		}), new KeyFrame(Duration.seconds(1)));
+		clock.setCycleCount(Animation.INDEFINITE);
+		clock.play();
 
 	}
 
@@ -160,6 +173,12 @@ public class home implements Initializable {
 		slide.play();
 	}
 
+	
+	public void btnInfoOnAction(ActionEvent event) {
+
+	}
+
+	
 	@FXML
 	public void logout(ActionEvent event) {
 		try {
@@ -193,23 +212,6 @@ public class home implements Initializable {
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("employee");
 		mainPane.setCenter(viewAnchorPane);
-
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		initClock();
-		name_user.setText("Hi " + usersession.getUserName() + "  ");
-	}
-
-	private void initClock() {
-
-		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-			timenow.setText(LocalDateTime.now().format(formatter));
-		}), new KeyFrame(Duration.seconds(1)));
-		clock.setCycleCount(Animation.INDEFINITE);
-		clock.play();
 
 	}
 

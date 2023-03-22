@@ -19,9 +19,42 @@ public class employee {
 	private Date dob;
 	private int status;
 	private int flag ;
+	private position_employee position_employee;
+	private department department;
+	private position position;
+	private salary salary;
+	private principal principal;
 	
-	
-	
+	public position_employee getPosition_employee() {
+		return position_employee;
+	}
+	public void setPosition_employee(position_employee position_employee) {
+		this.position_employee = position_employee;
+	}
+	public department getDepartment() {
+		return department;
+	}
+	public void setDepartment(department department) {
+		this.department = department;
+	}
+	public position getPosition() {
+		return position;
+	}
+	public void setPosition(position position) {
+		this.position = position;
+	}
+	public salary getSalary() {
+		return salary;
+	}
+	public void setSalary(salary salary) {
+		this.salary = salary;
+	}
+	public principal getPrincipal() {
+		return principal;
+	}
+	public void setPrincipal(principal principal) {
+		this.principal = principal;
+	}
 	public int getId() {
 		return id;
 	}

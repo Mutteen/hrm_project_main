@@ -13,7 +13,7 @@ import com.hrm.model.beans.position;
 import com.hrm.model.beans.principal;
 import com.hrm.model.beans.salary;
 
-public class crud <T> {
+public abstract class crud <T> {
 	private Connection connection;
 	
 	public crud(Connection connection) {
@@ -41,7 +41,7 @@ public class crud <T> {
 		statement.setInt(1, id);
 		while(rs.next()) {
 			item = parseResultSet(rs);
-			return item;
+			return item; 
 		}
 		return null;
 	}

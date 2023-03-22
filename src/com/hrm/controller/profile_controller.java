@@ -2,7 +2,15 @@ package com.hrm.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import com.hrm.model.usersession;
+import com.hrm.model.beans.employee;
+import com.hrm.model.business_objects.bo_employee;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
@@ -26,7 +35,28 @@ public class profile_controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		ArrayList<employee> getProfile = null;
+		try {
+			getProfile = bo_employee.getProfile(usersession.getIdUser());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for (employee employee : getProfile) {
+			fullname_txt.setText((String)(employee.getLast_name()+" "+employee.getMiddle_name()+" "+employee.getFirst_name()));
+			DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+			DOB_text.setText(formatDate.format(employee.getDob()));
+			gmail_text.setText((String)employee.getEmail()); 
+			phone_text.setText((String)employee.getTelephone());;
+			address_text.setText((String)employee.getAddress());
+			department_text.setText((String)employee.getDepartment().getDepartment_name());
+			position_text.setText((String)employee.getPosition().getPosition_name());
+			salary_text.setText(((Integer)employee.getSalary().getValue_money()).toString() + "$");
+			principal_text.setText(((Integer)employee.getPrincipal().getValue_money()).toString()+ "$");
+			onleave_text.setText(((Integer)employee.getOn_leave()).toString());
+			descrip_text.setText(employee.getDescription());			
+		}
 
 	}
 
@@ -66,6 +96,9 @@ public class profile_controller implements Initializable {
 	@FXML
 	private Text DOB_text;
 
+	@FXML
+	private TextArea address_text;
+	
 	@FXML
 	private Text gmail_text;
 
