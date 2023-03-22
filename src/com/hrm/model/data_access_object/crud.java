@@ -5,7 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
 
+=======
+import java.util.ArrayList;
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 
 import com.hrm.model.beans.department;
 import com.hrm.model.beans.employee;
@@ -13,19 +17,29 @@ import com.hrm.model.beans.position;
 import com.hrm.model.beans.principal;
 import com.hrm.model.beans.salary;
 
+<<<<<<< HEAD
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public abstract class crud <T> {
+=======
+public class crud <T> {
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 	private Connection connection;
 	
 	public crud(Connection connection) {
 		this.connection = connection;
 	}
 	
+<<<<<<< HEAD
 	public ObservableList<T> getAll(String table) throws SQLException {
 		ObservableList<T> result = FXCollections.observableArrayList();
 		String query = "SELECT * FROM " + table +" WHERE flag=0";
+=======
+	public ArrayList<T> getAll(String table) throws SQLException {
+		ArrayList<T> result = new ArrayList<>();
+		String query = "SELECT * FROM " + table;
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet rs = statement.executeQuery();
 		
@@ -33,7 +47,10 @@ public abstract class crud <T> {
 			T item = parseResultSet(rs);
 			result.add(item);
 		}
+<<<<<<< HEAD
 		statement.close();
+=======
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 		return result;
 	}
 	
@@ -45,6 +62,7 @@ public abstract class crud <T> {
 		statement.setInt(1, id);
 		while(rs.next()) {
 			item = parseResultSet(rs);
+<<<<<<< HEAD
 			return item; 
 		}
 		statement.close();
@@ -66,6 +84,14 @@ public abstract class crud <T> {
 	
 	public boolean add(String table, T item) throws IllegalArgumentException, SQLException {
 		boolean check=false;
+=======
+			return item;
+		}
+		return null;
+	}
+	
+	public void add(String table, T item) throws IllegalArgumentException, SQLException {
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 		String query = "INSERT INTO " + table + " VALUES(";
 					    Field[] fields = item.getClass().getDeclaredFields();
 					    for(int i=0; i< fields.length; i++) {
@@ -87,6 +113,7 @@ public abstract class crud <T> {
 			index ++;
 		}
 		statement.executeUpdate();
+<<<<<<< HEAD
 		if(statement.executeUpdate()>0) {
 			check=true;
 		}
@@ -101,11 +128,24 @@ public abstract class crud <T> {
 					    Field[] fields = item.getClass().getDeclaredFields();
 					    for(int i=0; i< fields.length; i++) {
 					    	query += fields[i].getName() + " = ?";
+=======
+	}
+	
+	public void update(String table, T item, int id) throws IllegalArgumentException, SQLException {
+		String query = "UPDATE " + table + " SET ";
+					    Field[] fields = item.getClass().getDeclaredFields();
+					    for(int i=0; i< fields.length; i++) {
+					    	query += fields[i].getName() + "= ?";
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 					    	if(i < fields.length - 1) {
 					    		query += ",";
 					    	}
 					    }
+<<<<<<< HEAD
 					    query += " WHERE id = ?";
+=======
+					    query += "WHERE id = ?)";
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 		PreparedStatement statement = connection.prepareStatement(query);
 		int index = 1;
 		for (Field field : fields) {
@@ -118,12 +158,16 @@ public abstract class crud <T> {
 			index ++;
 		}
 		statement.setInt(index, id);
+<<<<<<< HEAD
 			statement.executeUpdate();
 		if( statement.executeUpdate()>0) {
 			check=true;
 		}
 		statement.close();
 		return check;
+=======
+		statement.executeUpdate();
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -150,7 +194,11 @@ public abstract class crud <T> {
 			((employee)item).setFlag(rs.getInt("flag"));
 		}else if(rs.getMetaData().getTableName(1).equalsIgnoreCase("department")) {
 			item = (T)new department();
+<<<<<<< HEAD
 			((department)item).setDepartment_Id(rs.getInt("id"));
+=======
+			((department)item).setId(rs.getInt("id"));
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 			((department)item).setDepartment_name(rs.getString("department_name"));
 			((department)item).setDescription(rs.getString("description"));
 			((department)item).setCreated_at(rs.getDate("created_at"));
@@ -190,3 +238,7 @@ public abstract class crud <T> {
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df

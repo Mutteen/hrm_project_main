@@ -19,6 +19,7 @@ public class employee {
 	private Date dob;
 	private int status;
 	private int flag ;
+<<<<<<< HEAD
 	private position_employee position_employee;
 	private department department;
 	private position position;
@@ -55,6 +56,11 @@ public class employee {
 	public void setPrincipal(principal principal) {
 		this.principal = principal;
 	}
+=======
+	
+	
+	
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df
 	public int getId() {
 		return id;
 	}
@@ -193,4 +199,8 @@ public class employee {
 	
 	
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1383510e8665447a93507fde4809ec9420e517df

@@ -3,7 +3,7 @@ package com.hrm.model.beans;
 import java.sql.Date;
 
 public class position_employee {
-	private int position_employee_id;
+	private int id;
 	private int employee_id;
 	private int position_id;
 	private String description;
@@ -14,9 +14,9 @@ public class position_employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public position_employee(int position_employee_id, int employee_id, int position_id, String description,
+	public position_employee(int id, int employee_id, int position_id, String description,
 			Date created_at, int flag) {
-		this.position_employee_id = position_employee_id;
+		this.id = id;
 		this.employee_id = employee_id;
 		this.position_id = position_id;
 		this.description = description;
@@ -24,12 +24,12 @@ public class position_employee {
 		this.flag = flag;
 	}
 
-	public int getPosition_employee_id() {
-		return position_employee_id;
+	public int getid() {
+		return id;
 	}
 
-	public void setPosition_employee_id(int position_employee_id) {
-		this.position_employee_id = position_employee_id;
+	public void setid(int id) {
+		this.id = id;
 	}
 
 	public int getEmployee_id() {
