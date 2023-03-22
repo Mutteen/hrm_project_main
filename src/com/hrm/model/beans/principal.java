@@ -1,4 +1,4 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 import java.sql.Date;
 
@@ -32,7 +32,7 @@ public class principal {
 		return principal_id;
 	}
 
-	public void setPrincipal_id(int principal_id) {
+	public void setId(int principal_id) {
 		this.principal_id = principal_id;
 	}
 

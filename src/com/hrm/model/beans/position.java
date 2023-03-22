@@ -1,4 +1,4 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 import java.sql.Date;
 
@@ -25,7 +25,7 @@ public class position {
 		return position_id;
 	}
 
-	public void setPosition_id(int position_id) {
+	public void setId(int position_id) {
 		this.position_id = position_id;
 	}
 

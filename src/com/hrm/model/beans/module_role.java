@@ -1,4 +1,4 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 public class module_role {
 	private int module_role_id;

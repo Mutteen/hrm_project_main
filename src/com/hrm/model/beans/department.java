@@ -1,4 +1,4 @@
-package com.hrm.model;
+package com.hrm.model.beans;
 
 import java.sql.Date;
 

@@ -6,26 +6,32 @@ import java.util.Set;
 public final class usersession {
 
 	private static usersession instance;
+	private static String userName;
+	private static int idUser;
 
 	public void name() {
 
 	}
 
-	static String userName;
 	private Set<String> privileges;
 
-	private usersession(String userName, Set<String> privileges) {
+	private usersession(int idUser, String userName, Set<String> privileges) {
+		this.idUser = idUser;
 		this.userName = userName;
 		this.privileges = privileges;
 	}
 
-	public static usersession getInstace(String userName, Set<String> privileges) {
+	public static usersession getInstace(int idUser,String userName, Set<String> privileges) {
 		if (instance == null) {
-			instance = new usersession(userName, privileges);
+			instance = new usersession(idUser,userName, privileges);
 		}
 		return instance;
 	}
 
+	public static int getIdUser() {
+		return idUser;
+	}
+	
 	public static String getUserName() {
 		return userName;
 	}
