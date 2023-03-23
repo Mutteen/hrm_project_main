@@ -3,7 +3,7 @@ package com.hrm.model.beans;
 import java.sql.Date;
 
 public class department {
-	private int id;
+	private int department_id;
 	private String department_name;
 	private String description;
 	private Date created_at;
@@ -14,19 +14,19 @@ public class department {
 	}
 
 	public department(int id, String department_name, String description, Date created_at, int flag) {
-		this.id = id;
+		this.department_id = id;
 		this.department_name = department_name;
 		this.description = description;
 		this.created_at = created_at;
 		this.flag = flag;
 	}
 
-	public int getId() {
-		return id;
+	public int getDepartment_Id() {
+		return department_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setDepartment_Id(int id) {
+		this.department_id = id;
 	}
 
 	public String getDepartment_name() {

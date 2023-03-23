@@ -22,7 +22,7 @@ import com.hrm.model.data_access_object.departmentDAO;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,7 +61,7 @@ public class department_controller implements Initializable {
 	private bo_department dataDao = new bo_department();
 	private ObservableList<department> masterData = FXCollections.observableArrayList();
 
-	private static int ROWS_PER_PAGE = 2;
+	private static int ROWS_PER_PAGE = 8;
 	private FilteredList<department> filteredData;
 	@FXML
 	private TableView<department> table_department;

@@ -11,44 +11,46 @@ import com.hrm.model.data_access_object.crud;
 import com.hrm.model.data_access_object.show_data;
 
 import javafx.collections.ObservableList;
+
 public class bo_employee {
-	private static Connection conn=connection_db.getConnection();
-	
+	private static Connection conn = connection_db.getConnection();
+
 	public bo_employee() {
 		// TODO Auto-generated constructor stub
-	}	
-	
+	}
+
 	public static boolean login(String username, String password) throws SQLException {
-		
-		crud<employee> crudEmployee = new crud<employee>(conn){};
-		
-		ObservableList<employee> listEmployee =  crudEmployee.getAll("employee");
-		
-		for (employee employee :listEmployee) {
-			if(username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
-				usersession.getInstace(employee.getId() ,employee.getFirst_name(), null);
-				return true;					
-			}else {				
+
+		crud<employee> crudEmployee = new crud<employee>(conn) {
+		};
+
+		ObservableList<employee> listEmployee = crudEmployee.getAll("employee");
+
+		for (employee employee : listEmployee) {
+			if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
+				usersession.getInstace(employee.getId(), employee.getFirst_name(), null);
+				return true;
+			} else {
 				return false;
 			}
 		}
 		return false;
-	
+
 	}
-	
-	public static ArrayList<employee> getProfile(int idUser) throws SQLException{
-		
+
+	public static ArrayList<employee> getProfile(int idUser) throws SQLException {
+
 		show_data<employee> showProfile = new show_data<>(conn);
-		
-		ArrayList<employee> listData = showProfile.getProfile(idUser);	
-		
+
+		ArrayList<employee> listData = showProfile.getProfile(idUser);
+
 		for (employee employee : listData) {
 			System.out.println(employee.getPrincipal().getValue_money());
 			System.out.println(employee.getSalary().getValue_money());
 		}
-		
+
 		return listData;
-		
+
 	}
 
 }

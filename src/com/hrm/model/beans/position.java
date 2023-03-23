@@ -9,30 +9,17 @@ public class position {
 	private Date created_at;
 	private int flag;
 
-
 	public int getId() {
 		return id;
 	}
 
-<<<<<<< HEAD
-	public position(int position_id, String position_name, String description, Date created_at, int flag) {
-		this.position_id = position_id;
-		this.position_name = position_name;
-		this.description = description;
-		this.created_at = created_at;
-		this.flag = flag;
-	}
-
 	public int getPosition_id() {
-		return position_id;
+		return id;
 	}
 
-	public void setId(int position_id) {
-		this.position_id = position_id;
-=======
 	public void setId(int id) {
 		this.id = id;
->>>>>>> 1383510e8665447a93507fde4809ec9420e517df
+
 	}
 
 	public String getPosition_name() {
@@ -67,7 +54,6 @@ public class position {
 		this.flag = flag;
 	}
 
-
 	public position() {
 		// TODO Auto-generated constructor stub
 	}
@@ -79,5 +65,5 @@ public class position {
 		this.created_at = created_at;
 		this.flag = flag;
 	}
-	
+
 }

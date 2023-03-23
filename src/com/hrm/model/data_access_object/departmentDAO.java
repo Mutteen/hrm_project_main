@@ -13,6 +13,7 @@ public class departmentDAO implements DAO<department> {
 
 	static String sql = "";
 	static Connection conn = connection_db.getConnection();
+
 	public departmentDAO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -51,7 +52,7 @@ public class departmentDAO implements DAO<department> {
 		ObservableList<department> departmentList = FXCollections.observableArrayList();
 		// TODO Auto-generated method stub
 		try {
-			
+
 			// Step 2
 			sql = "SELECT D.id,D.department_name,D.description,D.created_at FROM hrm.department  AS D WHERE D.id=?";
 
@@ -84,7 +85,7 @@ public class departmentDAO implements DAO<department> {
 		boolean check = false;
 		// TODO Auto-generated method stub
 		try {
-			
+
 			sql = "INSERT INTO `hrm`.`department` (`department_name`, `description`, `created_at`) VALUES (?, ?, ?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, t.getDepartment_name());
@@ -107,7 +108,7 @@ public class departmentDAO implements DAO<department> {
 		// TODO Auto-generated method stub
 		boolean check = false;
 		try {
-			
+
 			sql = "UPDATE hrm.department AS D SET D.department_name=?,D.description=?,D.created_at=? WHERE D.id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setString(1, t.getDepartment_name());

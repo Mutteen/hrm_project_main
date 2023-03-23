@@ -14,7 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class bo_department implements DAO<department> {
-	private static Connection conn=connection_db.getConnection();
+	private static Connection conn = connection_db.getConnection();
 	static String sql = "";
 
 	public bo_department() {

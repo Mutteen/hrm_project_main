@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Thuan/git/hrm_project_main/Library_jar/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Thuan/git/hrm_project_main/Library_jar/fontawesomefx-8.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx1"/>
-	<classpathentry kind="lib" path="D:/Download/fontawesomefx-glyphsbrowser-all-1.0.jar"/>
-=======
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaAweSome"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFx"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jdbc"/>
->>>>>>> 1383510e8665447a93507fde4809ec9420e517df
+	<classpathentry kind="lib" path="D:/Download/fontawesomefx-8.2.jar"/>
+	<classpathentry kind="lib" path="D:/Developer/java/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
