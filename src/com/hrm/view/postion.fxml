@@ -14,14 +14,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.position_controller">
    <children>
-      <Label layoutX="29.0" layoutY="14.0" prefHeight="36.0" prefWidth="175.0" text="Position" textFill="#35a4d3">
+      <Label layoutX="29.0" layoutY="14.0" prefHeight="36.0" prefWidth="175.0" text="Position" textFill="#0277bd">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <AnchorPane layoutX="10.0" layoutY="53.0" prefHeight="760.0" prefWidth="1105.0" style="-fx-background-color: #FFFF;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
-            <TableView fx:id="table_position" layoutX="395.0" layoutY="90.0" prefHeight="559.0" prefWidth="688.0">
+            <TableView fx:id="table_position" layoutX="395.0" layoutY="40.0" prefHeight="609.0" prefWidth="688.0">
               <columns>
                 <TableColumn fx:id="ID_col" prefWidth="45.0" text="ID" />
                 <TableColumn fx:id="position_col" prefWidth="156.0" text="Position name" />
@@ -56,8 +56,8 @@
                   <TextField fx:id="whocreate_field" layoutX="37.0" layoutY="202.0" prefHeight="26.0" prefWidth="264.0" promptText="Who create" styleClass="textfield" stylesheets="@../assets/css/login.css" />
                </children>
             </AnchorPane>
-            <TextField fx:id="search_field" layoutX="32.0" layoutY="24.0" prefHeight="32.0" prefWidth="334.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
-            <Button fx:id="search_btn" layoutX="384.0" layoutY="24.0" mnemonicParsing="false" onAction="#SearchPosition" prefHeight="25.0" prefWidth="42.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
+            <TextField fx:id="search_field" layoutX="32.0" layoutY="24.0" prefHeight="32.0" prefWidth="292.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
+            <Button fx:id="search_btn" layoutX="333.0" layoutY="24.0" mnemonicParsing="false" onAction="#SearchPosition" prefHeight="25.0" prefWidth="42.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
                <graphic>
                   <FontAwesomeIcon glyphName="SEARCH" size="1.5em" text="" />
                </graphic>

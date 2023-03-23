@@ -11,13 +11,14 @@ public class principal {
 	private int value_money;
 	private Date created_at;
 	private int flag;
-	
+
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+
 	}
 
 	public int getEmployee_id() {
@@ -80,8 +81,8 @@ public class principal {
 		// TODO Auto-generated constructor stub
 	}
 
-	public principal(int id, int employee_id, String description, Boolean type, Date date_principal,
-			int value_money, Date created_at, int flag) {
+	public principal(int id, int employee_id, String description, Boolean type, Date date_principal, int value_money,
+			Date created_at, int flag) {
 		this.id = id;
 		this.employee_id = employee_id;
 		this.description = description;

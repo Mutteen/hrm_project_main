@@ -37,8 +37,8 @@ public class login implements Initializable {
 
 	@FXML
 	public Button btnLogin;
-	
-	@FXML 
+
+	@FXML
 	public Label messageLogin;
 
 	private Stage stage;
@@ -58,10 +58,10 @@ public class login implements Initializable {
 	public void btnLoginOnAction(ActionEvent event) throws IOException, SQLException {
 		String username = tfUsername.getText();
 		String password = tfPassword.getText();
-		
-		if(username.isBlank() == true || password.isBlank() == true) {
+
+		if (username.isBlank() == true || password.isBlank() == true) {
 			messageLogin.setText("Please enter username or password");
-		}else if (bo_employee.login(username, password)) {
+		} else if (bo_employee.login(username, password)) {
 			homePage = (Pane) FXMLLoader.load(getClass().getResource("../view/home.fxml"));
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(homePage);
