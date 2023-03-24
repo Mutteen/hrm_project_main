@@ -11,6 +11,7 @@ import com.hrm.model.beans.department;
 import com.hrm.model.beans.employee;
 import com.hrm.model.beans.position;
 import com.hrm.model.beans.principal;
+import com.hrm.model.beans.principal.Type;
 import com.hrm.model.beans.salary;
 
 public abstract class crud <T> {
@@ -102,9 +103,11 @@ public abstract class crud <T> {
 		if(rs.getMetaData().getTableName(1).equalsIgnoreCase("employee")) {
 			item = (T) new employee();
 			((employee)item).setId(rs.getInt("id"));
-			((employee)item).setRole_id(rs.getInt("id"));
+			((employee)item).setRole_id(rs.getInt("role_id"));
 			((employee)item).setUsername(rs.getString("username"));
 			((employee)item).setPassword(rs.getString("password"));
+//			System.out.println(rs.getString("username"));
+//			System.out.println(rs.getString("password"));
 			((employee)item).setOn_leave(rs.getInt("on_leave"));
 			((employee)item).setLast_name(rs.getString("last_name"));
 			((employee)item).setMiddle_name(rs.getString("middle_name"));
@@ -136,7 +139,7 @@ public abstract class crud <T> {
 			((principal)item).setId(rs.getInt("id"));
 			((principal)item).setEmployee_id(rs.getInt("employee_id"));
 			((principal)item).setDescription(rs.getString("description"));
-			((principal)item).setType(rs.getBoolean("type"));
+			((principal)item).setType(Type.valueOf(rs.getString("priority")));
 			((principal)item).setDate_principal(rs.getDate("date_principal"));
 			((principal)item).setValue_money(rs.getInt("value_money"));
 			((principal)item).setCreated_at(rs.getDate("created_at"));

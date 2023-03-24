@@ -2,11 +2,19 @@ package com.hrm.model.beans;
 
 import java.sql.Date;
 
+
+
 public class principal {
+	
+	public enum Type{
+		BONUS,
+		FINE
+	}
+	
 	private int id;
 	private int employee_id;
 	private String description;
-	private Boolean type;
+	private Type type;
 	private Date date_principal;
 	private int value_money;
 	private Date created_at;
@@ -36,11 +44,11 @@ public class principal {
 		this.description = description;
 	}
 
-	public Boolean getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(Boolean type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
@@ -80,7 +88,7 @@ public class principal {
 		// TODO Auto-generated constructor stub
 	}
 
-	public principal(int id, int employee_id, String description, Boolean type, Date date_principal,
+	public principal(int id, int employee_id, String description, Type type, Date date_principal,
 			int value_money, Date created_at, int flag) {
 		this.id = id;
 		this.employee_id = employee_id;

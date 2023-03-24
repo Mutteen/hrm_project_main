@@ -13,7 +13,7 @@ public final class usersession {
 
 	}
 
-	private Set<String> privileges;
+	private static Set<String> privileges;
 
 	private usersession(int idUser, String userName, Set<String> privileges) {
 		this.idUser = idUser;
@@ -40,8 +40,9 @@ public final class usersession {
 		return privileges;
 	}
 
-	public void cleanUserSession() {
-		userName = "";// or null
+	public static void cleanUserSession() {
+		userName = null;// or null
+		idUser = 0;
 		privileges = new HashSet<>();// or null
 	}
 

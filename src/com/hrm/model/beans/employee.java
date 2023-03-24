@@ -1,6 +1,8 @@
 package com.hrm.model.beans;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class employee {
 	private int id;
@@ -18,12 +20,15 @@ public class employee {
 	private String description;
 	private Date dob;
 	private int status;
+	private Date hire_date;
 	private int flag ;
 	private position_employee position_employee;
 	private department department;
 	private position position;
 	private salary salary;
 	private principal principal;
+	
+	
 	
 	public position_employee getPosition_employee() {
 		return position_employee;
@@ -147,6 +152,8 @@ public class employee {
 	}
 
 	public Date getDob() {
+		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+		formatDate.format(dob);
 		return dob;
 	}
 	public void setDob(Date dob) {
@@ -167,12 +174,21 @@ public class employee {
 		this.flag = flag;
 	}
 
+	public Date getHire_date() {
+		return hire_date;
+	}
+	public void setHire_date(Date hire_date) {
+		this.hire_date = hire_date;
+	}
 	public employee() {
 		// TODO Auto-generated constructor stub
 	}
 	public employee(int id, int role_id, String username, String password, int on_leave, String last_name,
 			String middle_name, String first_name, String email, String address, String telephone, String avatar,
-			String description, Date dob, int status, int flag) {
+			String description, Date dob, int status, Date hire_date, int flag,
+			com.hrm.model.beans.position_employee position_employee, com.hrm.model.beans.department department,
+			com.hrm.model.beans.position position, com.hrm.model.beans.salary salary,
+			com.hrm.model.beans.principal principal) {
 		this.id = id;
 		this.role_id = role_id;
 		this.username = username;
@@ -188,8 +204,16 @@ public class employee {
 		this.description = description;
 		this.dob = dob;
 		this.status = status;
+		this.hire_date = hire_date;
 		this.flag = flag;
+		this.position_employee = position_employee;
+		this.department = department;
+		this.position = position;
+		this.salary = salary;
+		this.principal = principal;
 	}
+
+
 	
 	
 

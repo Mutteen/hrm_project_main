@@ -1,6 +1,5 @@
 package com.hrm.model.business_objects;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import com.hrm.model.data_access_object.crud;
 import com.hrm.model.data_access_object.db_info;
 import com.hrm.model.data_access_object.show_data;
 
-import javafx.scene.chart.PieChart.Data;
 
 public class bo_employee {
 	private static Connection connection = connect_database.getConnection(db_info.getDbUrl(), db_info.getUsername(), db_info.getPassword());
@@ -26,13 +24,11 @@ public class bo_employee {
 		crud<employee> crudEmployee = new crud<employee>(connection){};
 		
 		ArrayList<employee> listEmployee =  crudEmployee.getAll("employee");
-		
+		 
 		for (employee employee : listEmployee) {
 			if(username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
 				usersession.getInstace(employee.getId() ,employee.getFirst_name(), null);
 				return true;					
-			}else {				
-				return false;
 			}
 		}
 		return false;
@@ -46,12 +42,18 @@ public class bo_employee {
 		ArrayList<employee> listData = showProfile.getProfile(idUser);	
 		
 		for (employee employee : listData) {
-			System.out.println(employee.getPrincipal().getValue_money());
-			System.out.println(employee.getSalary().getValue_money());
+			System.out.println(employee.getFirst_name());
 		}
 		
 		return listData;
 		
 	}
 
+	public static ArrayList<employee> getListEmployee() throws SQLException{
+		show_data<employee> showList = new show_data<>(connection);
+		ArrayList<employee> listData = showList.getAll();
+
+		return listData;
+	}
+	
 }
