@@ -21,9 +21,9 @@ public final class usersession {
 		this.privileges = privileges;
 	}
 
-	public static usersession getInstace(int idUser,String userName, Set<String> privileges) {
+	public static usersession getInstace(int idUser, String userName, Set<String> privileges) {
 		if (instance == null) {
-			instance = new usersession(idUser,userName, privileges);
+			instance = new usersession(idUser, userName, privileges);
 		}
 		return instance;
 	}
@@ -31,7 +31,7 @@ public final class usersession {
 	public static int getIdUser() {
 		return idUser;
 	}
-	
+
 	public static String getUserName() {
 		return userName;
 	}

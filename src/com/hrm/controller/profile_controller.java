@@ -43,7 +43,7 @@ public class profile_controller implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		for (employee employee : getProfile) {
 			fullname_txt.setText((String)(employee.getLast_name()+" "+employee.getMiddle_name()+" "+employee.getFirst_name()));
 			DOB_text.setText(formatDate.format(employee.getDob()));
@@ -99,7 +99,7 @@ public class profile_controller implements Initializable {
 
 	@FXML
 	private TextArea address_text;
-	
+
 	@FXML
 	private Text gmail_text;
 

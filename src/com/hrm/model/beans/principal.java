@@ -19,13 +19,14 @@ public class principal {
 	private int value_money;
 	private Date created_at;
 	private int flag;
-	
+
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+
 	}
 
 	public int getEmployee_id() {

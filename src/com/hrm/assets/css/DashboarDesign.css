@@ -74,6 +74,14 @@ and open the template in the editor.
     -fx-background-radius:4px;
 }
 
+.delete-label > .glyph-icon {
+    -fx-fill: #8A0808;
+    -fx-cursor: hand ;
+}
+.update-label > .glyph-icon{
+	-fx-fill:#33691E;
+	-fx-cursor: hand ;
+}
 .search{
     -fx-background-color:transparent;
     -fx-border-color:linear-gradient(to bottom right, #2d658c, #2ca772);
@@ -97,6 +105,7 @@ and open the template in the editor.
 }
 .table-view .table-column{
     -fx-alignment: CENTER;
+     -fx-font-size:14px;
 }
 .table-view .column-header-background{
     -fx-background-color:linear-gradient(to bottom right, #2d658c, #2ca772);
@@ -136,6 +145,7 @@ and open the template in the editor.
 }
 .insert-btn:hover{
 	-fx-border-radius :8px;
+	 -fx-background-radius:8px;
 	-fx-background-color:#E0F2F1;
 }
 
@@ -158,6 +168,7 @@ and open the template in the editor.
     -fx-text-fill:#fff;
     -fx-font-size:14px;
     -fx-font-family:"Arial";
+   
 }
 .update-btn:hover{
 	 -fx-background-radius:8px;
@@ -188,6 +199,7 @@ and open the template in the editor.
 }
 .clear-btn:hover{
     -fx-background-color:#EFEBE9;
+     -fx-background-radius:8px;
 }
 
 .label-info{

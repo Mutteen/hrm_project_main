@@ -16,12 +16,13 @@ import com.hrm.model.beans.salary;
 
 public class show_data<T> {
 	private Connection connection;
-	
+
 	public show_data(Connection connection) {
 		this.connection = connection;
-	}	
+	}
 
-	public ArrayList<T> getProfile(int idUser) throws SQLException{
+	public ArrayList<T> getProfile(int idUser) throws SQLException {
+
 		ArrayList<T> result = new ArrayList<>();
 		String query = "SELECT employee.id, employee.last_name,employee.middle_name,employee.first_name, employee.dob, employee.email, employee.telephone, employee.address, employee.on_leave, employee.description,employee.`status`, employee.hire_date,\r\n"
 				+ "		 department.department_name,\r\n"
@@ -40,8 +41,8 @@ public class show_data<T> {
 		PreparedStatement statement = connection.prepareStatement(query);
 		statement.setInt(1, idUser);
 		ResultSet rs = statement.executeQuery();
-		
-		while(rs.next()) {
+
+		while (rs.next()) {
 			T item = parseResultSet(rs);
 			result.add(item);
 		}		
@@ -70,13 +71,13 @@ public class show_data<T> {
 			T item = parseResultSet(rs);
 			result.add(item);
 		}
-		
+
 		return result;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
-	protected T parseResultSet (ResultSet rs) throws SQLException {
+	protected T parseResultSet(ResultSet rs) throws SQLException {
 		T item = null;
 		
 		
@@ -115,8 +116,8 @@ public class show_data<T> {
 	        
 	        item = (T) employee;	        
 		}
-		
+
 		return item;
 	}
-	
+
 }

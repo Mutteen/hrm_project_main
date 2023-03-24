@@ -14,26 +14,26 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.department_controller">
    <children>
-      <Label layoutX="29.0" layoutY="14.0" prefHeight="36.0" prefWidth="175.0" text="Department" textFill="#35a4d3">
+      <Label layoutX="29.0" layoutY="6.0" prefHeight="36.0" prefWidth="175.0" text="Department" textFill="#0277bd">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <AnchorPane layoutX="10.0" layoutY="53.0" prefHeight="760.0" prefWidth="1105.0" style="-fx-background-color: #FFFF;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
-            <TableView fx:id="table_department" layoutX="453.0" layoutY="67.0" prefHeight="554.0" prefWidth="630.0">
+            <TableView fx:id="table_department" layoutX="430.0" layoutY="67.0" prefHeight="559.0" prefWidth="653.0">
               <columns>
                 <TableColumn fx:id="ID_col" prefWidth="45.0" text="ID" />
-                <TableColumn fx:id="department_name_col" prefWidth="156.0" text="Department name" />
-                  <TableColumn minWidth="0.0" prefWidth="8.0" />
-                  <TableColumn fx:id="create_at_col" prefWidth="152.0" text="Create at" />
-                  <TableColumn fx:id="des_col" prefWidth="161.0" text="Description" />
-                  <TableColumn fx:id="action_col" prefWidth="104.0" text="Action" />
+                <TableColumn fx:id="department_name_col" prefWidth="179.0" text="Department name" />
+                  <TableColumn minWidth="0.0" prefWidth="0.0" />
+                  <TableColumn fx:id="create_at_col" prefWidth="137.0" text="Create at" />
+                  <TableColumn fx:id="des_col" prefWidth="201.0" text="Description" />
+                  <TableColumn fx:id="action_col" prefWidth="85.0" text="Action" />
               </columns>
             </TableView>
             <Button fx:id="save_btn" layoutX="890.0" layoutY="706.0" mnemonicParsing="false" onAction="#SaveDepartment" prefHeight="40.0" prefWidth="59.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
                <graphic>
-                  <FontAwesomeIcon fill="#78909c" glyphName="SAVE" size="2EM" />
+                  <FontAwesomeIcon fill="#2f3f9e" glyphName="SAVE" size="2EM" />
                </graphic>
             </Button>
             <Button fx:id="print_btn" layoutX="960.0" layoutY="706.0" mnemonicParsing="false" onAction="#Print" prefHeight="32.0" prefWidth="59.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
@@ -46,26 +46,18 @@
                   <FontAwesomeIcon fill="#00c853" glyphName="REFRESH" size="2EM" />
                </graphic>
             </Button>
-            <Pagination fx:id="pagination" layoutX="668.0" layoutY="635.0" pageCount="20" prefHeight="35.0" prefWidth="200.0" />
-            <AnchorPane layoutX="33.0" layoutY="65.0" prefHeight="559.0" prefWidth="375.0" style="-fx-border-radius: 10PX;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+            <Pagination fx:id="pagination" layoutX="657.0" layoutY="636.0" pageCount="20" prefHeight="35.0" prefWidth="200.0" />
+            <AnchorPane layoutX="33.0" layoutY="65.0" prefHeight="571.0" prefWidth="375.0" style="-fx-border-radius: 10PX;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
                <children>
                   <TextArea fx:id="description_field" layoutX="30.0" layoutY="423.0" prefHeight="99.0" prefWidth="315.0" promptText="Description" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-                  <TextField fx:id="status_field" layoutX="56.0" layoutY="162.0" prefHeight="26.0" prefWidth="264.0" promptText="Status" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-                  <TextField fx:id="depast_name" layoutX="56.0" layoutY="60.0" prefHeight="26.0" prefWidth="264.0" promptText="Department name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-                  <DatePicker fx:id="create_at_field" layoutX="48.0" layoutY="290.0" prefHeight="27.0" prefWidth="264.0" promptText="Create at" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+                  <TextField fx:id="status_field" layoutX="56.0" layoutY="239.0" prefHeight="26.0" prefWidth="264.0" promptText="Status" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+                  <TextField fx:id="depast_name" layoutX="56.0" layoutY="141.0" prefHeight="26.0" prefWidth="264.0" promptText="Department name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+                  <DatePicker fx:id="create_at_field" layoutX="56.0" layoutY="333.0" prefHeight="27.0" prefWidth="264.0" promptText="Create at" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+                  <TextField fx:id="depast_name1" layoutX="56.0" layoutY="46.0" prefHeight="26.0" prefWidth="264.0" promptText="ID" styleClass="textfield" stylesheets="@../assets/css/login.css" />
                </children>
             </AnchorPane>
-            <TextField fx:id="search_field" layoutX="38.0" layoutY="14.0" prefHeight="32.0" prefWidth="334.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
-            <Button fx:id="search_btn" layoutX="387.0" layoutY="14.0" mnemonicParsing="false" onAction="#SearchDepartment" prefHeight="25.0" prefWidth="42.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
-               <graphic>
-                  <FontAwesomeIcon glyphName="SEARCH" size="1.5em" text="" />
-               </graphic>
-            </Button>
-            <Button layoutX="829.0" layoutY="706.0" mnemonicParsing="false" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
-               <graphic>
-                  <FontAwesomeIcon fill="#2f3f9e" glyphName="EDIT" size="2EM" />
-               </graphic>
-            </Button>
+            <TextField fx:id="search_field" layoutX="31.0" layoutY="14.0" prefHeight="32.0" prefWidth="375.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
+            <FontAwesomeIcon glyphName="SEARCH" layoutX="381.0" layoutY="36.0" size="1.5em" text="" />
          </children>
       </AnchorPane>
    </children>

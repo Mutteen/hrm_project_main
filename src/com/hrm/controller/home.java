@@ -91,7 +91,7 @@ public class home implements Initializable {
 	public home() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initClock();
@@ -173,12 +173,10 @@ public class home implements Initializable {
 		slide.play();
 	}
 
-	
 	public void btnInfoOnAction(ActionEvent event) {
 
 	}
 
-	
 	@FXML
 	public void logout(ActionEvent event) {
 		try {

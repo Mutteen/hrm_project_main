@@ -5,11 +5,11 @@ public class db_info {
 	public db_info() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static String getServer() {
-		 return "localhost";
+		return "localhost";
 	}
-	
+
 	public static String getPort() {
 		return "3306";
 	}
@@ -17,17 +17,17 @@ public class db_info {
 	public static String getDatabase() {
 		return "hrm";
 	}
-	
+
 	public static String getUsername() {
-		return "admin";
+		return "Thuan";
 	}
-	
+
 	public static String getPassword() {
-		return "nghia2811";
+		return "Thuan";
 	}
-	
+
 	public static String getDbUrl() {
-		return "jdbc:mysql://"+ getServer() +":"+getPort()+"/"+getDatabase();
+		return "jdbc:mysql://" + getServer() + ":" + getPort() + "/" + getDatabase();
 	}
 
 }
