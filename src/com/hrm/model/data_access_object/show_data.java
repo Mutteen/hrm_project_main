@@ -30,7 +30,7 @@ public class show_data<T> {
 				+ "INNER JOIN `position` `position` ON `position`.id = `N`.position_id\r\n"
 				+ "INNER JOIN salary salary ON salary.employee_id  = employee.id\r\n"
 				+ "INNER JOIN principal principal ON principal.employee_id = employee.id\r\n"
-				+ "WHERE employee.id = 2;";
+				+ "WHERE employee.id = 7;";
 
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet rs = statement.executeQuery();

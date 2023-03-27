@@ -15,15 +15,15 @@ public final class usersession {
 
 	private Set<String> privileges;
 
-	private usersession(int idUser, String userName, Set<String> privileges) {
+	private usersession(int idUser, String userName) {
 		this.idUser = idUser;
 		this.userName = userName;
-		this.privileges = privileges;
+
 	}
 
-	public static usersession getInstace(int idUser, String userName, Set<String> privileges) {
+	public static usersession getInstace(int idUser, String userName) {
 		if (instance == null) {
-			instance = new usersession(idUser, userName, privileges);
+			instance = new usersession(idUser, userName);
 		}
 		return instance;
 	}
@@ -40,9 +40,10 @@ public final class usersession {
 		return privileges;
 	}
 
-	public void cleanUserSession() {
-		userName = "";// or null
-		privileges = new HashSet<>();// or null
+	public static void cleanUserSession() {
+		instance = null;
+//		userName = "";// or null
+//		privileges = new HashSet<>();// or null
 	}
 
 	@Override

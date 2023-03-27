@@ -24,17 +24,21 @@ public class bo_employee {
 		crud<employee> crudEmployee = new crud<employee>(conn) {
 		};
 
-		ObservableList<employee> listEmployee = crudEmployee.getAll("employee");
+		ArrayList<employee> listEmployee = crudEmployee.getLogin("employee");
 
+		boolean check = false;
 		for (employee employee : listEmployee) {
 			if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())) {
-				usersession.getInstace(employee.getId(), employee.getFirst_name(), null);
-				return true;
+				usersession.getInstace(employee.getId(), employee.getFirst_name());
+				check = true;
+				break;
 			} else {
-				return false;
+				check = false;
 			}
+			System.out.println(employee.getUsername() + " " + employee.getPassword());
 		}
-		return false;
+		System.out.print(check);
+		return check;
 
 	}
 

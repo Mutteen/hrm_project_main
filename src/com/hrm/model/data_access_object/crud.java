@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.hrm.model.beans.department;
 import com.hrm.model.beans.employee;
@@ -25,6 +26,22 @@ public abstract class crud<T> {
 
 	public ObservableList<T> getAll(String table) throws SQLException {
 		ObservableList<T> result = FXCollections.observableArrayList();
+		String query = "SELECT * FROM " + table + " WHERE flag=0";
+
+		PreparedStatement statement = connection.prepareStatement(query);
+		ResultSet rs = statement.executeQuery();
+
+		while (rs.next()) {
+			T item = parseResultSet(rs);
+			result.add(item);
+		}
+		statement.close();
+
+		return result;
+	}
+
+	public ArrayList<T> getLogin(String table) throws SQLException {
+		ArrayList<T> result = new ArrayList<>();
 		String query = "SELECT * FROM " + table + " WHERE flag=0";
 
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -169,6 +186,7 @@ public abstract class crud<T> {
 			item = (T) new position();
 			((position) item).setId(rs.getInt("id"));
 			((position) item).setPosition_name(rs.getString("position_name"));
+			((position) item).setWho_create(rs.getString("who_create"));
 			((position) item).setDescription(rs.getString("description"));
 			((position) item).setCreated_at(rs.getDate("created_at"));
 			((position) item).setFlag(rs.getInt("flag"));
@@ -177,7 +195,7 @@ public abstract class crud<T> {
 			((principal) item).setId(rs.getInt("id"));
 			((principal) item).setEmployee_id(rs.getInt("employee_id"));
 			((principal) item).setDescription(rs.getString("description"));
-			((principal) item).setType(rs.getBoolean("type"));
+			((principal) item).setType(rs.getString("type"));
 			((principal) item).setDate_principal(rs.getDate("date_principal"));
 			((principal) item).setValue_money(rs.getInt("value_money"));
 			((principal) item).setCreated_at(rs.getDate("created_at"));

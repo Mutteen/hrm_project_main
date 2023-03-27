@@ -36,6 +36,7 @@ public class profile_controller implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ArrayList<employee> getProfile = null;
+		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
 		try {
 			getProfile = bo_employee.getProfile(usersession.getIdUser());
 		} catch (SQLException e) {
@@ -44,9 +45,25 @@ public class profile_controller implements Initializable {
 		}
 
 		for (employee employee : getProfile) {
+
 			fullname_txt.setText((String) (employee.getLast_name() + " " + employee.getMiddle_name() + " "
 					+ employee.getFirst_name()));
-			DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+			DOB_text.setText(formatDate.format(employee.getDob()));
+			gmail_text.setText((String) employee.getEmail());
+			phone_text.setText((String) employee.getTelephone());
+			;
+			address_text.setText((String) employee.getAddress());
+			department_text.setText((String) employee.getDepartment().getDepartment_name());
+			position_text.setText((String) employee.getPosition().getPosition_name());
+
+			salary_text.setText(((Integer) employee.getSalary().getValue_money()).toString() + "$");
+			principal_text.setText(((Integer) employee.getPrincipal().getValue_money()).toString() + "$");
+			onleave_text.setText(((Integer) employee.getOn_leave()).toString());
+			descrip_text.setText(employee.getDescription());
+
+			fullname_txt.setText((String) (employee.getLast_name() + " " + employee.getMiddle_name() + " "
+					+ employee.getFirst_name()));
+
 			DOB_text.setText(formatDate.format(employee.getDob()));
 			gmail_text.setText((String) employee.getEmail());
 			phone_text.setText((String) employee.getTelephone());
@@ -58,6 +75,7 @@ public class profile_controller implements Initializable {
 			principal_text.setText(((Integer) employee.getPrincipal().getValue_money()).toString() + "$");
 			onleave_text.setText(((Integer) employee.getOn_leave()).toString());
 			descrip_text.setText(employee.getDescription());
+
 		}
 
 	}
@@ -78,7 +96,7 @@ public class profile_controller implements Initializable {
 	private Text department_text;
 
 	@FXML
-	private Text work_text;
+	private Text hire_date_text;
 
 	@FXML
 	private TextArea position_text;
