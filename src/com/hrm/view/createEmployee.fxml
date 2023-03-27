@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="705.0" style="-fx-background-color: #ffff;" fx:controller="com.hrm.controller.createEmployee_controller" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="705.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.createEmployee_controller">
    <children>
       <Button fx:id="save_btn" layoutX="259.0" layoutY="782.0" mnemonicParsing="false" onAction="#SaveEmployee" prefHeight="39.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@../assets/css/login.css">
          <graphic>
@@ -46,15 +47,15 @@
       <TextField fx:id="last_name" layoutX="47.0" layoutY="447.0" prefHeight="25.0" prefWidth="211.0" promptText="Last Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <TextField fx:id="first_name" layoutX="47.0" layoutY="311.0" prefHeight="29.0" prefWidth="211.0" promptText="First Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <DatePicker fx:id="DOB" layoutX="47.0" layoutY="520.0" prefHeight="25.0" prefWidth="211.0" promptText="Birthday" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <ComboBox fx:id="department_file" layoutX="359.0" layoutY="319.0" prefHeight="25.0" prefWidth="278.0" promptText="Department" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <ComboBox fx:id="department_file" layoutX="355.0" layoutY="411.0" prefHeight="25.0" prefWidth="278.0" promptText="Department" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <TextField fx:id="gmail" layoutX="47.0" layoutY="646.0" prefHeight="25.0" prefWidth="211.0" promptText="Gmail" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextArea fx:id="descip_field" layoutX="316.0" layoutY="649.0" prefHeight="98.0" prefWidth="363.0" promptText="Description" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <ComboBox fx:id="status_box" layoutX="364.0" layoutY="580.0" prefHeight="25.0" prefWidth="278.0" promptText="Status" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <ComboBox fx:id="status_box" layoutX="360.0" layoutY="672.0" prefHeight="25.0" prefWidth="278.0" promptText="Status" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <ComboBox fx:id="role" layoutX="47.0" layoutY="717.0" prefHeight="25.0" prefWidth="211.0" promptText="Role" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <TextField fx:id="phone" layoutX="48.0" layoutY="580.0" prefHeight="25.0" prefWidth="211.0" promptText="Phone" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextField fx:id="user_name" layoutX="359.0" layoutY="82.0" prefHeight="35.0" prefWidth="278.0" promptText="User Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextArea fx:id="address_field" layoutX="359.0" layoutY="185.0" prefHeight="77.0" prefWidth="278.0" promptText="Address" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <DatePicker fx:id="create_at" layoutX="359.0" layoutY="498.0" prefHeight="25.0" prefWidth="278.0" promptText="Create At" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextField fx:id="on_leave" layoutX="359.0" layoutY="410.0" prefHeight="29.0" prefWidth="278.0" promptText="On Leave" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextField fx:id="user_name" layoutX="357.0" layoutY="118.0" prefHeight="35.0" prefWidth="278.0" promptText="Username" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextArea fx:id="address_field" layoutX="355.0" layoutY="277.0" prefHeight="77.0" prefWidth="278.0" promptText="Address" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <DatePicker fx:id="create_at" layoutX="355.0" layoutY="590.0" prefHeight="25.0" prefWidth="278.0" promptText="Create At" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextField fx:id="on_leave" layoutX="355.0" layoutY="502.0" prefHeight="29.0" prefWidth="278.0" promptText="On Leave" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <PasswordField fx:id="password" layoutX="355.0" layoutY="185.0" prefHeight="36.0" prefWidth="278.0" promptText="Password" styleClass="textfield" stylesheets="@../assets/css/login.css" />
    </children>
 </AnchorPane>

@@ -27,6 +27,7 @@ public class employee {
 	private position position;
 	private salary salary;
 	private principal principal;
+	private role role;
 	
 	
 	
@@ -68,6 +69,14 @@ public class employee {
 
 	public void setPrincipal(principal principal) {
 		this.principal = principal;
+	}
+
+	public role getRole() {
+		return role;
+	}
+
+	public void setRole(role role) {
+		this.role = role;
 	}
 
 	public int getId() {

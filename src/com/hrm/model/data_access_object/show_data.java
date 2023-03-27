@@ -35,7 +35,7 @@ public class show_data<T> {
 				+ "INNER JOIN all_position_name ON all_position_name.employee_id = employee.id\r\n"
 				+ "INNER JOIN salary  ON salary.employee_id  = employee.id\r\n"
 				+ "INNER JOIN value_money_principal ON value_money_principal.employee_id = employee.id\r\n"
-				+ "WHERE employee.id = ?\r\n"
+				+ "WHERE MONTH(time_to_pay) = MONTH(CURRENT_TIMESTAMP()) AND employee.id = ?\r\n"
 				+ "GROUP BY employee.id;";
 		
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -49,7 +49,7 @@ public class show_data<T> {
 		return result;
 	}
 	
-	public ArrayList<T> getAll() throws SQLException{
+	public ArrayList<T> getAllEmployee() throws SQLException{
 		ArrayList<T> result = new ArrayList<>();
 		String query = "SELECT employee.id ,employee.last_name,employee.middle_name,employee.first_name, employee.dob, employee.email, employee.telephone, employee.address, employee.on_leave, employee.description,employee.`status`, employee.hire_date,\r\n"
 				+ "		 department.department_name,\r\n"
@@ -62,6 +62,7 @@ public class show_data<T> {
 				+ "INNER JOIN all_position_name ON all_position_name.employee_id = employee.id\r\n"
 				+ "INNER JOIN salary  ON salary.employee_id  = employee.id\r\n"
 				+ "INNER JOIN value_money_principal ON value_money_principal.employee_id = employee.id\r\n"
+				+ "WHERE MONTH(time_to_pay) = MONTH(CURRENT_TIMESTAMP())"
 				+ "GROUP BY employee.id;";
 		
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -75,6 +76,25 @@ public class show_data<T> {
 		return result;
 	}
 	
+	public ArrayList<T> getAllSalary() throws SQLException{
+		ArrayList<T> result = new ArrayList<>();
+		String query = "SELECT salary.*,\r\n"
+				+ "		 employee.last_name, employee.middle_name, employee.first_name\r\n"
+				+ "FROM salary\r\n"
+				+ "INNER JOIN employee ON employee.id = salary.employee_id\r\n"
+				+ "ORDER BY time_to_pay ASC";
+		
+		PreparedStatement statement = connection.prepareStatement(query);
+		ResultSet rs = statement.executeQuery();
+		
+		while(rs.next()) {
+			T item = parseResultSet(rs);
+			result.add(item);
+		}
+
+		return result;
+		
+	}
 	
 	@SuppressWarnings("unchecked")
 	protected T parseResultSet(ResultSet rs) throws SQLException {
@@ -115,6 +135,24 @@ public class show_data<T> {
 	        employee.setPrincipal(principal);
 	        
 	        item = (T) employee;	        
+		}else if(rs.getMetaData().getTableName(1).equalsIgnoreCase("salary")) {
+			salary salary = new salary();
+			salary.setId(rs.getInt("id"));
+			salary.setValue_money(rs.getInt("value_money"));
+			salary.setTime_to_pay(rs.getDate("time_to_pay"));
+			salary.setWho_pay(rs.getString("who_pay"));
+			salary.setValue_money_reward(rs.getInt("value_money_reward"));
+			salary.setWorking_day(rs.getInt("working_day"));
+			salary.setCreated_at(rs.getDate("created_at"));
+//			salary.setFlag(rs.getInt("flag"));
+			
+			employee employee = new employee();
+			employee.setLast_name(rs.getString("last_name"));
+			employee.setMiddle_name(rs.getString("middle_name"));
+			employee.setFirst_name(rs.getString("first_name"));
+			salary.setEmployee(employee);
+			
+			item = (T) salary;
 		}
 
 		return item;

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.salary_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.salary_controller">
    <children>
       <Label layoutX="29.0" layoutY="14.0" prefHeight="35.0" prefWidth="110.0" text="Salary" textFill="#0277bd">
          <font>
@@ -24,17 +24,16 @@
          <children>
             <TableView fx:id="table_salary" layoutX="15.0" layoutY="14.0" prefHeight="352.0" prefWidth="1074.0">
               <columns>
-                <TableColumn fx:id="ID_col" prefWidth="50.0" text="ID" />
-                <TableColumn fx:id="name_col" prefWidth="140.00003051757812" text="Name" />
-                  <TableColumn fx:id="money_col" prefWidth="91.0" text="Value Money" />
-                  <TableColumn fx:id="reward_col" prefWidth="112.0" text="Reward" />
-                  <TableColumn fx:id="work_col" prefWidth="92.0" text="Wordking day" />
-                  <TableColumn fx:id="timepay_col" prefWidth="96.0" text="Time pay" />
-                  <TableColumn fx:id="whopay_col" prefWidth="136.0" text="Who pay" />
+                <TableColumn fx:id="name_col" prefWidth="150.0" text="Name" />
+                  <TableColumn fx:id="money_col" prefWidth="89.0" text="Value Money" />
+                  <TableColumn fx:id="reward_col" prefWidth="92.0" text="Reward" />
+                  <TableColumn fx:id="work_col" prefWidth="97.0" text="Wordking day" />
+                  <TableColumn fx:id="timepay_col" prefWidth="111.0" text="Time pay" />
+                  <TableColumn fx:id="whopay_col" prefWidth="92.0" text="Who pay" />
                   <TableColumn minWidth="0.0" prefWidth="0.0" />
-                  <TableColumn fx:id="createat_col" minWidth="0.0" prefWidth="112.0" text="Create at" />
-                  <TableColumn fx:id="descip_col" prefWidth="129.0" text="Description" />
-                  <TableColumn fx:id="action_col" prefWidth="115.0" text="Action" />
+                  <TableColumn fx:id="createat_col" minWidth="0.0" prefWidth="142.0" text="Create at" />
+                  <TableColumn fx:id="descip_col" prefWidth="192.0" text="Description" />
+                  <TableColumn fx:id="action_col" prefWidth="105.0" text="Action" />
               </columns>
             </TableView>
             <Button fx:id="svae_btn" layoutX="895.0" layoutY="706.0" mnemonicParsing="false" onAction="#Save" prefHeight="40.0" prefWidth="59.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">

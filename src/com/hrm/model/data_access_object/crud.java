@@ -55,6 +55,21 @@ public abstract class crud<T> {
 		return null;
 	}
 
+	public T getByDepName(String department_name) throws SQLException {
+		T item;
+		String query = "SELECT * FROM department WHERE department_name = ?";
+		PreparedStatement statement = connection.prepareStatement(query);
+		statement.setString(1, department_name);
+		ResultSet rs = statement.executeQuery();
+		while (rs.next()) {
+			item = parseResultSet(rs);
+
+			return item;
+		}
+		statement.close();
+		return null;
+	}
+	
 	public boolean Delete(String table, int id) throws SQLException {
 		boolean check = false;
 		String query = "UPDATE " + table + " SET flag = 1 WHERE id = ?";

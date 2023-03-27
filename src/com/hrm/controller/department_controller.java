@@ -184,13 +184,12 @@ public class department_controller implements Initializable {
 			changeTableView(0, masterData.size());
 		});
 		// add value into cell
-		ID_col.setCellValueFactory(new PropertyValueFactory<>("department_Id"));
+		ID_col.setCellValueFactory(new PropertyValueFactory<>("id"));
 		department_name_col.setCellValueFactory(new PropertyValueFactory<>("department_name"));
 		create_at_col.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 		des_col.setCellValueFactory(new PropertyValueFactory<>("description"));
 
 		// add cell of button edit
-
 		Callback<TableColumn<department, String>, TableCell<department, String>> cellFoctory = (
 				TableColumn<department, String> param) -> {
 			// make cell containing buttons
@@ -227,7 +226,7 @@ public class department_controller implements Initializable {
 								boolean checkDelete = dataDao.delete(Department);
 
 								if (checkDelete == true) {
-									alert.Success("Delete Department " + Department.getDepartment_Id() + " ");
+									alert.Success("Delete Department " + Department.getId() + " ");
 									clean();
 								}
 							}
@@ -240,7 +239,7 @@ public class department_controller implements Initializable {
 
 							department Department = table_department.getSelectionModel().getSelectedItem();
 							depast_name.setText(Department.getDepartment_name());
-							depast_name1.setText(String.valueOf(Department.getDepartment_Id()));
+							depast_name1.setText(String.valueOf(Department.getId()));
 							// setdatepciker fomat date sql
 							DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDate localDate = LocalDate.parse(String.valueOf(Department.getCreated_at()),
@@ -248,24 +247,6 @@ public class department_controller implements Initializable {
 
 							create_at_field.setValue(formatDate(String.valueOf(Department.getCreated_at())));
 							description_field.setText(Department.getDescription());
-
-//                            FXMLLoader loader = new FXMLLoader ();
-//                            loader.setLocation(getClass().getResource("/tableView/addStudent.fxml"));
-//                            try {
-//                                loader.load();
-//                            } catch (IOException ex) {
-//                                Logger.getLogger(department.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
-//                            
-//                            AddStudentController addStudentController = loader.getController();
-//                            addStudentController.setUpdate(true);
-//                            addStudentController.setTextField(student.getId(), student.getName(), 
-//                                    student.getBirth().toLocalDate(),student.getAdress(), student.getEmail());
-//                            Parent parent = loader.getRoot();
-//                            Stage stage = new Stage();
-//                            stage.setScene(new Scene(parent));
-//                            stage.initStyle(StageStyle.UTILITY);
-//                            stage.show();
 
 						});
 						HBox managebtn = new HBox(editIcon, deleteIcon);
@@ -331,7 +312,7 @@ public class department_controller implements Initializable {
 
 			if (option.get() == ButtonType.OK) {
 				department Department = new department();
-				Department.setDepartment_Id(Integer.parseInt(depast_name1.getText()));
+				Department.setId(Integer.parseInt(depast_name1.getText()));
 				Department.setDepartment_name(depast_name.getText());
 				Department.setCreated_at(Date.valueOf(create_at_field.getValue()));
 				Department.setDescription(description_field.getText());
