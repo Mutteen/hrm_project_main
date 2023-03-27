@@ -2,9 +2,11 @@ package com.hrm.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.hrm.model.usersession;
+import com.hrm.model.business_objects.bo_employee;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +38,9 @@ public class login implements Initializable {
 	@FXML
 	public Button btnLogin;
 
+	@FXML
+	public Label messageLogin;
+
 	private Stage stage;
 	private Scene scene;
 	private Pane homePage;
@@ -50,11 +55,13 @@ public class login implements Initializable {
 
 	}
 
-	public void btnLoginOnAction(ActionEvent event) throws IOException {
+	public void btnLoginOnAction(ActionEvent event) throws IOException, SQLException {
 		String username = tfUsername.getText();
 		String password = tfPassword.getText();
-		if (username.equals("Thuan") && password.equals("Thuan123")) {
-			usersession.getInstace(username, null);
+
+		if (username.isBlank() == true || password.isBlank() == true) {
+			messageLogin.setText("Please enter username or password");
+		} else if (bo_employee.login(username, password)) {
 			homePage = (Pane) FXMLLoader.load(getClass().getResource("../view/home.fxml"));
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(homePage);
@@ -63,7 +70,7 @@ public class login implements Initializable {
 			stage.show();
 
 		} else {
-//			loginController.
+			messageLogin.setText("Invalid info. Please try again");
 		}
 	}
 

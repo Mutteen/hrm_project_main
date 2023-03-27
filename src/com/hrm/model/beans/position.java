@@ -9,13 +9,17 @@ public class position {
 	private Date created_at;
 	private int flag;
 
-
 	public int getId() {
+		return id;
+	}
+
+	public int getPosition_id() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+
 	}
 
 	public String getPosition_name() {
@@ -50,7 +54,6 @@ public class position {
 		this.flag = flag;
 	}
 
-
 	public position() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,5 +65,5 @@ public class position {
 		this.created_at = created_at;
 		this.flag = flag;
 	}
-	
+
 }

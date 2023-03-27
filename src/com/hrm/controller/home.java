@@ -92,7 +92,20 @@ public class home implements Initializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void btnInfoOnAction(ActionEvent event) {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		initClock();
+		name_user.setText("Hi " + usersession.getUserName() + "  ");
+	}
+
+	private void initClock() {
+
+		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			timenow.setText(LocalDateTime.now().format(formatter));
+		}), new KeyFrame(Duration.seconds(1)));
+		clock.setCycleCount(Animation.INDEFINITE);
+		clock.play();
 
 	}
 
@@ -160,12 +173,16 @@ public class home implements Initializable {
 		slide.play();
 	}
 
+	public void btnInfoOnAction(ActionEvent event) {
+
+	}
+
 	@FXML
 	public void logout(ActionEvent event) {
 		try {
 
 			// TO SWAP FROM DASHBOARD TO LOGIN FORM
-
+			usersession.cleanUserSession();
 			Parent root = FXMLLoader.load(this.getClass().getResource("../view/login.fxml"));
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -193,23 +210,6 @@ public class home implements Initializable {
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("employee");
 		mainPane.setCenter(viewAnchorPane);
-
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		initClock();
-		name_user.setText("Hi " + usersession.getUserName() + "  ");
-	}
-
-	private void initClock() {
-
-		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-			timenow.setText(LocalDateTime.now().format(formatter));
-		}), new KeyFrame(Duration.seconds(1)));
-		clock.setCycleCount(Animation.INDEFINITE);
-		clock.play();
 
 	}
 
@@ -258,6 +258,7 @@ public class home implements Initializable {
 
 	@FXML
 	public void SignOut(ActionEvent event) throws IOException {
+		usersession.cleanUserSession();
 		Parent root = FXMLLoader.load(this.getClass().getResource("../view/login.fxml"));
 		Stage owner = (Stage) signout_btn.getParentPopup().getOwnerWindow();
 		Scene scene = new Scene(root);
