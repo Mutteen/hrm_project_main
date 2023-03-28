@@ -24,6 +24,7 @@ public final class usersession {
 	public static usersession getInstace(int idUser, String userName) {
 		if (instance == null) {
 			instance = new usersession(idUser, userName);
+
 		}
 		return instance;
 	}
@@ -44,6 +45,7 @@ public final class usersession {
 		instance = null;
 //		userName = "";// or null
 //		privileges = new HashSet<>();// or null
+
 	}
 
 	@Override

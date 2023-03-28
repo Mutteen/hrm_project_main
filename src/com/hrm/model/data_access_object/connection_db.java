@@ -35,11 +35,13 @@ public class connection_db {
 	}
 
 	public static String getusername() {
-		return "Thuan";
+
+		return "admin";
 	}
 
 	public static String getpassword() {
-		return "Thuan";
+		return "nghia2811";
+
 	}
 
 	public static String getdburl() {

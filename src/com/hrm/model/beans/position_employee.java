@@ -17,6 +17,7 @@ public class position_employee {
 	}
 
 	public void setCreated_at(Date created_at) {
+
 		this.created_at = created_at;
 	}
 

@@ -22,6 +22,7 @@
       <AnchorPane layoutX="10.0" layoutY="53.0" prefHeight="760.0" prefWidth="1105.0" style="-fx-background-color: #FFFF;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
             <TableView fx:id="table_position" layoutX="395.0" layoutY="40.0" prefHeight="602.0" prefWidth="688.0">
+
               <columns>
                 <TableColumn fx:id="ID_col" prefWidth="45.0" text="ID" />
                 <TableColumn fx:id="position_col" prefWidth="164.0" text="Position name" />

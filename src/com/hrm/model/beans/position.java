@@ -14,6 +14,10 @@ public class position {
 		return id;
 	}
 
+	public int getPosition_id() {
+		return id;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 

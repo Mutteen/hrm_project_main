@@ -5,12 +5,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.hrm.model.beans.department;
 import com.hrm.model.beans.employee;
 import com.hrm.model.beans.position;
 import com.hrm.model.beans.principal;
+import com.hrm.model.beans.principal.Type;
 import com.hrm.model.beans.salary;
 
 import javafx.collections.FXCollections;
@@ -27,7 +27,6 @@ public abstract class crud<T> {
 	public ObservableList<T> getAll(String table) throws SQLException {
 		ObservableList<T> result = FXCollections.observableArrayList();
 		String query = "SELECT * FROM " + table + " WHERE flag=0";
-
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet rs = statement.executeQuery();
 
@@ -43,6 +42,7 @@ public abstract class crud<T> {
 	public ArrayList<T> getLogin(String table) throws SQLException {
 		ArrayList<T> result = new ArrayList<>();
 		String query = "SELECT * FROM " + table + " WHERE flag=0";
+
 
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet rs = statement.executeQuery();
@@ -68,6 +68,7 @@ public abstract class crud<T> {
 			return item;
 		}
 		statement.close();
+
 		return null;
 	}
 
@@ -159,39 +160,39 @@ public abstract class crud<T> {
 
 		if (rs.getMetaData().getTableName(1).equalsIgnoreCase("employee")) {
 			item = (T) new employee();
-			((employee) item).setId(rs.getInt("id"));
-			((employee) item).setRole_id(rs.getInt("id"));
-			((employee) item).setUsername(rs.getString("username"));
-			((employee) item).setPassword(rs.getString("password"));
-			((employee) item).setOn_leave(rs.getInt("on_leave"));
-			((employee) item).setLast_name(rs.getString("last_name"));
-			((employee) item).setMiddle_name(rs.getString("middle_name"));
-			((employee) item).setFirst_name(rs.getString("first_name"));
-			((employee) item).setEmail(rs.getString("email"));
-			((employee) item).setAddress(rs.getString("address"));
-			((employee) item).setTelephone(rs.getString("telephone"));
-			((employee) item).setAvatar(rs.getString("avatar"));
-			((employee) item).setDescription(rs.getString("description"));
-			((employee) item).setDob(rs.getDate("dob"));
-			((employee) item).setStatus(rs.getInt("status"));
-			((employee) item).setFlag(rs.getInt("flag"));
-		} else if (rs.getMetaData().getTableName(1).equalsIgnoreCase("department")) {
-			item = (T) new department();
-			((department) item).setDepartment_Id(rs.getInt("id"));
-			((department) item).setDepartment_name(rs.getString("department_name"));
-			((department) item).setDescription(rs.getString("description"));
-			((department) item).setCreated_at(rs.getDate("created_at"));
-			((department) item).setFlag(rs.getInt("flag"));
-		} else if (rs.getMetaData().getTableName(1).equalsIgnoreCase("position")) {
+			((employee)item).setId(rs.getInt("id"));
+			((employee)item).setRole_id(rs.getInt("role_id"));
+			((employee)item).setUsername(rs.getString("username"));
+			((employee)item).setPassword(rs.getString("password"));
+			((employee)item).setOn_leave(rs.getInt("on_leave"));
+			((employee)item).setLast_name(rs.getString("last_name"));
+			((employee)item).setMiddle_name(rs.getString("middle_name"));
+			((employee)item).setFirst_name(rs.getString("first_name"));
+			((employee)item).setEmail(rs.getString("email"));
+			((employee)item).setAddress(rs.getString("address"));
+			((employee)item).setTelephone(rs.getString("telephone"));
+			((employee)item).setAvatar(rs.getString("avatar"));
+			((employee)item).setDescription(rs.getString("description"));
+			((employee)item).setDob(rs.getDate("dob"));
+			((employee)item).setStatus(rs.getInt("status"));
+			((employee)item).setFlag(rs.getInt("flag"));
+		}else if(rs.getMetaData().getTableName(1).equalsIgnoreCase("department")) {
+			item = (T)new department();
+			((department)item).setId(rs.getInt("id"));
+			((department)item).setDepartment_name(rs.getString("department_name"));
+			((department)item).setDescription(rs.getString("description"));
+			((department)item).setCreated_at(rs.getDate("created_at"));
+			((department)item).setFlag(rs.getInt("flag"));
+		}else if(rs.getMetaData().getTableName(1).equalsIgnoreCase("position")) {
 			item = (T) new position();
 			((position) item).setId(rs.getInt("id"));
 			((position) item).setPosition_name(rs.getString("position_name"));
-			((position) item).setWho_create(rs.getString("who_create"));
 			((position) item).setDescription(rs.getString("description"));
 			((position) item).setCreated_at(rs.getDate("created_at"));
 			((position) item).setFlag(rs.getInt("flag"));
 		} else if (rs.getMetaData().getTableName(1).equalsIgnoreCase("principal")) {
 			item = (T) new principal();
+
 			((principal) item).setId(rs.getInt("id"));
 			((principal) item).setEmployee_id(rs.getInt("employee_id"));
 			((principal) item).setDescription(rs.getString("description"));
@@ -201,6 +202,7 @@ public abstract class crud<T> {
 			((principal) item).setCreated_at(rs.getDate("created_at"));
 			((principal) item).setFlag(rs.getInt("flag"));
 		} else if (rs.getMetaData().getTableName(1).equalsIgnoreCase("salary")) {
+
 			item = (T) new salary();
 			((salary) item).setId(rs.getInt("id"));
 

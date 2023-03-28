@@ -18,7 +18,6 @@ public class departmentDAO implements DAO<department> {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public ObservableList<department> getAll() {
 		ObservableList<department> departmentList = FXCollections.observableArrayList();
 		// TODO Auto-generated method stub
@@ -33,7 +32,8 @@ public class departmentDAO implements DAO<department> {
 
 			while (rs.next()) {
 				department depar = new department();
-				depar.setDepartment_Id(rs.getInt(1));
+
+				depar.setId(rs.getInt(1));
 				depar.setDepartment_name(rs.getString(2));
 				depar.setDescription(rs.getString(3));
 				depar.setCreated_at(rs.getDate(4));
@@ -64,7 +64,8 @@ public class departmentDAO implements DAO<department> {
 
 			while (rs.next()) {
 				department depar = new department();
-				depar.setDepartment_Id(rs.getInt(1));
+
+				depar.setId(rs.getInt(1));
 				depar.setDepartment_name(rs.getString(2));
 				depar.setDescription(rs.getString(3));
 				depar.setCreated_at(rs.getDate(4));
@@ -114,7 +115,7 @@ public class departmentDAO implements DAO<department> {
 			pst.setString(1, t.getDepartment_name());
 			pst.setString(2, t.getDescription());
 			pst.setDate(3, t.getCreated_at());
-			pst.setInt(4, t.getDepartment_Id());
+			pst.setInt(4, t.getId());
 			int rowInsert = pst.executeUpdate();
 
 			if (rowInsert > 0) {
@@ -138,7 +139,7 @@ public class departmentDAO implements DAO<department> {
 
 			sql = "UPDATE hrm.department AS D SET D.flag=1 WHERE D.id=?";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setInt(1, t.getDepartment_Id());
+			pst.setInt(1, t.getId());
 
 			int rowInsert = pst.executeUpdate();
 

@@ -29,7 +29,7 @@ public class role {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+  
 	public void setRole_name(String role_name) {
 		this.role_name = role_name;
 	}

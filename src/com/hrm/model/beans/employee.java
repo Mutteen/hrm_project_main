@@ -1,6 +1,8 @@
 package com.hrm.model.beans;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class employee {
 	private int id;
@@ -18,13 +20,16 @@ public class employee {
 	private String description;
 	private Date dob;
 	private int status;
-	private int flag;
+	private Date hire_date;
+	private int flag ;
+
 	private position_employee position_employee;
 	private department department;
 	private position position;
 	private salary salary;
 	private principal principal;
-
+	private role role;
+	
 	public position_employee getPosition_employee() {
 		return position_employee;
 	}
@@ -63,6 +68,14 @@ public class employee {
 
 	public void setPrincipal(principal principal) {
 		this.principal = principal;
+	}
+
+	public role getRole() {
+		return role;
+	}
+
+	public void setRole(role role) {
+		this.role = role;
 	}
 
 	public int getId() {
@@ -170,6 +183,8 @@ public class employee {
 	}
 
 	public Date getDob() {
+		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+		formatDate.format(dob);
 		return dob;
 	}
 
@@ -193,29 +208,13 @@ public class employee {
 		this.flag = flag;
 	}
 
+	public Date getHire_date() {
+		return hire_date;
+	}
+	public void setHire_date(Date hire_date) {
+		this.hire_date = hire_date;
+	}
 	public employee() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public employee(int id, int role_id, String username, String password, int on_leave, String last_name,
-			String middle_name, String first_name, String email, String address, String telephone, String avatar,
-			String description, Date dob, int status, int flag) {
-		this.id = id;
-		this.role_id = role_id;
-		this.username = username;
-		this.password = password;
-		this.on_leave = on_leave;
-		this.last_name = last_name;
-		this.middle_name = middle_name;
-		this.first_name = first_name;
-		this.email = email;
-		this.address = address;
-		this.telephone = telephone;
-		this.avatar = avatar;
-		this.description = description;
-		this.dob = dob;
-		this.status = status;
-		this.flag = flag;
-	}
-
 }

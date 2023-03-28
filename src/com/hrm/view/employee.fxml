@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="employee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.employee_controller">
+<AnchorPane fx:id="employee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.employee_controller">
    <children>
       <AnchorPane prefHeight="52.0" prefWidth="1125.0" style="\\: #E0F7FA;">
          <children>
@@ -49,7 +49,7 @@
                 <TableColumn fx:id="name_col" prefWidth="196.0" text="FullName " />
                   <TableColumn fx:id="DOB_col" prefWidth="120.0" text="Birthday" />
                   <TableColumn fx:id="department_col" prefWidth="156.0" text="Department" />
-                  <TableColumn fx:id="positom_col" prefWidth="276.0" text="Position" />
+                  <TableColumn fx:id="positon_col" prefWidth="276.0" text="Position" />
                   <TableColumn fx:id="salary_col" prefWidth="126.0" text="Salary" />
                   <TableColumn fx:id="action_col" prefWidth="128.0" text="Action" />
               </columns>

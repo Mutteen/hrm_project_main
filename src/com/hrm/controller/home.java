@@ -182,7 +182,7 @@ public class home implements Initializable {
 		try {
 
 			// TO SWAP FROM DASHBOARD TO LOGIN FORM
-
+			usersession.cleanUserSession();
 			Parent root = FXMLLoader.load(this.getClass().getResource("../view/login.fxml"));
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -259,6 +259,7 @@ public class home implements Initializable {
 
 	@FXML
 	public void SignOut(ActionEvent event) throws IOException {
+		usersession.cleanUserSession();
 		Parent root = FXMLLoader.load(this.getClass().getResource("../view/login.fxml"));
 		Stage owner = (Stage) signout_btn.getParentPopup().getOwnerWindow();
 		Scene scene = new Scene(root);

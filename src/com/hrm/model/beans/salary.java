@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class salary {
 	private int id;
-	private int employee_id;
 	private int value_money;
 	private Date time_to_pay;
 	private String who_pay;
@@ -13,6 +12,15 @@ public class salary {
 	private String description;
 	private Date created_at;
 	private int flag;
+	private employee employee;
+
+	public employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(employee employee) {
+		this.employee = employee;
+	}
 
 	public int getId() {
 		return id;
@@ -90,10 +98,10 @@ public class salary {
 		// TODO Auto-generated constructor stub
 	}
 
-	public salary(int id, int employee_id, int value_money, Date time_to_pay, String who_pay, int value_money_reward,
+
+	public salary(int id, int value_money, Date time_to_pay, String who_pay, int value_money_reward,
 			int working_day, String description, Date created_at, int flag) {
 		this.id = id;
-		this.employee_id = employee_id;
 		this.value_money = value_money;
 		this.time_to_pay = time_to_pay;
 		this.who_pay = who_pay;

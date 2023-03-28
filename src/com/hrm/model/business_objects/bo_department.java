@@ -21,10 +21,9 @@ public class bo_department implements DAO<department> {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+
 	public ObservableList<department> getAll() {
-		crud<department> depCrud = new crud<department>(conn) {
-		};
+		crud<department> depCrud = new crud<department>(conn) {};
 
 		ObservableList<department> departmentList = FXCollections.observableArrayList();
 		try {
@@ -36,6 +35,15 @@ public class bo_department implements DAO<department> {
 		// TODO Auto-generated method stub
 
 		return departmentList;
+	}
+
+	public static int getByDepartmentName(String name) throws SQLException {
+		crud<department> depCrud = new crud<department>(conn) {};
+		
+		department department= depCrud.getByDepName(name );
+		
+		int id = department.getId();
+		return id;		
 	}
 
 	@Override
@@ -75,7 +83,8 @@ public class bo_department implements DAO<department> {
 		crud<department> depCrud = new crud<department>(conn) {
 		};
 		try {
-			check = depCrud.Delete("department", t.getDepartment_Id());
+
+			check = depCrud.Delete("department", t.getId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
