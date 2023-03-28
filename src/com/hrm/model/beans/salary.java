@@ -13,8 +13,6 @@ public class salary {
 	private Date created_at;
 	private int flag;
 	private employee employee;
-	
-	
 
 	public employee getEmployee() {
 		return employee;
@@ -99,6 +97,7 @@ public class salary {
 	public salary() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public salary(int id, int value_money, Date time_to_pay, String who_pay, int value_money_reward,
 			int working_day, String description, Date created_at, int flag) {

@@ -27,6 +27,22 @@ public abstract class crud<T> {
 	public ObservableList<T> getAll(String table) throws SQLException {
 		ObservableList<T> result = FXCollections.observableArrayList();
 		String query = "SELECT * FROM " + table + " WHERE flag=0";
+		PreparedStatement statement = connection.prepareStatement(query);
+		ResultSet rs = statement.executeQuery();
+
+		while (rs.next()) {
+			T item = parseResultSet(rs);
+			result.add(item);
+		}
+		statement.close();
+
+		return result;
+	}
+
+	public ArrayList<T> getLogin(String table) throws SQLException {
+		ArrayList<T> result = new ArrayList<>();
+		String query = "SELECT * FROM " + table + " WHERE flag=0";
+
 
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet rs = statement.executeQuery();
@@ -52,24 +68,10 @@ public abstract class crud<T> {
 			return item;
 		}
 		statement.close();
+
 		return null;
 	}
 
-	public T getByDepName(String department_name) throws SQLException {
-		T item;
-		String query = "SELECT * FROM department WHERE department_name = ?";
-		PreparedStatement statement = connection.prepareStatement(query);
-		statement.setString(1, department_name);
-		ResultSet rs = statement.executeQuery();
-		while (rs.next()) {
-			item = parseResultSet(rs);
-
-			return item;
-		}
-		statement.close();
-		return null;
-	}
-	
 	public boolean Delete(String table, int id) throws SQLException {
 		boolean check = false;
 		String query = "UPDATE " + table + " SET flag = 1 WHERE id = ?";
@@ -162,8 +164,6 @@ public abstract class crud<T> {
 			((employee)item).setRole_id(rs.getInt("role_id"));
 			((employee)item).setUsername(rs.getString("username"));
 			((employee)item).setPassword(rs.getString("password"));
-//			System.out.println(rs.getString("username"));
-//			System.out.println(rs.getString("password"));
 			((employee)item).setOn_leave(rs.getInt("on_leave"));
 			((employee)item).setLast_name(rs.getString("last_name"));
 			((employee)item).setMiddle_name(rs.getString("middle_name"));
@@ -192,15 +192,17 @@ public abstract class crud<T> {
 			((position) item).setFlag(rs.getInt("flag"));
 		} else if (rs.getMetaData().getTableName(1).equalsIgnoreCase("principal")) {
 			item = (T) new principal();
-			((principal)item).setId(rs.getInt("id"));
-			((principal)item).setEmployee_id(rs.getInt("employee_id"));
-			((principal)item).setDescription(rs.getString("description"));
-			((principal)item).setType(Type.valueOf(rs.getString("priority")));
-			((principal)item).setDate_principal(rs.getDate("date_principal"));
-			((principal)item).setValue_money(rs.getInt("value_money"));
-			((principal)item).setCreated_at(rs.getDate("created_at"));
-			((principal)item).setFlag(rs.getInt("flag"));
-		}else if(rs.getMetaData().getTableName(1).equalsIgnoreCase("salary")) {
+
+			((principal) item).setId(rs.getInt("id"));
+			((principal) item).setEmployee_id(rs.getInt("employee_id"));
+			((principal) item).setDescription(rs.getString("description"));
+			((principal) item).setType(rs.getString("type"));
+			((principal) item).setDate_principal(rs.getDate("date_principal"));
+			((principal) item).setValue_money(rs.getInt("value_money"));
+			((principal) item).setCreated_at(rs.getDate("created_at"));
+			((principal) item).setFlag(rs.getInt("flag"));
+		} else if (rs.getMetaData().getTableName(1).equalsIgnoreCase("salary")) {
+
 			item = (T) new salary();
 			((salary) item).setId(rs.getInt("id"));
 

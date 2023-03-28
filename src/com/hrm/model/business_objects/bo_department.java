@@ -21,6 +21,7 @@ public class bo_department implements DAO<department> {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public ObservableList<department> getAll() {
 		crud<department> depCrud = new crud<department>(conn) {};
 
@@ -44,7 +45,7 @@ public class bo_department implements DAO<department> {
 		int id = department.getId();
 		return id;		
 	}
-	
+
 	@Override
 	public boolean save(department t) {
 		crud<department> depCrud = new crud<department>(conn) {
@@ -82,6 +83,7 @@ public class bo_department implements DAO<department> {
 		crud<department> depCrud = new crud<department>(conn) {
 		};
 		try {
+
 			check = depCrud.Delete("department", t.getId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -191,6 +191,7 @@ public class home implements Initializable {
 
 			stage.setScene(scene);
 			stage.show();
+			usersession.cleanUserSession();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -264,6 +265,7 @@ public class home implements Initializable {
 		Scene scene = new Scene(root);
 		owner.setScene(scene);
 		owner.show();
+		usersession.cleanUserSession();
 	}
 
 	@FXML
