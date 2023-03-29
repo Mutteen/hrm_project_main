@@ -32,6 +32,7 @@ public class departmentDAO implements DAO<department> {
 
 			while (rs.next()) {
 				department depar = new department();
+
 				depar.setId(rs.getInt(1));
 				depar.setDepartment_name(rs.getString(2));
 				depar.setDescription(rs.getString(3));
@@ -63,6 +64,7 @@ public class departmentDAO implements DAO<department> {
 
 			while (rs.next()) {
 				department depar = new department();
+
 				depar.setId(rs.getInt(1));
 				depar.setDepartment_name(rs.getString(2));
 				depar.setDescription(rs.getString(3));

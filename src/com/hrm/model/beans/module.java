@@ -10,23 +10,16 @@ public class module {
 		// TODO Auto-generated constructor stub
 	}
 
-	public module(int id, String module_name, String description, int flag) {
+	public void setId(int id) {
 		this.id = id;
-		this.module_name = module_name;
-		this.description = description;
+	}
+
+	public void setDescription(String descriptionString) {
+		this.description = descriptionString;
+	}
+
+	public void setFlag(int flag) {
 		this.flag = flag;
-	}
-
-	public int getid() {
-		return id;
-	}
-
-	public void setid(int id) {
-		this.id = id;
-	}
-
-	public String getModule_name() {
-		return module_name;
 	}
 
 	public void setModule_name(String module_name) {
@@ -37,16 +30,16 @@ public class module {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public int getFlag() {
 		return flag;
 	}
 
-	public void setFlag(int flag) {
-		this.flag = flag;
+	public int getId() {
+		return id;
+	}
+
+	public String getModule_name() {
+		return module_name;
 	}
 
 }

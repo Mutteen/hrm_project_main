@@ -184,12 +184,15 @@ public class department_controller implements Initializable {
 			changeTableView(0, masterData.size());
 		});
 		// add value into cell
+
 		ID_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+
 		department_name_col.setCellValueFactory(new PropertyValueFactory<>("department_name"));
 		create_at_col.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 		des_col.setCellValueFactory(new PropertyValueFactory<>("description"));
 
 		// add cell of button edit
+
 		Callback<TableColumn<department, String>, TableCell<department, String>> cellFoctory = (
 				TableColumn<department, String> param) -> {
 			// make cell containing buttons
@@ -226,7 +229,9 @@ public class department_controller implements Initializable {
 								boolean checkDelete = dataDao.delete(Department);
 
 								if (checkDelete == true) {
+
 									alert.Success("Delete Department " + Department.getId() + " ");
+
 									clean();
 								}
 							}
@@ -239,7 +244,9 @@ public class department_controller implements Initializable {
 
 							department Department = table_department.getSelectionModel().getSelectedItem();
 							depast_name.setText(Department.getDepartment_name());
+
 							depast_name1.setText(String.valueOf(Department.getId()));
+
 							// setdatepciker fomat date sql
 							DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDate localDate = LocalDate.parse(String.valueOf(Department.getCreated_at()),
@@ -312,7 +319,9 @@ public class department_controller implements Initializable {
 
 			if (option.get() == ButtonType.OK) {
 				department Department = new department();
+
 				Department.setId(Integer.parseInt(depast_name1.getText()));
+
 				Department.setDepartment_name(depast_name.getText());
 				Department.setCreated_at(Date.valueOf(create_at_field.getValue()));
 				Department.setDescription(description_field.getText());

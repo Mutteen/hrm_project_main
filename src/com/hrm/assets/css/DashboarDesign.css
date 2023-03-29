@@ -112,6 +112,18 @@ and open the template in the editor.
     -fx-background-radius:8px 8px 0px 0px;
     -fx-background-inset: 0 0 0 0;
 }
+.table-view-search{
+	-fx-background-color:#ffff;
+    -fx-padding:0px;
+    -fx-border-color:linear-gradient(to bottom right, #9E9E9E, #607D8B);
+    -fx-border-width:2px;
+    -fx-border-radius:8px;
+}
+.table-view-search .column-header-background{
+    -fx-background-color:linear-gradient(to bottom right, #9E9E9E, #607D8B);
+    -fx-background-radius:8px 8px 0px 0px;
+    -fx-background-inset: 0 0 0 0;
+}
 .table-view .column-header, .filter{
     -fx-background-color:transparent;
     -fx-size:40px;

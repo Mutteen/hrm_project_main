@@ -22,14 +22,13 @@ public class employee {
 	private int status;
 	private Date hire_date;
 	private int flag ;
+
 	private position_employee position_employee;
 	private department department;
 	private position position;
 	private salary salary;
 	private principal principal;
 	private role role;
-	
-	
 	
 	public position_employee getPosition_employee() {
 		return position_employee;
@@ -218,39 +217,4 @@ public class employee {
 	public employee() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public employee(int id, int role_id, String username, String password, int on_leave, String last_name,
-			String middle_name, String first_name, String email, String address, String telephone, String avatar,
-			String description, Date dob, int status, Date hire_date, int flag,
-			com.hrm.model.beans.position_employee position_employee, com.hrm.model.beans.department department,
-			com.hrm.model.beans.position position, com.hrm.model.beans.salary salary,
-			com.hrm.model.beans.principal principal) {
-		this.id = id;
-		this.role_id = role_id;
-		this.username = username;
-		this.password = password;
-		this.on_leave = on_leave;
-		this.last_name = last_name;
-		this.middle_name = middle_name;
-		this.first_name = first_name;
-		this.email = email;
-		this.address = address;
-		this.telephone = telephone;
-		this.avatar = avatar;
-		this.description = description;
-		this.dob = dob;
-		this.status = status;
-		this.hire_date = hire_date;
-		this.flag = flag;
-		this.position_employee = position_employee;
-		this.department = department;
-		this.position = position;
-		this.salary = salary;
-		this.principal = principal;
-	}
-
-
-	
-	
-
 }

@@ -2,7 +2,7 @@ package com.hrm.model.beans;
 
 import java.sql.Date;
 
-
+import com.hrm.controller.setting_controller;
 
 public class principal {
 	
@@ -14,11 +14,15 @@ public class principal {
 	private int id;
 	private int employee_id;
 	private String description;
-	private Type type;
+	private String type;
+
 	private Date date_principal;
 	private int value_money;
 	private Date created_at;
 	private int flag;
+	private String employee_name;
+	private String department_name;
+	private String getMoneyString;
 
 	public int getId() {
 		return id;
@@ -33,6 +37,14 @@ public class principal {
 		return employee_id;
 	}
 
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
+	}
+
+	public String getDepartment_name() {
+		return department_name;
+	}
+
 	public void setEmployee_id(int employee_id) {
 		this.employee_id = employee_id;
 	}
@@ -45,11 +57,11 @@ public class principal {
 		this.description = description;
 	}
 
-	public Type getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -85,12 +97,29 @@ public class principal {
 		this.flag = flag;
 	}
 
+	public void setEmployee_name(String employee_name) {
+		this.employee_name = employee_name;
+	}
+
+	public String getEmployee_name() {
+		return employee_name;
+	}
+
+	public void setGetMoneyString(String string) {
+		this.getMoneyString = string;
+	}
+
+	public String getGetMoneyString() {
+		return getMoneyString;
+	}
+
 	public principal() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public principal(int id, int employee_id, String description, Type type, Date date_principal,
-			int value_money, Date created_at, int flag) {
+
+	public principal(int id, int employee_id, String description, String type, Date date_principal, int value_money,
+			Date created_at, int flag) {
 		this.id = id;
 		this.employee_id = employee_id;
 		this.description = description;

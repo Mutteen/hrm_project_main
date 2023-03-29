@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import com.hrm.model.beans.department;
@@ -24,6 +22,7 @@ public class show_data<T> {
 	public ArrayList<T> getProfile(int idUser) throws SQLException {
 
 		ArrayList<T> result = new ArrayList<>();
+
 		String query = "SELECT employee.id, employee.last_name,employee.middle_name,employee.first_name, employee.dob, employee.email, employee.telephone, employee.address, employee.on_leave, employee.description,employee.`status`, employee.hire_date,\r\n"
 				+ "		 department.department_name,\r\n"
 				+ "		 all_position_name.position_name,\r\n"

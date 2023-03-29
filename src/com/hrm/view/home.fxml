@@ -103,25 +103,25 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane fx:id="nav_form" prefHeight="827.0" prefWidth="285.0" styleClass="nav-form" stylesheets="@../assets/css/home.css" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="nav_form" prefHeight="827.0" prefWidth="251.0" styleClass="nav-form" stylesheets="@../assets/css/home.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnDashboard" layoutX="40.0" layoutY="80.0" mnemonicParsing="false" onAction="#Dashboard" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Dashbard" AnchorPane.bottomAnchor="704.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="80.0">
+                  <Button fx:id="btnDashboard" layoutX="26.0" layoutY="80.0" mnemonicParsing="false" onAction="#Dashboard" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Dashbard" AnchorPane.bottomAnchor="704.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="80.0">
                      <graphic>
                         <FontAwesomeIcon fill="#f8f4f4" glyphName="HOME" size="2em" />
                      </graphic></Button>
-                  <Button fx:id="btnEmployee" layoutX="39.0" layoutY="144.0" mnemonicParsing="false" onAction="#Employee" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Emplyee" AnchorPane.bottomAnchor="640.0">
+                  <Button fx:id="btnEmployee" layoutX="26.0" layoutY="150.0" mnemonicParsing="false" onAction="#Employee" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Emplyee" AnchorPane.bottomAnchor="634.0">
                      <graphic>
                         <FontAwesomeIcon fill="#eeeaea" glyphName="USER_PLUS" size="2em" />
                      </graphic></Button>
-                  <Button fx:id="btnDepartment" layoutX="40.0" layoutY="211.0" mnemonicParsing="false" onAction="#Department" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Department">
+                  <Button fx:id="btnDepartment" layoutX="24.0" layoutY="213.0" mnemonicParsing="false" onAction="#Department" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Department">
                      <graphic>
                         <FontAwesomeIcon fill="#f8f4f4" glyphName="GROUP" size="2em" />
                      </graphic></Button>
-                  <Button fx:id="btnPrincipal" layoutX="40.0" layoutY="278.0" mnemonicParsing="false" onAction="#Principal" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Principal">
+                  <Button fx:id="btnPrincipal" layoutX="26.0" layoutY="281.0" mnemonicParsing="false" onAction="#Principal" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Principal">
                      <graphic>
                         <FontAwesomeIcon fill="#f5eded" glyphName="BUILDING" size="2em" />
                      </graphic></Button>
-                  <Button fx:id="btnSalary" layoutX="39.0" layoutY="344.0" mnemonicParsing="false" onAction="#Salary" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Salary">
+                  <Button fx:id="btnSalary" layoutX="24.0" layoutY="346.0" mnemonicParsing="false" onAction="#Salary" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Salary">
                      <graphic>
                         <FontAwesomeIcon fill="#f8f6f6" glyphName="MONEY" size="2EM" />
                      </graphic></Button>
@@ -135,11 +135,11 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnPosition" layoutX="39.0" layoutY="407.0" mnemonicParsing="false" onAction="#Position" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Position">
+                  <Button fx:id="btnPosition" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" onAction="#Position" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Position">
                      <graphic>
                         <FontAwesomeIcon fill="#f5f0f0" glyphName="FILE" size="2em" />
                      </graphic></Button>
-                  <Button fx:id="btnSetting" layoutX="40.0" layoutY="475.0" mnemonicParsing="false" onAction="#Setting" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Setting">
+                  <Button fx:id="btnSetting" layoutX="24.0" layoutY="473.0" mnemonicParsing="false" onAction="#Setting" prefHeight="43.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@../assets/css/home.css" text="Setting">
                      <graphic>
                         <FontAwesomeIcon fill="#f5f0f0" glyphName="GEAR" size="2em" />
                      </graphic>

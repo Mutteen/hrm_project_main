@@ -1,59 +1,57 @@
 package com.hrm.model.beans;
 
+import java.lang.invoke.StringConcatFactory;
+import java.sql.Date;
+
 public class role {
 	private int id;
 	private String role_name;
 	private String description;
-	
-	
-	
-	public int getId() {
-		return id;
-	}
-
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-
-	public String getRole_name() {
-		return role_name;
-	}
-
-
-
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
-	}
-
-
-
-	public String getDescription() {
-		return description;
-	}
-
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
+	private Date create_at;
+	private int flag;
 
 	public role() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public role(int id, String role_name, String description) {
-		this.id = id;
-		this.role_name = role_name;
-		this.description = description;
+	public void setCreate_at(Date create_atDate) {
+		this.create_at = create_atDate;
 	}
 
-	
+	public void setDescription(String descriptionString) {
+		this.description = descriptionString;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+  
+	public void setRole_name(String role_name) {
+		this.role_name = role_name;
+	}
+
+	public Date getCreate_at() {
+		return create_at;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getRole_name() {
+		return role_name;
+	}
+
 }
