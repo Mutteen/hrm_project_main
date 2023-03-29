@@ -143,8 +143,8 @@ public class employeeDao implements DAO<employee> {
 		String avg = "";
 		try {
 			Connection conn = connection_db.getConnection();
-			sql = "SELECT AVG(YEAR(CURDATE())-YEAR(dob)) AS 'avg'\r\n"
-					+ "FROM employee\r\n";
+			sql = "SELECT ROUND(AVG(YEAR(CURDATE())-YEAR(dob)),2) AS 'avg'\r\n"
+					+ "FROM employee";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 
