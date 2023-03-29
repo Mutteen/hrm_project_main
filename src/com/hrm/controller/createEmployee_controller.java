@@ -132,9 +132,9 @@ public class createEmployee_controller implements Initializable {
 			
 			employee.setStatus(Integer.parseInt(status_box.getValue()));	
 			
-			department department = new department();
-			department.setId(getIdFromDepartment(department_file.getValue()));
-			employee.setDepartment(department);
+//			department department = new department();
+//			department.setId(getIdFromDepartment(department_file.getValue()));
+//			employee.setDepartment(department);
 			
 			role roleC = new role();
 			roleC.setId(Integer.parseInt(role.getValue()));

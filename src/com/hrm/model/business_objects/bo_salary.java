@@ -11,7 +11,7 @@ import com.hrm.model.data_access_object.connection_db;
 import com.hrm.model.data_access_object.crud;
 import com.hrm.model.data_access_object.show_data;
 
-public class bo_salary implements DAO<salary>{
+public class bo_salary{
 	private static Connection conn = connection_db.getConnection();
 	static crud<salary> crudEmployee = new crud<salary>(conn){};
 	
@@ -26,19 +26,16 @@ public class bo_salary implements DAO<salary>{
 		return listData;
 	}
 
-	@Override
 	public boolean save(salary salary) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean update(salary salary) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean delete(salary salary) {
 		// TODO Auto-generated method stub
 		return false;
