@@ -26,7 +26,7 @@ public class bo_employee {
 		crud<employee> crudEmployee = new crud<employee>(conn) {
 		};
 
-		ArrayList<employee> listEmployee = crudEmployee.getLogin("employee");
+		ObservableList<employee> listEmployee = crudEmployee.getLogin("employee");
 
 		boolean check = false;
 		for (employee employee : listEmployee) {
@@ -62,28 +62,27 @@ public class bo_employee {
 	}
 	
 
-	@Override
+
 	public boolean save(employee t) {
 		
 		return false;
 	}
 
-	@Override
 	public boolean update(employee t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+
 	public boolean delete(employee t) { 
-		try {
-			if(crudEmployee.Delete("employee", t.getId())) {
-				return true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			if(crudEmployee.Delete("employee", t.getId())) {
+//				return true;
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return false;
 	}
 }

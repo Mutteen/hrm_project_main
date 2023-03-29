@@ -37,15 +37,6 @@ public class bo_department implements DAO<department> {
 		return departmentList;
 	}
 
-	public static int getByDepartmentName(String name) throws SQLException {
-		crud<department> depCrud = new crud<department>(conn) {};
-		
-		department department= depCrud.getByDepName(name );
-		
-		int id = department.getId();
-		return id;		
-	}
-
 	@Override
 	public boolean save(department t) {
 		crud<department> depCrud = new crud<department>(conn) {

@@ -39,8 +39,8 @@ public abstract class crud<T> {
 		return result;
 	}
 
-	public ArrayList<T> getLogin(String table) throws SQLException {
-		ArrayList<T> result = new ArrayList<>();
+	public ObservableList<T> getLogin(String table) throws SQLException {
+		ObservableList<T> result = FXCollections.observableArrayList();
 		String query = "SELECT * FROM " + table + " WHERE flag=0";
 
 

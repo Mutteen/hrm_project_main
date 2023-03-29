@@ -191,6 +191,7 @@ public class principal_controller implements Initializable {
 
 		//
 		// 1
+		System.out.println("hello");
 		getList();
 		InserTableView();
 		tableSearch();
