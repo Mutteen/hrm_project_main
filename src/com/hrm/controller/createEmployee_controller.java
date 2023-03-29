@@ -100,7 +100,7 @@ public class createEmployee_controller implements Initializable {
 
 	@FXML
 	void AddAvatar(ActionEvent event) throws SQLException {
-		System.out.println(bo_department.getByDepartmentName(department_file.getValue()));
+
 	}
 
 	@FXML
@@ -141,8 +141,5 @@ public class createEmployee_controller implements Initializable {
 			employee.setRole(roleC);
 	}
 	
-	private int getIdFromDepartment(String department_name) throws SQLException {
-		return bo_department.getByDepartmentName(department_name);
-	}
 
 }

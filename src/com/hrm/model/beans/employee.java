@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 public class employee {
 	private int id;
 	private int role_id;
+	private int department_id;
 	private String username;
 	private String password;
 	private int on_leave;
@@ -21,6 +22,9 @@ public class employee {
 	private Date dob;
 	private int status;
 	private Date hire_date;
+	private String hire_month;
+	private String termination_month;
+	private int quantity_employee;
 	private int flag ;
 
 	private position_employee position_employee;
@@ -30,53 +34,7 @@ public class employee {
 	private principal principal;
 	private role role;
 	
-	public position_employee getPosition_employee() {
-		return position_employee;
-	}
-
-	public void setPosition_employee(position_employee position_employee) {
-		this.position_employee = position_employee;
-	}
-
-	public department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(department department) {
-		this.department = department;
-	}
-
-	public position getPosition() {
-		return position;
-	}
-
-	public void setPosition(position position) {
-		this.position = position;
-	}
-
-	public salary getSalary() {
-		return salary;
-	}
-
-	public void setSalary(salary salary) {
-		this.salary = salary;
-	}
-
-	public principal getPrincipal() {
-		return principal;
-	}
-
-	public void setPrincipal(principal principal) {
-		this.principal = principal;
-	}
-
-	public role getRole() {
-		return role;
-	}
-
-	public void setRole(role role) {
-		this.role = role;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -94,6 +52,14 @@ public class employee {
 		this.role_id = role_id;
 	}
 
+	public int getDepartment_id() {
+		return department_id;
+	}
+
+	public void setDepartment_id(int department_id) {
+		this.department_id = department_id;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -214,6 +180,79 @@ public class employee {
 	public void setHire_date(Date hire_date) {
 		this.hire_date = hire_date;
 	}
+	
+	public position_employee getPosition_employee() {
+		return position_employee;
+	}
+
+	public void setPosition_employee(position_employee position_employee) {
+		this.position_employee = position_employee;
+	}
+
+	public department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(department department) {
+		this.department = department;
+	}
+
+	public position getPosition() {
+		return position;
+	}
+
+	public void setPosition(position position) {
+		this.position = position;
+	}
+
+	public salary getSalary() {
+		return salary;
+	}
+
+	public void setSalary(salary salary) {
+		this.salary = salary;
+	}
+
+	public principal getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(principal principal) {
+		this.principal = principal;
+	}
+
+	public role getRole() {
+		return role;
+	}
+
+	public void setRole(role role) {
+		this.role = role;
+	}
+	
+	public String getHire_month() {
+		return hire_month;
+	}
+
+	public void setHire_month(String hire_month) {
+		this.hire_month = hire_month;
+	}
+
+	public String getTermination_month() {
+		return termination_month;
+	}
+
+	public void setTermination_month(String termination_month) {
+		this.termination_month = termination_month;
+	}
+
+	public int getQuantity_employee() {
+		return quantity_employee;
+	}
+
+	public void setQuantity_employee(int quantity_employee) {
+		this.quantity_employee = quantity_employee;
+	}
+
 	public employee() {
 		// TODO Auto-generated constructor stub
 	}
