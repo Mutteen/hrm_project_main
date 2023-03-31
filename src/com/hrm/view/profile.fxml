@@ -6,25 +6,23 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="705.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.profile_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="705.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.profile_controller">
    <children>
       <Label layoutX="315.0" layoutY="6.0" text="Profile" textFill="#0277bd">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="22.0" layoutY="49.0" prefHeight="771.0" prefWidth="661.0" style="-fx-border-radius: 1.5em; -fx-background-color: #ffff;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <AnchorPane layoutX="22.0" layoutY="42.0" prefHeight="778.0" prefWidth="661.0" style="-fx-border-radius: 1.5em; -fx-background-color: #ffff;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
             <MenuButton fx:id="setting" layoutX="106.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="61.0" styleClass="menu-btn" stylesheets="@../assets/css/login.css" textAlignment="CENTER" textFill="WHITE">
               <items>
-                <MenuItem fx:id="password_item" mnemonicParsing="false" onAction="#EditPassword" text="Password" />
-                <MenuItem fx:id="edit_item" mnemonicParsing="false" onAction="#EditProfile" text="Edit" />
+                <MenuItem fx:id="edit_item" mnemonicParsing="false" onAction="#EditProfile" text="Setting" />
               </items>
                <font>
                   <Font name="Arial Bold" size="13.0" />
@@ -111,13 +109,9 @@
                      </graphic>
                   </Button>
                </children></AnchorPane>
-            <AnchorPane layoutX="36.0" layoutY="14.0" prefHeight="187.0" prefWidth="200.0" style="-fx-border-radius: 1.1em;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+            <AnchorPane layoutX="45.0" layoutY="14.0" prefHeight="187.0" prefWidth="191.0" style="-fx-border-radius: 1.1em;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
                <children>
-                  <ImageView fx:id="avatar" fitHeight="119.0" fitWidth="164.0" layoutX="16.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/gif/nah.gif" />
-                     </image>
-                  </ImageView>
+                  <BorderPane fx:id="image_pane" layoutX="12.0" layoutY="6.0" prefHeight="176.0" prefWidth="167.0" />
                </children>
             </AnchorPane>
             <Label layoutX="26.0" layoutY="252.0" text="Fullname :">

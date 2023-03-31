@@ -66,12 +66,16 @@ and open the template in the editor.
 }
 
 .nav-btn{
+	
     -fx-background-color:linear-gradient(to bottom right, #344275, #3a6389);
     -fx-background-radius:5px;
     -fx-cursor:hand;
     -fx-font-size:15px;
     -fx-text-fill:#fff;
     -fx-font-family:"Microsoft Sans Serif";
+}
+.nav-btn >.text{
+	-fx-font-weight:bold;
 }
 
 .nav-btn:hover{

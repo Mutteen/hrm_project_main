@@ -249,23 +249,23 @@ public class department_controller implements Initializable {
 							create_at_field.setValue(formatDate(String.valueOf(Department.getCreated_at())));
 							description_field.setText(Department.getDescription());
 
-//                            FXMLLoader loader = new FXMLLoader ();
-//                            loader.setLocation(getClass().getResource("/tableView/addStudent.fxml"));
-//                            try {
-//                                loader.load();
-//                            } catch (IOException ex) {
-//                                Logger.getLogger(department.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
-//                            
-//                            AddStudentController addStudentController = loader.getController();
-//                            addStudentController.setUpdate(true);
-//                            addStudentController.setTextField(student.getId(), student.getName(), 
-//                                    student.getBirth().toLocalDate(),student.getAdress(), student.getEmail());
-//                            Parent parent = loader.getRoot();
-//                            Stage stage = new Stage();
-//                            stage.setScene(new Scene(parent));
-//                            stage.initStyle(StageStyle.UTILITY);
-//                            stage.show();
+//                          FXMLLoader loader = new FXMLLoader ();
+//                          loader.setLocation(getClass().getResource("/tableView/addStudent.fxml"));
+//                          try {
+//                              loader.load();
+//                          } catch (IOException ex) {
+//                              Logger.getLogger(department.class.getName()).log(Level.SEVERE, null, ex);
+//                          }
+//                          
+//                          AddStudentController addStudentController = loader.getController();
+//                          addStudentController.setUpdate(true);
+//                          addStudentController.setTextField(student.getId(), student.getName(), 
+//                                  student.getBirth().toLocalDate(),student.getAdress(), student.getEmail());
+//                          Parent parent = loader.getRoot();
+//                          Stage stage = new Stage();
+//                          stage.setScene(new Scene(parent));
+//                          stage.initStyle(StageStyle.UTILITY);
+//                          stage.show();
 
 						});
 						HBox managebtn = new HBox(editIcon, deleteIcon);

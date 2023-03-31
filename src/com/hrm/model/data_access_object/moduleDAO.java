@@ -45,10 +45,10 @@ public class moduleDAO implements DAO<module> {
 		}
 		return moduleList;
 	}
-	
+
 	public module getModue(String st) {
-		
-		module Module=new module();
+
+		module Module = new module();
 		// TODO Auto-generated method stub
 		try {
 			Connection conn = connection_db.getConnection();
@@ -61,7 +61,7 @@ public class moduleDAO implements DAO<module> {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				
+
 				Module.setId(rs.getInt(1));
 				Module.setModule_name(rs.getString(2));
 				return Module;

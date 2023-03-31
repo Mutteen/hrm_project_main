@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class salary {
 	private int id;
-	private int employee_id;
 	private int value_money;
 	private Date time_to_pay;
 	private String who_pay;
@@ -13,6 +12,36 @@ public class salary {
 	private String description;
 	private Date created_at;
 	private int flag;
+	private String employee;
+	private int employee_id;
+	private String moneyString;
+	private String rewardString;
+	private int total_salary;
+	private String month_to_pay;
+
+	public void setMoneyString(String moneyString) {
+		this.moneyString = moneyString;
+	}
+
+	public String getMoneyString() {
+		return moneyString;
+	}
+
+	public void setRewardString(String rewardString) {
+		this.rewardString = rewardString;
+	}
+
+	public String getRewardString() {
+		return rewardString;
+	}
+
+	public void setEmployee(String employee) {
+		this.employee = employee;
+	}
+
+	public String getEmployee() {
+		return employee;
+	}
 
 	public int getId() {
 		return id;
@@ -86,22 +115,32 @@ public class salary {
 		this.flag = flag;
 	}
 
-	public salary() {
-		// TODO Auto-generated constructor stub
+	public int getEmployee_id() {
+		return employee_id;
 	}
 
-	public salary(int id, int employee_id, int value_money, Date time_to_pay, String who_pay, int value_money_reward,
-			int working_day, String description, Date created_at, int flag) {
-		this.id = id;
+	public void setEmployee_id(int employee_id) {
 		this.employee_id = employee_id;
-		this.value_money = value_money;
-		this.time_to_pay = time_to_pay;
-		this.who_pay = who_pay;
-		this.value_money_reward = value_money_reward;
-		this.working_day = working_day;
-		this.description = description;
-		this.created_at = created_at;
-		this.flag = flag;
+	}
+
+	public String getMonth_to_pay() {
+		return month_to_pay;
+	}
+
+	public int getTotal_salary() {
+		return total_salary;
+	}
+
+	public void setMonth_to_pay(String month_to_pay) {
+		this.month_to_pay = month_to_pay;
+	}
+
+	public void setTotal_salary(int total_salary) {
+		this.total_salary = total_salary;
+	}
+
+	public salary() {
+
 	}
 
 }

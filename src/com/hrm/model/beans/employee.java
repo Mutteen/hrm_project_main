@@ -1,6 +1,8 @@
 package com.hrm.model.beans;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class employee {
 	private int id;
@@ -18,12 +20,18 @@ public class employee {
 	private String description;
 	private Date dob;
 	private int status;
+	private Date hire_date;
 	private int flag;
 	private position_employee position_employee;
 	private department department;
 	private position position;
 	private salary salary;
 	private principal principal;
+	private role role;
+	private int department_id;
+	private String hire_month;
+	private String termination_month;
+	private int quantity_employee;
 
 	public position_employee getPosition_employee() {
 		return position_employee;
@@ -31,6 +39,14 @@ public class employee {
 
 	public void setPosition_employee(position_employee position_employee) {
 		this.position_employee = position_employee;
+	}
+
+	public int getDepartment_id() {
+		return department_id;
+	}
+
+	public void setDepartment_id(int department_id) {
+		this.department_id = department_id;
 	}
 
 	public department getDepartment() {
@@ -63,6 +79,14 @@ public class employee {
 
 	public void setPrincipal(principal principal) {
 		this.principal = principal;
+	}
+
+	public role getRole() {
+		return role;
+	}
+
+	public void setRole(role role) {
+		this.role = role;
 	}
 
 	public int getId() {
@@ -170,6 +194,8 @@ public class employee {
 	}
 
 	public Date getDob() {
+		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+		formatDate.format(dob);
 		return dob;
 	}
 
@@ -193,29 +219,40 @@ public class employee {
 		this.flag = flag;
 	}
 
-	public employee() {
-		// TODO Auto-generated constructor stub
+	public Date getHire_date() {
+		return hire_date;
 	}
 
-	public employee(int id, int role_id, String username, String password, int on_leave, String last_name,
-			String middle_name, String first_name, String email, String address, String telephone, String avatar,
-			String description, Date dob, int status, int flag) {
-		this.id = id;
-		this.role_id = role_id;
-		this.username = username;
-		this.password = password;
-		this.on_leave = on_leave;
-		this.last_name = last_name;
-		this.middle_name = middle_name;
-		this.first_name = first_name;
-		this.email = email;
-		this.address = address;
-		this.telephone = telephone;
-		this.avatar = avatar;
-		this.description = description;
-		this.dob = dob;
-		this.status = status;
-		this.flag = flag;
+	public void setHire_date(Date hire_date) {
+		this.hire_date = hire_date;
+	}
+
+	public String getHire_month() {
+		return hire_month;
+	}
+
+	public int getQuantity_employee() {
+		return quantity_employee;
+	}
+
+	public String getTermination_month() {
+		return termination_month;
+	}
+
+	public void setHire_month(String hire_month) {
+		this.hire_month = hire_month;
+	}
+
+	public void setQuantity_employee(int quantity_employee) {
+		this.quantity_employee = quantity_employee;
+	}
+
+	public void setTermination_month(String termination_month) {
+		this.termination_month = termination_month;
+	}
+
+	public employee() {
+		// TODO Auto-generated constructor stub
 	}
 
 }

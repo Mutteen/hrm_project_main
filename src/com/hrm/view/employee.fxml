@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="employee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.employee_controller">
+<AnchorPane fx:id="employee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1150.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.employee_controller">
    <children>
-      <AnchorPane prefHeight="52.0" prefWidth="1125.0" style="\\: #E0F7FA;">
+      <AnchorPane prefHeight="52.0" prefWidth="1150.0" style="\\: #E0F7FA;">
          <children>
             <Label layoutX="27.0" layoutY="10.0" prefHeight="42.0" prefWidth="328.0" text="Employee View" textFill="#0277bd">
                <font>
@@ -21,15 +21,10 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="16.0" layoutY="66.0" prefHeight="735.0" prefWidth="1094.0" style="-fx-background-color: #ffff;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <AnchorPane layoutX="22.0" layoutY="64.0" prefHeight="735.0" prefWidth="1106.0" style="-fx-background-color: #ffff;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
-            <TextField fx:id="search_field" layoutX="16.0" layoutY="20.0" prefHeight="34.0" prefWidth="355.0" promptText=" Search " style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
-            <Button fx:id="search_btn" layoutX="381.0" layoutY="20.0" mnemonicParsing="false" onAction="#SearchEmployee" prefHeight="34.0" prefWidth="48.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
-               <graphic>
-                  <FontAwesomeIcon glyphName="SEARCH" size="1.5em" text="" />
-               </graphic>
-            </Button>
-            <Pagination fx:id="pagination" layoutX="373.0" layoutY="669.0" prefHeight="42.0" prefWidth="320.0" />
+            <TextField fx:id="search_field" layoutX="16.0" layoutY="20.0" prefHeight="34.0" prefWidth="382.0" promptText=" Search " style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
+            <Pagination fx:id="pagination" layoutX="373.0" layoutY="661.0" prefHeight="42.0" prefWidth="320.0" />
             <Button fx:id="refresh_btn" layoutX="1009.0" layoutY="662.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="42.0" prefWidth="71.0" style="-fx-background-radius: 1em;" styleClass="clear-btn" stylesheets="@../assets/css/DashboarDesign.css">
                <graphic>
                   <FontAwesomeIcon fill="#00c853" glyphName="REFRESH" size="2EM" />
@@ -43,17 +38,19 @@
                   <FontAwesomeIcon fill="#607d8b" glyphName="PRINT" size="2EM" />
                </graphic>
             </Button>
-            <TableView fx:id="table_employee" layoutX="14.0" layoutY="65.0" prefHeight="584.0" prefWidth="1063.0" stylesheets="@../assets/css/DashboarDesign.css">
+            <TableView fx:id="table_employee" layoutX="14.0" layoutY="65.0" prefHeight="584.0" prefWidth="1081.0" stylesheets="@../assets/css/DashboarDesign.css">
               <columns>
                 <TableColumn fx:id="ID_col" prefWidth="56.0" text="ID" />
                 <TableColumn fx:id="name_col" prefWidth="196.0" text="FullName " />
                   <TableColumn fx:id="DOB_col" prefWidth="120.0" text="Birthday" />
                   <TableColumn fx:id="department_col" prefWidth="156.0" text="Department" />
-                  <TableColumn fx:id="positom_col" prefWidth="276.0" text="Position" />
-                  <TableColumn fx:id="salary_col" prefWidth="126.0" text="Salary" />
-                  <TableColumn fx:id="action_col" prefWidth="128.0" text="Action" />
+                  <TableColumn fx:id="positon_col" prefWidth="261.0" text="Position" />
+                  <TableColumn fx:id="salary_col" prefWidth="141.0" text="Salary" />
+                  <TableColumn fx:id="status_col" prefWidth="155.0" text="Status" />
+                  <TableColumn fx:id="action_col" prefWidth="120.0" text="Action" />
               </columns>
             </TableView>
+            <FontAwesomeIcon glyphName="SEARCH" layoutX="373.0" layoutY="43.0" size="1.5em" text="" />
          </children>
       </AnchorPane>
    </children>

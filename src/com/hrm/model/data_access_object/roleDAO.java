@@ -48,8 +48,9 @@ public class roleDAO implements DAO<role> {
 		}
 		return roletList;
 	}
+
 	public role getRole(String st) {
-		role Role= new role();
+		role Role = new role();
 		// TODO Auto-generated method stub
 		try {
 			Connection conn = connection_db.getConnection();
@@ -64,7 +65,34 @@ public class roleDAO implements DAO<role> {
 			while (rs.next()) {
 				Role.setId(rs.getInt(1));
 				Role.setRole_name(rs.getString(2));
-				
+
+				return Role;
+			}
+			// Step 5
+//			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Role;
+	}
+
+	public role getRoleInt(int st) {
+		role Role = new role();
+		// TODO Auto-generated method stub
+		try {
+			Connection conn = connection_db.getConnection();
+			// Step 2
+			sql = "SELECT id, role_name FROM role WHERE flag=0 and id=? ;";
+			// Step 3
+			PreparedStatement pst = conn.prepareStatement(sql);
+			// Step 4
+			pst.setInt(1, st);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Role.setId(rs.getInt(1));
+				Role.setRole_name(rs.getString(2));
+
 				return Role;
 			}
 			// Step 5

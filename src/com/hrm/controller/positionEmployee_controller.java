@@ -1,30 +1,19 @@
 package com.hrm.controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.text.Normalizer.Form;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javax.management.loading.PrivateClassLoader;
 import com.hrm.assets.lib.alert;
-import com.hrm.model.beans.employee;
 import com.hrm.model.beans.employee_search;
 import com.hrm.model.beans.position;
 import com.hrm.model.beans.position_employee;
-import com.hrm.model.beans.principal;
 import com.hrm.model.business_objects.bo_position;
 import com.hrm.model.business_objects.bo_positionemployee;
 import com.hrm.model.business_objects.bo_principal;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Insert;
 import de.jensd.fx.glyphs.GlyphsDude;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,7 +23,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -43,13 +31,14 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
@@ -147,11 +136,8 @@ public class positionEmployee_controller implements Initializable {
 	private bo_principal dPrincipal = new bo_principal();
 	private bo_position dPosition = new bo_position();
 	private ObservableList<position_employee> masterData = FXCollections.observableArrayList();
-
 	private ObservableList<employee_search> DataSeach = FXCollections.observableArrayList();
-
 	private ObservableList<position> DataSeachPosition = FXCollections.observableArrayList();
-
 	private static int ROWS_PER_PAGE = 8;
 	private FilteredList<position_employee> filteredData;
 	private FilteredList<employee_search> filteredDataEm;
@@ -210,7 +196,6 @@ public class positionEmployee_controller implements Initializable {
 					alert.Error();
 				}
 			}
-
 		}
 	}
 
@@ -304,6 +289,49 @@ public class positionEmployee_controller implements Initializable {
 		depart_col.setCellValueFactory(new PropertyValueFactory<>("department"));
 		DOB_col.setCellValueFactory(new PropertyValueFactory<>("DOB"));
 		avatar_col.setCellValueFactory(new PropertyValueFactory<>("avatar"));
+
+		Callback<TableColumn<employee_search, String>, TableCell<employee_search, String>> cellFoctory12 = (
+				TableColumn<employee_search, String> param) -> {
+			// make cell containing buttons
+			final TableCell<employee_search, String> cell = new TableCell<employee_search, String>() {
+
+				ImageView imageview = new ImageView();
+
+				@Override
+				public void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					// that cell created only on non-empty rows
+					if (item == null || item.equals("")) {
+						HBox box = new HBox();
+						box.setSpacing(10);
+						box.setStyle("-fx-alignment:center");
+
+						Image image = new Image("./com/hrm/assets/avatar/avatarnul.png");
+						imageview.setFitHeight(50);
+						imageview.setFitWidth(50);
+						imageview.setImage(image);
+						box.getChildren().addAll(imageview);
+						// SETTING ALL THE GRAPHICS COMPONENT FOR CELL
+						setGraphic(box);
+
+					} else {
+						HBox box = new HBox();
+						box.setStyle("-fx-alignment:center");
+						Image image = new Image(item);
+						imageview.setFitHeight(50);
+						imageview.setFitWidth(50);
+						imageview.setImage(image);
+
+						box.getChildren().addAll(imageview);
+						// SETTING ALL THE GRAPHICS COMPONENT FOR CELL
+						setGraphic(box);
+					}
+				}
+			};
+
+			return cell;
+		};
+		avatar_col.setCellFactory(cellFoctory12);
 		changeTableSearch(0, DataSeach.size());
 
 	}
@@ -313,16 +341,14 @@ public class positionEmployee_controller implements Initializable {
 		filteredDataPos = new FilteredList<>(DataSeachPosition, p -> true);
 		// Search
 		search_P_field.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredDataPos.setPredicate(Po -> Po.getPosition_name().toLowerCase().contains(newValue.toLowerCase())
-					|| Po.getWho_create().toLowerCase().contains(newValue.toLowerCase()));
+			filteredDataPos.setPredicate(Po -> Po.getPosition_name().toLowerCase().contains(newValue.toLowerCase()));
+//					|| Po.getWho_create().toLowerCase().contains(newValue.toLowerCase()));
 			changeTableSearch1(0, DataSeachPosition.size());
 		});
 		id_P_col.setCellValueFactory(new PropertyValueFactory<>("id"));
 		Pos_col.setCellValueFactory(new PropertyValueFactory<>("position_name"));
 		whocreate_col.setCellValueFactory(new PropertyValueFactory<>("who_create"));
-
 		changeTableSearch1(0, DataSeachPosition.size());
-
 	}
 
 	public void InserTableView() {
@@ -335,13 +361,11 @@ public class positionEmployee_controller implements Initializable {
 			changeTableView(0, masterData.size());
 		});
 		// add value into cell
-
 		ID_col.setCellValueFactory(new PropertyValueFactory<>("Id"));
 		position_col.setCellValueFactory(new PropertyValueFactory<>("position_name"));
 		employee_col.setCellValueFactory(new PropertyValueFactory<>("employee_name"));
 		create_col.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 		descrip_col.setCellValueFactory(new PropertyValueFactory<>("description"));
-
 		// add cell of button edit
 
 		Callback<TableColumn<position_employee, String>, TableCell<position_employee, String>> cellFoctory = (

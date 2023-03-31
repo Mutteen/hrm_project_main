@@ -40,8 +40,8 @@ public abstract class crud<T> {
 		return result;
 	}
 
-	public ArrayList<T> getLogin(String table) throws SQLException {
-		ArrayList<T> result = new ArrayList<>();
+	public ObservableList<T> getLogin(String table) throws SQLException {
+		ObservableList<T> result = FXCollections.observableArrayList();
 		String query = "SELECT * FROM " + table + " WHERE flag=0";
 
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -114,6 +114,22 @@ public abstract class crud<T> {
 		statement.close();
 		return check;
 
+	}
+
+	/////// ????????????????
+	public T getByDepName(String department_name) throws SQLException {
+		T item;
+		String query = "SELECT * FROM department WHERE department_name = ?";
+		PreparedStatement statement = connection.prepareStatement(query);
+		statement.setString(1, department_name);
+		ResultSet rs = statement.executeQuery();
+		while (rs.next()) {
+			item = parseResultSet(rs);
+
+			return item;
+		}
+		statement.close();
+		return null;
 	}
 
 	public boolean update(String table, T item, int id) throws IllegalArgumentException, SQLException {

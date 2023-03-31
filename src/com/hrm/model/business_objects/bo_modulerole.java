@@ -9,11 +9,11 @@ import com.hrm.model.data_access_object.module_roleDAO;
 import com.hrm.model.data_access_object.roleDAO;
 
 import javafx.collections.ObservableList;
-	
+
 public class bo_modulerole implements DAO<module_role> {
 	module_roleDAO dataDao = new module_roleDAO();
-	roleDAO roleDAo=new roleDAO();
-	moduleDAO moduleDAo= new moduleDAO();
+	roleDAO roleDAo = new roleDAO();
+	moduleDAO moduleDAo = new moduleDAO();
 
 	public bo_modulerole() {
 		// TODO Auto-generated constructor stub
@@ -42,9 +42,11 @@ public class bo_modulerole implements DAO<module_role> {
 		// TODO Auto-generated method stub
 		return dataDao.delete(t);
 	}
+
 	public role getRole(String st) {
 		return roleDAo.getRole(st);
 	}
+
 	public module getModule(String st) {
 		return moduleDAo.getModue(st);
 	}

@@ -3,6 +3,7 @@ package com.hrm.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.net.URL;
+import java.security.Principal;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.Normalizer.Form;
@@ -14,6 +15,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.management.loading.PrivateClassLoader;
 import com.hrm.assets.lib.alert;
+import com.hrm.model.beans.department;
 import com.hrm.model.beans.employee;
 import com.hrm.model.beans.employee_search;
 import com.hrm.model.beans.principal;
@@ -23,6 +25,7 @@ import com.mysql.cj.x.protobuf.MysqlxCrud.Insert;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -36,6 +39,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -47,8 +51,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -104,9 +112,6 @@ public class principal_controller implements Initializable {
 	private TextField money_ffield;
 
 	@FXML
-	private TextField type_field;
-
-	@FXML
 	private TextField id_field;
 
 	@FXML
@@ -138,16 +143,16 @@ public class principal_controller implements Initializable {
 	@FXML
 
 	private TableColumn<employee_search, String> DOB_col;
-
 	@FXML
 	private TextField search_em_field;
-
+	@FXML
+	private ComboBox<String> Type_file;
+	private ObservableList<String> listType = FXCollections.observableArrayList("bonus", "fine");
 	@FXML
 	private Button edit_btn;
 
 	@FXML
 	private TextField search_field;
-
 	private bo_principal dataDao = new bo_principal();
 	private ObservableList<principal> masterData = FXCollections.observableArrayList();
 
@@ -185,6 +190,13 @@ public class principal_controller implements Initializable {
 				}
 			}
 		};
+		// combo box add data
+		Type_file.setItems(listType);
+//		role.valueProperty().addListener((obs, oldVal, newVal) -> {
+//			int selectionText = newVal.getId();
+//			role_id = selectionText;
+//		});
+//		
 
 		creat_field.setConverter(converter);
 		date_field.setConverter(converter);
@@ -211,8 +223,7 @@ public class principal_controller implements Initializable {
 		search_field.setText("");
 		search_em_field.setText("");
 		emname_field.setText("");
-		type_field.setText("");
-
+		Type_file.setValue(null);
 		getList();
 		InserTableView();
 		tableSearch();
@@ -238,7 +249,7 @@ public class principal_controller implements Initializable {
 				Principal.setDate_principal(Date.valueOf(date_field.getValue()));
 				Principal.setCreated_at(Date.valueOf(creat_field.getValue()));
 				Principal.setDescription(description_field.getText());
-				Principal.setType(type_field.getText());
+				Principal.setType(Type_file.getValue());
 
 				boolean checkSave = dataDao.save(Principal);
 				if (checkSave == true) {
@@ -265,7 +276,7 @@ public class principal_controller implements Initializable {
 				Principal.setDate_principal(Date.valueOf(date_field.getValue()));
 				Principal.setCreated_at(Date.valueOf(creat_field.getValue()));
 				Principal.setDescription(description_field.getText());
-				Principal.setType(type_field.getText());
+				Principal.setType(Type_file.getValue());
 
 				boolean checkSave = dataDao.update(Principal);
 				if (checkSave == true) {
@@ -308,6 +319,49 @@ public class principal_controller implements Initializable {
 		department_S_col.setCellValueFactory(new PropertyValueFactory<>("department"));
 		DOB_col.setCellValueFactory(new PropertyValueFactory<>("DOB"));
 		avatar_col.setCellValueFactory(new PropertyValueFactory<>("avatar"));
+		// add image employee
+		Callback<TableColumn<employee_search, String>, TableCell<employee_search, String>> cellFoctory12 = (
+				TableColumn<employee_search, String> param) -> {
+			// make cell containing buttons
+			final TableCell<employee_search, String> cell = new TableCell<employee_search, String>() {
+
+				ImageView imageview = new ImageView();
+
+				@Override
+				public void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					// that cell created only on non-empty rows
+					if (item == null || item.equals("")) {
+						HBox box = new HBox();
+						box.setSpacing(10);
+						box.setStyle("-fx-alignment:center");
+
+						Image image = new Image("./com/hrm/assets/avatar/avatarnul.png");
+						imageview.setFitHeight(50);
+						imageview.setFitWidth(50);
+						imageview.setImage(image);
+						box.getChildren().addAll(imageview);
+						// SETTING ALL THE GRAPHICS COMPONENT FOR CELL
+						setGraphic(box);
+
+					} else {
+						HBox box = new HBox();
+						box.setStyle("-fx-alignment:center");
+						Image image = new Image(item);
+						imageview.setFitHeight(50);
+						imageview.setFitWidth(50);
+						imageview.setImage(image);
+
+						box.getChildren().addAll(imageview);
+						// SETTING ALL THE GRAPHICS COMPONENT FOR CELL
+						setGraphic(box);
+					}
+				}
+			};
+
+			return cell;
+		};
+		avatar_col.setCellFactory(cellFoctory12);
 		changeTableSearch(0, DataSeach.size());
 
 	}
@@ -332,6 +386,37 @@ public class principal_controller implements Initializable {
 		date_col.setCellValueFactory(new PropertyValueFactory<>("date_principal"));
 		create_col.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 		descrip_col.setCellValueFactory(new PropertyValueFactory<>("description"));
+		// Custom rendering of the table cell.
+		// custum color table
+		Callback<TableColumn<principal, String>, TableCell<principal, String>> cellFoctory1 = (
+				TableColumn<principal, String> param) -> {
+			// make cell containing buttons
+			final TableCell<principal, String> cell = new TableCell<principal, String>() {
+				@Override
+				public void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					// that cell created only on non-empty rows
+					if (empty) {
+						setText(null);
+
+					} else {
+
+						setText(item);
+						setStyle("-fx-font-weight: bold;");
+						if (item.equals("bonus")) {
+							setTextFill(Color.GREEN);
+
+						} else {
+							setTextFill(Color.CHOCOLATE);
+						}
+					}
+				}
+			};
+
+			return cell;
+		};
+
+		type_col.setCellFactory(cellFoctory1);
 
 		// add cell of button edit
 
@@ -386,7 +471,7 @@ public class principal_controller implements Initializable {
 
 							int index$ = Principal.getGetMoneyString().indexOf("$");
 							money_ffield.setText(Principal.getGetMoneyString().substring(0, index$));
-							type_field.setText(String.valueOf(Principal.getType()));
+							Type_file.setValue(Principal.getType());
 							id_field.setText(String.valueOf(Principal.getId()));
 							// setdatepciker fomat date sql
 							date_field.setValue(formatDate(String.valueOf(Principal.getDate_principal())));

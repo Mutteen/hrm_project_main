@@ -31,6 +31,10 @@ public class bo_roles implements DAO<role> {
 		return dataDao.update(t);
 	}
 
+	public role getRole(int id) {
+		return dataDao.getRoleInt(id);
+	}
+
 	@Override
 	public boolean delete(role t) {
 		// TODO Auto-generated method stub

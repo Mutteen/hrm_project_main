@@ -136,6 +136,7 @@ public class position_controller implements Initializable {
 		Parent root = FXMLLoader.load(this.getClass().getResource("../view/position_employee.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
+		stage.setTitle("Search Emloyee");
 		stage.show();
 	}
 
@@ -228,7 +229,6 @@ public class position_controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		// format Datepicker to Dale.sql
-		ScrollBar verticalBar = (ScrollBar) table_position.lookup(".scroll-bar:vertical");
 		String pattern = "yyyy-MM-dd";
 		StringConverter converter = new StringConverter<LocalDate>() {
 			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
