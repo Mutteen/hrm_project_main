@@ -131,6 +131,8 @@ public class home implements Initializable {
 				System.out.print(E.getAvatar());
 				Image image1 = new Image(E.getAvatar());
 				image_login.setImage(image1);
+				image_login.setFitHeight(40);
+				image_login.setFitWidth(40);
 			}
 		}
 		// Load dashboard

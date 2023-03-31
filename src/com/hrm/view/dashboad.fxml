@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1150.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.dashboad_controller">
    <children>
-      <LineChart fx:id="lineChart" layoutX="582.0" layoutY="431.0" prefHeight="375.0" prefWidth="544.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-color: #455A64; -fx-border-radius: 15px;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <LineChart fx:id="lineChart" layoutX="581.0" layoutY="422.0" prefHeight="375.0" prefWidth="544.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-color: #455A64; -fx-border-radius: 15px;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
         <xAxis>
           <CategoryAxis label="Month" side="BOTTOM">
                <tickLabelFont>
@@ -25,7 +25,7 @@
                </tickLabelFont></NumberAxis>
         </yAxis>
       </LineChart>
-      <BarChart fx:id="barChart" layoutX="23.0" layoutY="431.0" prefHeight="375.0" prefWidth="544.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <BarChart fx:id="barChart" layoutX="24.0" layoutY="422.0" prefHeight="375.0" prefWidth="544.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
         <xAxis>
           <CategoryAxis label="Month" side="BOTTOM">
                <tickLabelFont>
@@ -39,27 +39,27 @@
                </tickLabelFont></NumberAxis>
         </yAxis>
       </BarChart>
-      <PieChart fx:id="pieChart" labelLineLength="10.0" layoutX="469.0" layoutY="38.0" legendVisible="false" prefHeight="363.0" prefWidth="646.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-color: #757575; -fx-border-radius: 15px;" stylesheets="@../assets/css/DashboarDesign.css" />
-      <Label fx:id="lb_total_employee" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="153.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <PieChart fx:id="pieChart" labelLineLength="10.0" layoutX="465.0" layoutY="29.0" legendVisible="false" prefHeight="363.0" prefWidth="646.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-color: #757575; -fx-border-radius: 15px;" stylesheets="@../assets/css/DashboarDesign.css" />
+      <Label fx:id="lb_total_employee" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="146.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="lb_avg_dob" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="153.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: #78909C; -fx-border-radius: 10;">
+      <Label fx:id="lb_avg_dob" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="146.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: #78909C; -fx-border-radius: 10;">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="lb_total_male" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="287.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: #FBC02D; -fx-border-radius: 10px;">
+      <Label fx:id="lb_total_male" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="277.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: #FBC02D; -fx-border-radius: 10px;">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="lb_total_female" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="287.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: #4DD0E1; -fx-border-radius: 10px;">
+      <Label fx:id="lb_total_female" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="277.0" prefHeight="115.0" prefWidth="191.0" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-border-color: #4DD0E1; -fx-border-radius: 10px;">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="37.0" layoutY="38.0" prefHeight="95.0" prefWidth="405.0" style="-fx-border-color: #455A64; -fx-background-radius: 10px; -fx-background-color: #ffff; -fx-border-radius: 10px;" />
+      <AnchorPane layoutX="37.0" layoutY="30.0" prefHeight="95.0" prefWidth="405.0" style="-fx-border-color: #455A64; -fx-background-radius: 10px; -fx-background-color: #ffff; -fx-border-radius: 10px;" />
    </children>
 </AnchorPane>

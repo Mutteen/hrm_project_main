@@ -134,7 +134,7 @@ public class principalDAO implements DAO<principal> {
 
 			// Step 2
 			sql = "SELECT E.avatar, CONCAT(E.last_name,' ', E.middle_name,' ',E.first_name),D.department_name,E.dob,E.id FROM  hrm.employee AS E"
-					+ " INNER JOIN hrm.department AS D ON D.id=E.department_id; ";
+					+ " INNER JOIN hrm.department AS D ON D.id=E.department_id ORDER BY E.id DESC; ";
 			// Step 3
 			PreparedStatement pst = conn.prepareStatement(sql);
 			// Step 4

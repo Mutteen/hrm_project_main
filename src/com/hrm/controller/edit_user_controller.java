@@ -113,6 +113,7 @@ public class edit_user_controller implements Initializable {
 	private Label Title1;
 	private static String imagepath;
 	private static File fileimae;
+	private static String oldimageString;
 
 	@FXML
 	void AddAvatar(ActionEvent event) {
@@ -180,8 +181,12 @@ public class edit_user_controller implements Initializable {
 			EE.setDescription(descip_field.getText());
 			EE.setLast_name(last_name.getText());
 			EE.setMiddle_name(middle_name.getText());
+			if (imagepath == null || imagepath.equals("")) {
+				EE.setAvatar(oldimageString);
+			} else {
+				EE.setAvatar(imagepath);
+			}
 
-			EE.setAvatar(imagepath);
 			EE.setId(IDEM);
 
 			bo_employee Bo_Em = new bo_employee();
@@ -234,6 +239,7 @@ public class edit_user_controller implements Initializable {
 		ImageView imgImageView1 = new ImageView();
 
 		// demo addimage
+		if( oldimageString== null || oldimageString.equals("")) {
 		Image image1 = new Image("./com/hrm/assets/avatar/avatarnul.png");
 		imgImageView1.setImage(image1);
 		imgImageView1.setFitWidth(150);
@@ -243,6 +249,17 @@ public class edit_user_controller implements Initializable {
 		imgImageView1.setSmooth(true);
 		imgImageView1.setCache(true);
 		image_pane.setCenter(imgImageView1);
+		}else {
+			Image image1 = new Image(oldimageString);
+			imgImageView1.setImage(image1);
+			imgImageView1.setFitWidth(150);
+			imgImageView1.setFitHeight(150);
+			imgImageView1.scaleXProperty();
+			imgImageView1.scaleYProperty();
+			imgImageView1.setSmooth(true);
+			imgImageView1.setCache(true);
+			image_pane.setCenter(imgImageView1);
+		}
 
 	}
 
@@ -283,7 +300,7 @@ public class edit_user_controller implements Initializable {
 				image_pane.setCenter(imgImageView1);
 			} else {
 				ImageView imgImageView1 = new ImageView();
-
+				oldimageString=EE.getAvatar();
 				// demo addimage
 				Image image1 = new Image(EE.getAvatar());
 				imgImageView1.setImage(image1);
