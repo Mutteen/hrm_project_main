@@ -1,7 +1,9 @@
 package com.hrm.assets.lib;
 
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 
 public class alert {
 
@@ -58,6 +60,22 @@ public class alert {
 
 		alert.showAndWait();
 
+	}
+	
+	public static void Decentralization() {
+		Alert alert = new Alert(AlertType.WARNING);
+		
+		alert.setTitle("Warning alert");
+		alert.setHeaderText("You don't have access!");
+		
+		// Set center alignment for OK button
+		alert.setOnShown(event -> {
+		    Node okButton = alert.getDialogPane().lookupButton(ButtonType.OK);
+		    okButton.setStyle("-fx-alignment: center;");
+		});
+
+		
+		alert.showAndWait();
 	}
 
 }

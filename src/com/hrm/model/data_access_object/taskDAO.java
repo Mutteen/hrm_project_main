@@ -3,60 +3,59 @@ package com.hrm.model.data_access_object;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
-import com.hrm.model.beans.salary;
+import com.hrm.model.beans.task;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class salaryDao implements DAO<salary> {
+public class taskDAO implements DAO<task>{
 	static String sql = "";
-	public salaryDao() {
+	public taskDAO(){
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public ObservableList<salary> getAll() {
+	public ObservableList<task> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean save(salary salary) {
+	public boolean save(task t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(salary salary) {
+	public boolean update(task t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(salary salary) {
+	public boolean delete(task t) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	public static ObservableList<salary> getData(){
-		ObservableList<salary> list = FXCollections.observableArrayList();
+	
+	public static ObservableList<task> getMonthByTask(){
+		ObservableList<task> list = FXCollections.observableArrayList();
 		try {
 			Connection conn = connection_db.getConnection();
-			sql = "SELECT (SUM(value_money) + SUM(value_money_reward)) AS 'Money', MONTH(created_at) AS 'Month'\r\n"
-					+ "FROM salary\r\n"
-					+ "WHERE YEAR(created_at) =\"2023\"\r\n"
-					+ "GROUP BY MONTH(created_at)\r\n"
-					+ "ORDER BY  MONTH(created_at)";
+			sql = "SELECT COUNT(task.title)AS 'title task', task.`status`, MONTH(task.created_at) AS 'month'\r\n"
+					+ "FROM task \r\n"
+					+ "GROUP BY  MONTH(task.created_at), task.`status`\r\n"
+					+ "ORDER BY  MONTH(task.created_at), task.`status`";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {			
-				salary salary = new salary();
-				salary.setTotal_salary(rs.getInt("Money"));
-				salary.setMonth_to_pay(rs.getString("Month"));
-				list.add(salary);
+				task task = new task();
+				task.setQuantity_task(rs.getInt("title task"));
+				task.setMonth_by_task(rs.getString("month"));
+				task.setStatus(rs.getString("status"));
+				list.add(task);
 			}
 			conn.close();
 		} catch (Exception e) {
@@ -64,7 +63,5 @@ public class salaryDao implements DAO<salary> {
 		}
 		return list;
 	}
-	
-	
-	
+
 }

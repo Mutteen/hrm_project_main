@@ -8,6 +8,7 @@ public final class usersession {
 	private static usersession instance;
 	private static String userName;
 	private static int idUser;
+	private static int role_id;
 
 	public void name() {
 
@@ -15,15 +16,16 @@ public final class usersession {
 
 	private Set<String> privileges;
 
-	private usersession(int idUser, String userName) {
+	private usersession(int idUser, String userName, int role_id) {
 		this.idUser = idUser;
 		this.userName = userName;
+		this.role_id = role_id;
 
 	}
 
-	public static usersession getInstace(int idUser, String userName) {
+	public static usersession getInstace(int idUser, String userName, int role_id) {
 		if (instance == null) {
-			instance = new usersession(idUser, userName);
+			instance = new usersession(idUser, userName, role_id);
 
 		}
 		return instance;
@@ -37,6 +39,10 @@ public final class usersession {
 		return userName;
 	}
 
+	public static int getRole_id() {
+		return role_id;
+	}
+	
 	public Set<String> getPrivileges() {
 		return privileges;
 	}
