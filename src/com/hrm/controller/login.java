@@ -60,7 +60,7 @@ public class login implements Initializable {
 		String password = tfPassword.getText();
 
 		if (username.isBlank() == true || password.isBlank() == true) {
-			messageLogin.setText("Please enter username or password");
+			messageLogin.setText("Please enter username or password!");
 		} else if (bo_employee.login(username, password)) {
 			homePage = (Pane) FXMLLoader.load(getClass().getResource("../view/home.fxml"));
 			stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -70,7 +70,7 @@ public class login implements Initializable {
 			stage.show();
 
 		} else {
-			messageLogin.setText("Invalid info. Please try again");
+			messageLogin.setText("Invalid info. Please try again!");
 		}
 	}
 

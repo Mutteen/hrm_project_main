@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.dashboad_controller">
    <children>
-      <Label layoutX="475.0" layoutY="279.0" text="Label" />
+      <LineChart fx:id="lineChart" layoutX="582.0" layoutY="445.0" prefHeight="375.0" prefWidth="529.0" style="-fx-background-color: white; -fx-border-radius: 50px;">
+        <xAxis>
+          <CategoryAxis label="Month" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="Quantity employee" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <BarChart fx:id="barChart" layoutX="27.0" layoutY="445.0" prefHeight="375.0" prefWidth="529.0" style="-fx-background-color: white; -fx-border-radius: 50px;">
+        <xAxis>
+          <CategoryAxis label="Month" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="Salary" prefHeight="313.0" prefWidth="39.0" side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <PieChart fx:id="pieChart" labelLineLength="10.0" layoutX="460.0" layoutY="55.0" legendVisible="false" prefHeight="360.0" prefWidth="651.0" style="-fx-background-color: white; -fx-border-radius: 50px;" />
+      <Label fx:id="lb_total_employee" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="55.0" prefHeight="171.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-radius: 5px;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_avg_dob" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="55.0" prefHeight="171.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-radius: 5px;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_total_male" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="244.0" prefHeight="171.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-radius: 5px;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_total_female" alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="244.0" prefHeight="171.0" prefWidth="191.0" style="-fx-background-color: white; -fx-border-radius: 5px;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="barChartRole" layoutX="14.0" layoutY="14.0" prefHeight="799.0" prefWidth="1100.0" visible="false">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>

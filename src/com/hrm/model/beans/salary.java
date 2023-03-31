@@ -12,6 +12,8 @@ public class salary {
 	private String description;
 	private Date created_at;
 	private int flag;
+	private int total_salary;
+	private String month_to_pay;
 	private employee employee;
 
 	public employee getEmployee() {
@@ -92,6 +94,22 @@ public class salary {
 
 	public void setFlag(int flag) {
 		this.flag = flag;
+	}
+
+	public int getTotal_salary() {
+		return total_salary;
+	}
+
+	public void setTotal_salary(int total_salary) {
+		this.total_salary = total_salary;
+	}
+
+	public String getMonth_to_pay() {
+		return month_to_pay;
+	}
+
+	public void setMonth_to_pay(String month_to_pay) {
+		this.month_to_pay = month_to_pay;
 	}
 
 	public salary() {

@@ -1,12 +1,21 @@
 package com.hrm.model.business_objects;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.hrm.model.usersession;
 import com.hrm.model.beans.module;
+import com.hrm.model.beans.module_role;
 import com.hrm.model.data_access_object.DAO;
+import com.hrm.model.data_access_object.connection_db;
 import com.hrm.model.data_access_object.moduleDAO;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class bo_module implements DAO<module> {
+	private static Connection conn = connection_db.getConnection();
+	static String sql = "";
 	static moduleDAO dataDao = new moduleDAO();
 
 	public bo_module() {
@@ -37,4 +46,14 @@ public class bo_module implements DAO<module> {
 		return dataDao.delete(t);
 	}
 
+	public static boolean checkRole(String module_name){
+		ObservableList<module> listModule_name = moduleDAO.getModuleName(usersession.getRole_id());
+		for (module module : listModule_name) {
+			if(module.getModule_name().equals(module_name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

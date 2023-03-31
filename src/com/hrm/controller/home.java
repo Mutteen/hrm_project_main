@@ -6,7 +6,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import com.hrm.assets.lib.alert;
 import com.hrm.model.usersession;
+import com.hrm.model.business_objects.bo_module;
+import com.hrm.model.business_objects.bo_modulerole;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -140,7 +143,6 @@ public class home implements Initializable {
 		slide.play();
 
 	}
-//    Sugggoooiiii!! : ) 
 
 	public void sliderBars() {
 
@@ -200,39 +202,60 @@ public class home implements Initializable {
 
 	@FXML
 	public void Dashboard(ActionEvent event) {
-		FxmlLoader oblectFxmlLoader = new FxmlLoader();
-		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("dashboad");
-		mainPane.setCenter(viewAnchorPane);
+		if (bo_module.checkRole("dashboard")) {
+			FxmlLoader oblectFxmlLoader = new FxmlLoader();
+			AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("dashboad");
+			mainPane.setCenter(viewAnchorPane);			
+		}else {
+			alert.Decentralization();
+		}
 
 	}
 
 	@FXML
 	public void Employee(ActionEvent event) {
+		if (bo_module.checkRole("employee")) {
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("employee");
 		mainPane.setCenter(viewAnchorPane);
+		}else {
+			alert.Decentralization();
+		}
 
 	}
 
 	@FXML
 	public void Department(ActionEvent event) {
+		if (bo_module.checkRole("department")) {
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("department");
 		mainPane.setCenter(viewAnchorPane);
+		}else {
+			alert.Decentralization();
+		}
 	}
 
 	@FXML
 	public void Position(ActionEvent event) {
+		if (bo_module.checkRole("position")) {
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("postion");
 		mainPane.setCenter(viewAnchorPane);
+		}else {
+			alert.Decentralization();
+		}
 	}
 
 	@FXML
 	public void Principal(ActionEvent event) {
+		if (bo_module.checkRole("principal")) {
+	
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("principal");
 		mainPane.setCenter(viewAnchorPane);
+		}else {
+			alert.Decentralization();
+		}
 	}
 
 	@FXML
@@ -245,16 +268,25 @@ public class home implements Initializable {
 
 	@FXML
 	public void Salary(ActionEvent event) {
+		if (bo_module.checkRole("salary")) {
+	
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("salary");
 		mainPane.setCenter(viewAnchorPane);
+		}else {
+			alert.Decentralization();
+		}
 	}
 
 	@FXML
 	public void Setting(ActionEvent event) {
+		if (bo_module.checkRole("setting")) {
 		FxmlLoader oblectFxmlLoader = new FxmlLoader();
 		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("setting");
 		mainPane.setCenter(viewAnchorPane);
+		}else {
+			alert.Decentralization();
+		}
 	}
 
 	@FXML
