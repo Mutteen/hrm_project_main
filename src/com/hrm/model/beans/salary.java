@@ -15,6 +15,10 @@ public class salary {
 	private int total_salary;
 	private String month_to_pay;
 	private employee employee;
+	private String sEmployee;
+	private int employee_id;
+	private String moneyString;
+	private String rewardString;
 
 	public employee getEmployee() {
 		return employee;
@@ -111,6 +115,39 @@ public class salary {
 	public void setMonth_to_pay(String month_to_pay) {
 		this.month_to_pay = month_to_pay;
 	}
+
+	public void setSEmployee(String sEmployee) {
+		this.sEmployee = sEmployee;
+	}
+
+	public String getSEmployee() {
+		return sEmployee;
+	}
+
+		public int getEmployee_id() {
+		return employee_id;
+	}
+
+	public void setEmployee_id(int employee_id) {
+		this.employee_id = employee_id;
+	}
+
+	public void setMoneyString(String moneyString) {
+		this.moneyString = moneyString;
+	}
+
+	public String getMoneyString() {
+		return moneyString;
+	}
+
+	public void setRewardString(String rewardString) {
+		this.rewardString = rewardString;
+	}
+
+	public String getRewardString() {
+		return rewardString;
+	}
+
 
 	public salary() {
 		// TODO Auto-generated constructor stub

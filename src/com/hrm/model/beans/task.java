@@ -14,6 +14,10 @@ public class task {
 	private int quantity_task;
 	private int quantity_task_done;
 	private String month_by_task;
+	private int flag;
+	private String nameString;
+	
+	private department department;
 	
 	
 	public int getId() {
@@ -123,6 +127,31 @@ public class task {
 
 	public void setMonth_by_task(String month_by_task) {
 		this.month_by_task = month_by_task;
+	}
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
+	public String getNameString() {
+		return nameString;
+	}
+	
+	public void setNameString(String nameString) {
+		this.nameString = nameString;
+	}
+
+	public department getDepartment() {
+		return department;
+	}
+
+
+	public void setDepartment(department department) {
+		this.department = department;
 	}
 
 

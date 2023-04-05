@@ -5,57 +5,52 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="705.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.createEmployee_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="835.0" prefWidth="695.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.createEmployee_controller">
    <children>
-      <Button fx:id="save_btn" layoutX="259.0" layoutY="782.0" mnemonicParsing="false" onAction="#SaveEmployee" prefHeight="39.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@../assets/css/login.css">
+      <Button fx:id="save_btn" layoutX="563.0" layoutY="14.0" mnemonicParsing="false" onAction="#SaveEmployee" prefHeight="39.0" prefWidth="60.0" styleClass="login-btn" stylesheets="@../assets/css/login.css">
          <graphic>
             <FontAwesomeIcon fill="WHITE" glyphName="SAVE" size="1.5em" />
          </graphic></Button>
-      <Button fx:id="refresh_btn" layoutX="353.0" layoutY="782.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="35.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@../assets/css/login.css">
+      <Button fx:id="refresh_btn" layoutX="623.0" layoutY="14.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="39.0" prefWidth="60.0" styleClass="login-btn" stylesheets="@../assets/css/login.css" AnchorPane.rightAnchor="7.0">
          <graphic>
             <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" size="1.5em" />
          </graphic>
       </Button>
-      <Label fx:id="Title" layoutX="265.0" layoutY="21.0" prefHeight="35.0" prefWidth="211.0" text="Add Employee" textFill="#1976d2">
+      <Label fx:id="Title" layoutX="28.0" layoutY="16.0" prefHeight="35.0" prefWidth="211.0" text="Add Employee" textFill="#1976d2">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="66.0" layoutY="82.0" prefHeight="206.0" prefWidth="192.0" style="-fx-border-radius: 1.5em;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <AnchorPane layoutX="48.0" layoutY="67.0" prefHeight="206.0" prefWidth="192.0" style="-fx-border-radius: 1.5em;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
-            <Button fx:id="add_avatar_btn" layoutX="74.0" layoutY="158.0" mnemonicParsing="false" onAction="#AddAvatar" prefHeight="35.0" prefWidth="52.0" styleClass="add-btn" stylesheets="@../assets/css/login.css">
+            <Button fx:id="add_avatar_btn" layoutX="74.0" layoutY="174.0" mnemonicParsing="false" onAction="#AddAvatar" prefHeight="19.0" prefWidth="52.0" styleClass="add-btn" stylesheets="@../assets/css/login.css">
                <graphic>
-                  <FontAwesomeIcon fill="#f8f8f8" glyphName="IMAGE" size="1.5EM" />
+                  <FontAwesomeIcon fill="#f8f8f8" glyphName="IMAGE" size="1.2em" />
                </graphic>
             </Button>
-            <ImageView fx:id="avatar" fitHeight="96.0" fitWidth="149.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/gif/nah.gif" />
-               </image>
-            </ImageView>
+            <BorderPane fx:id="image_pane" layoutX="13.0" layoutY="5.0" prefHeight="169.0" prefWidth="168.0" />
          </children>
       </AnchorPane>
       <TextField fx:id="middle_name" layoutX="47.0" layoutY="381.0" prefHeight="25.0" prefWidth="211.0" promptText="Middle Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <TextField fx:id="last_name" layoutX="47.0" layoutY="447.0" prefHeight="25.0" prefWidth="211.0" promptText="Last Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextField fx:id="first_name" layoutX="47.0" layoutY="311.0" prefHeight="29.0" prefWidth="211.0" promptText="First Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextField fx:id="first_name" layoutX="38.0" layoutY="303.0" prefHeight="29.0" prefWidth="211.0" promptText="First Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
       <DatePicker fx:id="DOB" layoutX="47.0" layoutY="520.0" prefHeight="25.0" prefWidth="211.0" promptText="Birthday" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <ComboBox fx:id="department_file" layoutX="355.0" layoutY="411.0" prefHeight="25.0" prefWidth="278.0" promptText="Department" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <ComboBox fx:id="department_file" layoutX="348.0" layoutY="325.0" prefHeight="25.0" prefWidth="278.0" promptText="Department" styleClass="textfield" stylesheets="@../assets/css/login.css" visibleRowCount="4" />
       <TextField fx:id="gmail" layoutX="47.0" layoutY="646.0" prefHeight="25.0" prefWidth="211.0" promptText="Gmail" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <ComboBox fx:id="status_box" layoutX="360.0" layoutY="672.0" prefHeight="25.0" prefWidth="278.0" promptText="Status" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <ComboBox fx:id="role" layoutX="47.0" layoutY="717.0" prefHeight="25.0" prefWidth="211.0" promptText="Role" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextArea fx:id="descip_field" layoutX="354.0" layoutY="698.0" prefHeight="98.0" prefWidth="316.0" promptText="Description" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <ComboBox fx:id="status_box" layoutX="359.0" layoutY="631.0" prefHeight="25.0" prefWidth="278.0" promptText="Status" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <ComboBox fx:id="role" layoutX="348.0" layoutY="231.0" prefHeight="30.0" prefWidth="278.0" promptText="Role" styleClass="textfield" stylesheets="@../assets/css/login.css" visibleRowCount="4" />
       <TextField fx:id="phone" layoutX="48.0" layoutY="580.0" prefHeight="25.0" prefWidth="211.0" promptText="Phone" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextField fx:id="user_name" layoutX="357.0" layoutY="118.0" prefHeight="35.0" prefWidth="278.0" promptText="Username" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextArea fx:id="address_field" layoutX="355.0" layoutY="277.0" prefHeight="77.0" prefWidth="278.0" promptText="Address" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <DatePicker fx:id="create_at" layoutX="355.0" layoutY="590.0" prefHeight="25.0" prefWidth="278.0" promptText="Create At" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <TextField fx:id="on_leave" layoutX="355.0" layoutY="502.0" prefHeight="29.0" prefWidth="278.0" promptText="On Leave" styleClass="textfield" stylesheets="@../assets/css/login.css" />
-      <PasswordField fx:id="password" layoutX="355.0" layoutY="185.0" prefHeight="36.0" prefWidth="278.0" promptText="Password" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextField fx:id="user_name" layoutX="348.0" layoutY="73.0" prefHeight="35.0" prefWidth="278.0" promptText="User Name" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextArea fx:id="address_field" layoutX="28.0" layoutY="719.0" prefHeight="77.0" prefWidth="278.0" promptText="Address" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <DatePicker fx:id="create_at" layoutX="345.0" layoutY="535.0" prefHeight="25.0" prefWidth="278.0" promptText="HIre date" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextField fx:id="on_leave" layoutX="345.0" layoutY="425.0" prefHeight="29.0" prefWidth="278.0" promptText="On Leave" styleClass="textfield" stylesheets="@../assets/css/login.css" />
+      <TextField fx:id="password" layoutX="348.0" layoutY="153.0" prefHeight="35.0" prefWidth="278.0" promptText="Password" styleClass="textfield" stylesheets="@../assets/css/login.css" />
    </children>
 </AnchorPane>

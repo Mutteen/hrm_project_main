@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.hrm.model.beans.department;
 import com.hrm.model.beans.task;
 
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 
 public class taskDAO implements DAO<task>{
 	static String sql = "";
+	static Connection conn = connection_db.getConnection();
 	public taskDAO(){
 		// TODO Auto-generated constructor stub
 	}
@@ -18,25 +20,165 @@ public class taskDAO implements DAO<task>{
 	@Override
 	public ObservableList<task> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		ObservableList<task> List = FXCollections.observableArrayList();
+		// TODO Auto-generated method stub
+		try {
+			Connection conn = connection_db.getConnection();
+			// Step 2
+			sql = "SELECT T.id,T.title,T.description,T.assignee,T.deadline,T.priority,T.`status`,"
+					+ "T.created_at,CONCAT(E.last_name,' ',E.middle_name,' ',E.first_name)  FROM  hrm.task AS T "
+					+ "INNER JOIN hrm.employee AS E ON E.id=T.assignee WHERE T.flag=0 ORDER  BY T.created_at DESC ";
+			// Step 3
+			PreparedStatement pst = conn.prepareStatement(sql);
+			// Step 4
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				task T = new task();
+				T.setId(rs.getInt(1));
+				T.setTitle(rs.getString(2));
+				T.setDescription(rs.getString(3));
+				T.setAssignee(rs.getInt(4));
+				T.setDeadline(rs.getDate(5));
+				T.setPriority(rs.getString(6));
+				T.setStatus(rs.getString(7));
+				T.setCreated_at(rs.getDate(8));
+				T.setNameString(rs.getString(9));
+				List.add(T);
+
+			}
+			// Step 5
+//			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return List;
 	}
 
+	public ObservableList<task> getAllTask(int department_id) {
+		// TODO Auto-generated method stub
+		ObservableList<task> List = FXCollections.observableArrayList();
+		// TODO Auto-generated method stub
+		try {
+			Connection conn = connection_db.getConnection();
+			// Step 2
+			sql = "SELECT task.id, task.title, department.department_name, task.assignee, task.priority, task.deadline, task.`status`,\r\n"
+					+ "		 CONCAT(employee.last_name, \" \", employee.middle_name, \" \", employee.first_name) AS 'assignee name'\r\n"
+					+ "FROM task \r\n"
+					+ "INNER JOIN task_department ON task_department.task_id = task.id\r\n"
+					+ "INNER JOIN department ON task_department.department_id = department.id\r\n"
+					+ "INNER JOIN employee ON employee.id = task.assignee\r\n"
+					+ "WHERE department.id = ?\r\n"
+					+ "ORDER BY task.created_at desc";
+			// Step 3
+			PreparedStatement pst = conn.prepareStatement(sql);
+			System.out.println(department_id);
+			pst.setInt(1, department_id);
+			// Step 4
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				task T = new task();
+				T.setId(rs.getInt("id"));
+				T.setTitle(rs.getString("title"));
+				T.setAssignee(rs.getInt("assignee"));
+				T.setDeadline(rs.getDate("deadline"));
+				T.setPriority(rs.getString("priority"));
+				T.setStatus(rs.getString("status"));
+				T.setNameString(rs.getString("assignee name"));
+				
+				department department = new department();
+				department.setDepartment_name(rs.getString("department_name"));
+				T.setDepartment(department);
+				List.add(T);
+			}
+			// Step 5
+//			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return List;
+	}
+
+	
 	@Override
 	public boolean save(task t) {
+		boolean check = false;
 		// TODO Auto-generated method stub
-		return false;
+		try {
+
+			sql = "INSERT INTO `hrm`.`task` (`title`, `description`, `assignee`, `deadline`, `priority`, `status`, `created_at`)"
+					+ " VALUES (?,?,?,?,?,?,?);";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, t.getTitle());
+			pst.setString(2, t.getDescription());
+			pst.setInt(3, t.getAssignee());
+			pst.setDate(4, t.getDeadline());
+			pst.setString(5, t.getPriority());
+			pst.setString(6, t.getStatus());
+			pst.setDate(7, t.getCreated_at());
+
+			int rowInsert = pst.executeUpdate();
+			if (rowInsert > 0) {
+				check = true;
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 
 	@Override
 	public boolean update(task t) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean check = false;
+		try {
+
+			sql = "UPDATE `hrm`.`task` SET `title`=?, `description`=?, `assignee`=?, `deadline`=?, `priority`=?, `status`=?,`created_at`=? WHERE  `id`=?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, t.getTitle());
+			pst.setString(2, t.getDescription());
+			pst.setInt(3, t.getAssignee());
+			pst.setDate(4, t.getDeadline());
+			pst.setString(5, t.getPriority());
+			pst.setString(6, t.getStatus());
+			pst.setDate(7, t.getCreated_at());
+			pst.setInt(8, t.getId());
+
+			int rowInsert = pst.executeUpdate();
+
+			if (rowInsert > 0) {
+				check = true;
+			}
+			conn.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return check;
 	}
 
 	@Override
 	public boolean delete(task t) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean check = false;
+		try {
+
+			sql = "UPDATE `hrm`.`task` SET `flag`='1' WHERE  `id`=?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, t.getId());
+
+			int rowInsert = pst.executeUpdate();
+
+			if (rowInsert > 0) {
+				check = true;
+			}
+			conn.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return check;
 	}
 	
 	public static ObservableList<task> getMonthByTask(){
@@ -64,4 +206,32 @@ public class taskDAO implements DAO<task>{
 		return list;
 	}
 
+	public static ObservableList<task> getMonthByTaskStaff(int department_id){
+		ObservableList<task> list = FXCollections.observableArrayList();
+		try {
+			Connection conn = connection_db.getConnection();
+			sql = "SELECT COUNT(task.title)AS 'title task', task.`status`, MONTH(task.created_at) AS 'month', department.department_name\r\n"
+					+ "FROM task \r\n"
+					+ "INNER JOIN task_department ON task_department.task_id = task.id\r\n"
+					+ "INNER JOIN department ON task_department.department_id = department.id\r\n"
+					+ "WHERE department.id = ?\r\n"
+					+ "GROUP BY  MONTH(task.created_at), task.`status`\r\n"
+					+ "ORDER BY  MONTH(task.created_at), task.`status`";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, department_id);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {			
+				task task = new task();
+				task.setQuantity_task(rs.getInt("title task"));
+				task.setMonth_by_task(rs.getString("month"));
+				task.setStatus(rs.getString("status"));
+				list.add(task);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

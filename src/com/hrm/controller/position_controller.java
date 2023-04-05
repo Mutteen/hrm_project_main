@@ -1,30 +1,19 @@
 package com.hrm.controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.text.Normalizer.Form;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javax.management.loading.PrivateClassLoader;
 
 import com.hrm.assets.lib.alert;
-import com.hrm.model.beans.department;
 import com.hrm.model.beans.position;
-import com.hrm.model.business_objects.bo_department;
 import com.hrm.model.business_objects.bo_position;
-import com.hrm.model.data_access_object.departmentDAO;
 
 import de.jensd.fx.glyphs.GlyphsDude;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.collections.FXCollections;
@@ -36,7 +25,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -108,8 +96,6 @@ public class position_controller implements Initializable {
 	@FXML
 	private DatePicker createat_field;
 
-	@FXML
-	private TextField whocreate_field;
 
 	@FXML
 	private TextField iD_field;
@@ -165,7 +151,6 @@ public class position_controller implements Initializable {
 				Position.setPosition_name(position_field.getText());
 				Position.setDescription(descrip_field.getText());
 				Position.setCreated_at(Date.valueOf(createat_field.getValue()));
-				Position.setWho_create(whocreate_field.getText());
 
 				boolean checkSave = dataDao.save(Position);
 				if (checkSave == true) {
@@ -190,8 +175,6 @@ public class position_controller implements Initializable {
 				Position.setPosition_name(position_field.getText());
 				Position.setDescription(descrip_field.getText());
 				Position.setCreated_at(Date.valueOf(createat_field.getValue()));
-				Position.setWho_create(whocreate_field.getText());
-
 				boolean checkSave = dataDao.update(Position);
 				if (checkSave == true) {
 					alert.Success("Update Position ");
@@ -214,7 +197,6 @@ public class position_controller implements Initializable {
 		descrip_field.setText("");
 		position_field.setText("");
 		iD_field.setText("");
-		whocreate_field.setText("");
 		getList();
 		InserTableView();
 
@@ -292,7 +274,6 @@ public class position_controller implements Initializable {
 		position_col.setCellValueFactory(new PropertyValueFactory<>("position_name"));
 		create_coll.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 		descrip_col.setCellValueFactory(new PropertyValueFactory<>("description"));
-		who_col.setCellValueFactory(new PropertyValueFactory<>("who_create"));
 
 		// add cell of button edit
 
@@ -347,7 +328,6 @@ public class position_controller implements Initializable {
 
 							iD_field.setText(String.valueOf(Position.getId()));
 							position_field.setText(Position.getPosition_name());
-							whocreate_field.setText(Position.getWho_create());
 							// setdatepciker fomat date sql
 							DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDate localDate = LocalDate.parse(String.valueOf(Position.getCreated_at()), formatter);
