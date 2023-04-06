@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -11,7 +12,10 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1149.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.task_controller">
    <children>
@@ -103,33 +107,39 @@
             <FontAwesomeIcon glyphName="SEARCH" layoutX="421.0" layoutY="36.0" size="1.5em" text="" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneStaff" layoutX="5.0" layoutY="39.0" prefHeight="777.0" prefWidth="1140.0" style="-fx-background-color: #ffff;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <AnchorPane fx:id="paneCalendar" layoutX="10.0" layoutY="43.0" prefHeight="777.0" prefWidth="1133.0" style="-fx-background-color: #f2fafc;" visible="false">
          <children>
-            <TextField fx:id="search_field_task" layoutX="16.0" layoutY="20.0" prefHeight="34.0" prefWidth="382.0" promptText=" Search " style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
-            <Pagination fx:id="pagination_task" layoutX="373.0" layoutY="661.0" prefHeight="42.0" prefWidth="320.0" />
-            <Button fx:id="refresh_btn_task" layoutX="1009.0" layoutY="662.0" mnemonicParsing="false" onAction="#Refresh_task" prefHeight="42.0" prefWidth="71.0" style="-fx-background-radius: 1em;" styleClass="clear-btn" stylesheets="@../assets/css/DashboarDesign.css">
-               <graphic>
-                  <FontAwesomeIcon fill="#00c853" glyphName="REFRESH" size="2EM" />
-               </graphic>
-            </Button>
-            <Button fx:id="print_btn" layoutX="938.0" layoutY="662.0" mnemonicParsing="false" onAction="#Print" prefHeight="42.0" prefWidth="71.0" style="-fx-border-radius: 8px;" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
-               <graphic>
-                  <FontAwesomeIcon fill="#607d8b" glyphName="PRINT" size="2EM" />
-               </graphic>
-            </Button>
-            <TableView fx:id="table_task_staff" layoutX="14.0" layoutY="65.0" prefHeight="584.0" prefWidth="1081.0" stylesheets="@../assets/css/DashboarDesign.css">
-               <columns>
-                  <TableColumn fx:id="ID_col_task" prefWidth="56.0" text="ID" />
-                  <TableColumn fx:id="title_col_task" prefWidth="196.0" text="Title" />
-                  <TableColumn fx:id="department_col_task" prefWidth="261.0" text="Department" />
-                  <TableColumn fx:id="assignee_col_task" prefWidth="120.0" text="Assignee" />
-                  <TableColumn fx:id="priority_col_task" prefWidth="156.0" text="Priority" />
-                  <TableColumn fx:id="deadline_col_task" prefWidth="141.0" text="Deadline" />
-                  <TableColumn fx:id="status_col_task" prefWidth="155.0" text="Status" />
-                  <TableColumn fx:id="action_col1" prefWidth="120.0" text="Action" />
-               </columns>
-            </TableView>
-            <FontAwesomeIcon glyphName="SEARCH" layoutX="373.0" layoutY="43.0" size="1.5em" text="" />
+            <FlowPane fx:id="calendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="644.0" prefWidth="1098.0" vgap="5.0" />
+            <HBox alignment="CENTER" layoutX="311.0" layoutY="14.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
+                  <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="14.0" layoutY="78.0" prefHeight="44.0" prefWidth="1098.0" spacing="88.75">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" wrappingWidth="75.166015625" />
+                  <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" wrappingWidth="75.806640625" />
+                  <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER" wrappingWidth="75.078125" />
+                  <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER" wrappingWidth="70.484375" />
+                  <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER" wrappingWidth="71.078125" />
+                  <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" wrappingWidth="74.03125" />
+                  <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" wrappingWidth="74.48046875" />
+               </children>
+               <padding>
+                  <Insets right="9.0" />
+               </padding>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

@@ -3,6 +3,7 @@ package com.hrm.model.data_access_object;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.hrm.model.beans.department;
 import com.hrm.model.beans.task;
@@ -55,50 +56,35 @@ public class taskDAO implements DAO<task>{
 		return List;
 	}
 
-	public ObservableList<task> getAllTask(int department_id) {
-		// TODO Auto-generated method stub
-		ObservableList<task> List = FXCollections.observableArrayList();
-		// TODO Auto-generated method stub
+	public static ArrayList<task> getTaskByDate(int date, int month, int department_id){
+		ArrayList<task> list = new ArrayList<>();
+		
 		try {
 			Connection conn = connection_db.getConnection();
-			// Step 2
-			sql = "SELECT task.id, task.title, department.department_name, task.assignee, task.priority, task.deadline, task.`status`,\r\n"
-					+ "		 CONCAT(employee.last_name, \" \", employee.middle_name, \" \", employee.first_name) AS 'assignee name'\r\n"
-					+ "FROM task \r\n"
+			sql = "SELECT task.created_at, task.title\r\n"
+					+ "FROM task\r\n"
 					+ "INNER JOIN task_department ON task_department.task_id = task.id\r\n"
 					+ "INNER JOIN department ON task_department.department_id = department.id\r\n"
 					+ "INNER JOIN employee ON employee.id = task.assignee\r\n"
-					+ "WHERE department.id = ?\r\n"
-					+ "ORDER BY task.created_at desc";
-			// Step 3
+					+ "WHERE DAY(task.created_at) = ? AND MONTH(task.created_at) = ? AND  department.id = ?";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			System.out.println(department_id);
-			pst.setInt(1, department_id);
-			// Step 4
+			pst.setInt(1, date);
+			pst.setInt(2, month);
+			pst.setInt(3, department_id);
 			ResultSet rs = pst.executeQuery();
-			while (rs.next()) {
-				task T = new task();
-				T.setId(rs.getInt("id"));
-				T.setTitle(rs.getString("title"));
-				T.setAssignee(rs.getInt("assignee"));
-				T.setDeadline(rs.getDate("deadline"));
-				T.setPriority(rs.getString("priority"));
-				T.setStatus(rs.getString("status"));
-				T.setNameString(rs.getString("assignee name"));
-				
-				department department = new department();
-				department.setDepartment_name(rs.getString("department_name"));
-				T.setDepartment(department);
-				List.add(T);
+
+			while (rs.next()) {			
+				task task = new task();
+				task.setCreated_at(rs.getDate("created_at"));
+				task.setTitle(rs.getString("title"));
+				list.add(task);
 			}
-			// Step 5
-//			conn.close();
+			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return List;
+		return list;
 	}
-
 	
 	@Override
 	public boolean save(task t) {

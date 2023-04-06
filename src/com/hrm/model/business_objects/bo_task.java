@@ -36,9 +36,5 @@ public class bo_task implements DAO<task> {
 		// TODO Auto-generated method stub
 		return dataDao.delete(t);
 	}
-	
-	public ObservableList<task> getAllTask(int department_id) {
-		return dataDao.getAllTask(department_id);
-	}
 
 }
