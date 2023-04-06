@@ -37,6 +37,11 @@ public class bo_department implements DAO<department> {
 		return departmentList;
 	}
 
+	public department getDepartment(int id) {
+		departmentDAO dpDao = new departmentDAO();
+		return dpDao.getDepartment(id);
+	}
+
 	@Override
 	public boolean save(department t) {
 		crud<department> depCrud = new crud<department>(conn) {

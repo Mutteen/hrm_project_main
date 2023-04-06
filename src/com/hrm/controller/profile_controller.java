@@ -1,6 +1,7 @@
 package com.hrm.controller;
 
 import java.io.IOException;
+import java.lang.ref.Cleaner.Cleanable;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -19,15 +20,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class profile_controller implements Initializable {
+
+	private boolean update;
 
 	public profile_controller() {
 		// TODO Auto-generated constructor stub
@@ -35,32 +39,77 @@ public class profile_controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ArrayList<employee> getProfile = null;
-		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
-		try {
-			getProfile = bo_employee.getProfile(usersession.getIdUser());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+
+		lean();
 		for (employee employee : getProfile) {
-			fullname_txt.setText((String)(employee.getLast_name()+" "+employee.getMiddle_name()+" "+employee.getFirst_name()));
+
+			// demo addimage
+			if (employee.getAvatar() == null) {
+				ImageView imgImageView1 = new ImageView();
+
+				// demo addimage
+				Image image1 = new Image("./com/hrm/assets/avatar/avatarnul.png");
+				imgImageView1.setImage(image1);
+				imgImageView1.setFitWidth(150);
+				imgImageView1.setFitHeight(150);
+				imgImageView1.scaleXProperty();
+				imgImageView1.scaleYProperty();
+				imgImageView1.setSmooth(true);
+				imgImageView1.setCache(true);
+				image_pane.setCenter(imgImageView1);
+			} else {
+				ImageView imgImageView1 = new ImageView();
+
+				// demo addimage
+				Image image1 = new Image(employee.getAvatar());
+				imgImageView1.setImage(image1);
+				imgImageView1.setFitWidth(150);
+				imgImageView1.setFitHeight(150);
+				imgImageView1.scaleXProperty();
+				imgImageView1.scaleYProperty();
+				imgImageView1.setSmooth(true);
+				imgImageView1.setCache(true);
+				image_pane.setCenter(imgImageView1);
+			}
+			fullname_txt.setText((String) (employee.getLast_name() + " " + employee.getMiddle_name() + " "
+					+ employee.getFirst_name()));
 			DOB_text.setText(formatDate.format(employee.getDob()));
-			gmail_text.setText((String)employee.getEmail()); 
-			phone_text.setText((String)employee.getTelephone());;
-			address_text.setText((String)employee.getAddress());
-			department_text.setText((String)employee.getDepartment().getDepartment_name());
-			position_text.setText((String)employee.getPosition().getPosition_name());
-			hire_date_text.setText(formatDate.format(employee.getHire_date()));
-			salary_text.setText(((Integer)employee.getSalary().getValue_money()).toString() + "$");
-			principal_text.setText(((Integer)employee.getPrincipal().getValue_money()).toString()+ "$");
-			onleave_text.setText(((Integer)employee.getOn_leave()).toString());
-			descrip_text.setText(employee.getDescription());			
+			gmail_text.setText((String) employee.getEmail());
+			phone_text.setText((String) employee.getTelephone());
+			;
+			address_text.setText((String) employee.getAddress());
+			department_text.setText((String) employee.getDepartment().getDepartment_name());
+			position_text.setText((String) employee.getPosition().getPosition_name());
+
+			salary_text.setText(((Integer) employee.getSalary().getValue_money()).toString() + "$");
+			principal_text.setText(((Integer) employee.getPrincipal().getValue_money()).toString() + "$");
+			onleave_text.setText(((Integer) employee.getOn_leave()).toString());
+			descrip_text.setText(employee.getDescription());
+
+			fullname_txt.setText((String) (employee.getLast_name() + " " + employee.getMiddle_name() + " "
+					+ employee.getFirst_name()));
+
+			DOB_text.setText(formatDate.format(employee.getDob()));
+			gmail_text.setText((String) employee.getEmail());
+			phone_text.setText((String) employee.getTelephone());
+			;
+			address_text.setText((String) employee.getAddress());
+			department_text.setText((String) employee.getDepartment().getDepartment_name());
+			position_text.setText((String) employee.getPosition().getPosition_name());
+			salary_text.setText(((Integer) employee.getSalary().getValue_money()).toString() + "$");
+			principal_text.setText(((Integer) employee.getPrincipal().getValue_money()).toString() + "$");
+			onleave_text.setText(((Integer) employee.getOn_leave()).toString());
+			descrip_text.setText(employee.getDescription());
+
 		}
 
 	}
 
+	private static ArrayList<employee> getProfile = null;
+	@FXML
+	BorderPane image_pane;
 	@FXML
 	private MenuButton setting;
 
@@ -122,7 +171,7 @@ public class profile_controller implements Initializable {
 
 	@FXML
 	void EditProfile(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(this.getClass().getResource("../view/editEmployee.fxml"));
+		Parent root = FXMLLoader.load(this.getClass().getResource("../view/edit_user.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.show();
@@ -130,7 +179,19 @@ public class profile_controller implements Initializable {
 
 	@FXML
 	void Refresh(ActionEvent event) {
+		lean();
+	}
 
+	private void lean() {
+		try {
+			getProfile = bo_employee.getProfile(usersession.getIdUser());
+			for (employee employee : getProfile) {
+				System.out.println(employee.getFirst_name() +" || " + employee.getAvatar());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

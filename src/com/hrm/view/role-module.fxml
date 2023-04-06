@@ -10,10 +10,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1033.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.role_module_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1041.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.role_module_controller">
    <children>
-      <TextField fx:id="search_field" layoutX="18.0" layoutY="41.0" prefHeight="32.0" prefWidth="360.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
-      <TableView fx:id="table_module_role" layoutX="394.0" layoutY="41.0" prefHeight="518.0" prefWidth="624.0" stylesheets="@../assets/css/DashboarDesign.css">
+      <TextField fx:id="search_field" layoutX="18.0" layoutY="46.0" prefHeight="30.0" prefWidth="360.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
+      <TableView fx:id="table_module_role" layoutX="394.0" layoutY="41.0" prefHeight="518.0" prefWidth="631.0" stylesheets="@../assets/css/DashboarDesign.css">
         <columns>
           <TableColumn fx:id="ID_col" prefWidth="60.0" text="ID" />
           <TableColumn fx:id="modulename_col" prefWidth="144.0" text="Module name" />
@@ -47,6 +47,6 @@
             <FontAwesomeIcon fill="#00c853" glyphName="REFRESH" size="2EM" />
          </graphic>
       </Button>
-      <FontAwesomeIcon glyphName="SEARCH" layoutX="356.0" layoutY="63.0" size="1.5em" text="" />
+      <FontAwesomeIcon glyphName="SEARCH" layoutX="356.0" layoutY="67.0" size="1.5em" text="" />
    </children>
 </AnchorPane>

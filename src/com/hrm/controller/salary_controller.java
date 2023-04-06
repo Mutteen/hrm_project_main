@@ -1,33 +1,34 @@
 package com.hrm.controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-
-import com.hrm.model.beans.employee;
+import com.hrm.assets.lib.alert;
 import com.hrm.model.beans.salary;
-import com.hrm.model.business_objects.bo_employee;
 import com.hrm.model.business_objects.bo_salary;
-
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -37,10 +38,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 public class salary_controller implements Initializable {
 
@@ -48,49 +51,37 @@ public class salary_controller implements Initializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			loadTable();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-	
-	ObservableList<salary> salary_table_obList = FXCollections.observableArrayList();
+	private bo_salary dataDAO = new bo_salary();
 	private static int ROWS_PER_PAGE = 8;
 	private ObservableList<salary> masterData = FXCollections.observableArrayList();
 	private FilteredList<salary> filteredData;
-	private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-	
+
 	@FXML
 	private TableView<salary> table_salary;
 
-//	@FXML
-//	private TableColumn<salary, Integer> ID_col;
+	@FXML
+	private TableColumn<salary, Integer> ID_col;
 
 	@FXML
 	private TableColumn<salary, String> name_col;
 
 	@FXML
-	private TableColumn<salary, Integer> money_col;
+	private TableColumn<salary, String> money_col;
 
 	@FXML
-	private TableColumn<salary, Integer> reward_col;
+	private TableColumn<salary, String> reward_col;
 
 	@FXML
 	private TableColumn<salary, Integer> work_col;
 
 	@FXML
-	private TableColumn<salary, Date> timepay_col;
+	private TableColumn<salary, DatePicker> timepay_col;
 
 	@FXML
 	private TableColumn<salary, String> whopay_col;
 
 	@FXML
-	private TableColumn<salary, Date> createat_col;
+	private TableColumn<salary, DatePicker> createat_col;
 
 	@FXML
 	private TableColumn<salary, String> descip_col;
@@ -135,21 +126,13 @@ public class salary_controller implements Initializable {
 	private DatePicker createat_field;
 
 	@FXML
-	private Button edir_btn;
-
-	@FXML
-	private TextField search_field;
-
-	@FXML
-	private ComboBox<String> derpart_box;
-
-	@FXML
 	private Button search_btn;
 
 	@FXML
-	void EdirSalary(ActionEvent event) {
+	private TextField ID_field;
 
-	}
+	@FXML
+	private TextField search_field;
 
 	@FXML
 	void Print(ActionEvent event) {
@@ -158,96 +141,159 @@ public class salary_controller implements Initializable {
 
 	@FXML
 	void Refresh(ActionEvent event) {
-
+		clean();
 	}
 
 	@FXML
 	void Save(ActionEvent event) {
+		if (ID_field.getText().equals("")) {
+			Alert alert1 = new Alert(AlertType.CONFIRMATION);
+			alert1.setTitle("Save File");
+			alert1.setHeaderText("Are you sure Save .");
 
+			// option != null.
+			Optional<ButtonType> option = alert1.showAndWait();
+
+			if (option.get() == ButtonType.OK) {
+
+				salary Salary = new salary();
+				Salary.setEmployee_id(Integer.parseInt(name_field.getText()));
+				Salary.setWho_pay(whopay_field.getText());
+				Salary.setCreated_at(Date.valueOf(createat_field.getValue()));
+				Salary.setTime_to_pay(Date.valueOf(timepay_fileld.getValue()));
+				Salary.setDescription(descip_field.getText());
+				Salary.setValue_money(Integer.parseInt(money_field.getText()));
+				Salary.setValue_money_reward(Integer.parseInt(reward_field.getText()));
+				Salary.setWorking_day(Integer.parseInt(work_field.getText()));
+
+				boolean checkSave = dataDAO.save(Salary);
+				if (checkSave == true) {
+					alert.Success("Add Salary ");
+					clean();
+				} else {
+					alert.Error();
+				}
+			}
+
+		} else {
+			Alert alert1 = new Alert(AlertType.CONFIRMATION);
+			alert1.setTitle("Delete File");
+			alert1.setHeaderText("Are you sure Update " + " at " + ID_field.getText());
+
+			// option != null.
+			Optional<ButtonType> option = alert1.showAndWait();
+
+			if (option.get() == ButtonType.OK) {
+				salary Salary = new salary();
+
+				Salary.setEmployee_id(Integer.parseInt(name_field.getText()));
+				Salary.setWho_pay(whopay_field.getText());
+				Salary.setCreated_at(Date.valueOf(createat_field.getValue()));
+				Salary.setTime_to_pay(Date.valueOf(timepay_fileld.getValue()));
+				Salary.setDescription(descip_field.getText());
+				Salary.setValue_money(Integer.parseInt(money_field.getText()));
+				Salary.setValue_money_reward(Integer.parseInt(reward_field.getText()));
+				Salary.setWorking_day(Integer.parseInt(work_field.getText()));
+				Salary.setId(Integer.parseInt(ID_field.getText()));
+
+				boolean checkSave = dataDAO.update(Salary);
+				if (checkSave == true) {
+					alert.Success("Update Salary ");
+					clean();
+				} else {
+					alert.Error();
+				}
+			}
+		}
 	}
 
 	@FXML
-	void SearchSalary(ActionEvent event) {
+	void SearchEmployee(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(this.getClass().getResource("../view/SearchEMploy.fxml"));
+		Stage stage = new Stage();
+		stage.setTitle("Search employee.");
+		stage.setScene(new Scene(root, 512, 472));
+		stage.show();
 
 	}
-	
-	public void loadTable() throws SQLException {
-		refreshTable();
-		
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+
+		// format Datepicker to Dale.sql
+		String pattern = "yyyy-MM-dd";
+		StringConverter converter = new StringConverter<LocalDate>() {
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+			@Override
+			public String toString(LocalDate date) {
+				if (date != null) {
+					return dateFormatter.format(date);
+				} else {
+					return "";
+				}
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.isEmpty()) {
+					return LocalDate.parse(string, dateFormatter);
+				} else {
+					return null;
+				}
+			}
+		};
+
+		createat_field.setConverter(converter);
+		timepay_fileld.setConverter(converter);
+		getList();
+		InserTableView();
+	}
+
+	public void clean() {
+		search_field.setText("");
+		descip_field.setText(" ");
+		whopay_field.setText("");
+		reward_field.setText("");
+		timepay_fileld.setValue(LocalDate.now());
+		money_field.setText("");
+		name_field.setText("");
+		ID_field.setText("");
+		createat_field.setValue(LocalDate.now());
+		work_field.setText("");
+
+		createat_field.setValue(LocalDate.now());
+		getList();
+		InserTableView();
+
+	}
+
+	public void InserTableView() {
 		filteredData = new FilteredList<>(masterData, p -> true);
 		// Search
 		search_field.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(
-					Salary -> Salary.getWho_pay().toLowerCase().contains(newValue.toLowerCase()));
+			filteredData.setPredicate(Salary -> Salary.getSEmployee().toLowerCase().contains(newValue.toLowerCase())
+					|| Salary.getWho_pay().toLowerCase().contains(newValue.toLowerCase()));
+			changeTableView(0, masterData.size());
 			changeTableView(0, masterData.size());
 		});
-		
-		
-		//id
-//		ID_col.setCellValueFactory(new PropertyValueFactory<>("id"));
-		
-		//fullname
-		name_col.setCellValueFactory(cellData -> {
-		    String fullname = cellData.getValue().getEmployee().getLast_name() + " " + cellData.getValue().getEmployee().getMiddle_name() + " " + cellData.getValue().getEmployee().getFirst_name();
-		    return new SimpleStringProperty(fullname);
-		});
+		// add value into cell
 
-		//value_money
-		money_col.setCellValueFactory(new PropertyValueFactory<>("value_money"));
-		
-		//reward
-		reward_col.setCellValueFactory(new PropertyValueFactory<>("value_money_reward"));
-		
-		//working day
+		ID_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+		name_col.setCellValueFactory(new PropertyValueFactory<>("sEmployee"));
+		money_col.setCellValueFactory(new PropertyValueFactory<>("moneyString"));
+		reward_col.setCellValueFactory(new PropertyValueFactory<>("rewardString"));
 		work_col.setCellValueFactory(new PropertyValueFactory<>("working_day"));
-		
-		//time_to_pay
-		timepay_col.setCellValueFactory(new Callback<CellDataFeatures<salary, Date>, ObservableValue<Date>>() {
-		    @Override
-		    public ObservableValue<Date> call(CellDataFeatures<salary, Date> cellDataFeatures) {
-		        return new SimpleObjectProperty<>(cellDataFeatures.getValue().getTime_to_pay());
-		    }
-		});
-
-		timepay_col.setCellFactory(column -> new TableCell<salary, Date>() {
-		    @Override
-		    protected void updateItem(Date date, boolean empty) {
-		        super.updateItem(date, empty);
-		        if (empty || date == null) {
-		            setText(null);
-		        } else {
-		            setText(dateFormatter.format(date.toLocalDate()));
-		        }
-		    }
-		});
-		
-		//who_pay
+		timepay_col.setCellValueFactory(new PropertyValueFactory<>("time_to_pay"));
 		whopay_col.setCellValueFactory(new PropertyValueFactory<>("who_pay"));
-		
-		//created_at
-		createat_col.setCellValueFactory(new Callback<CellDataFeatures<salary, Date>, ObservableValue<Date>>() {
-		    @Override
-		    public ObservableValue<Date> call(CellDataFeatures<salary, Date> cellDataFeatures) {
-		        return new SimpleObjectProperty<>(cellDataFeatures.getValue().getCreated_at());
-		    }
-		});
-
-		createat_col.setCellFactory(column -> new TableCell<salary, Date>() {
-		    @Override
-		    protected void updateItem(Date date, boolean empty) {
-		        super.updateItem(date, empty);
-		        if (empty || date == null) {
-		            setText(null);
-		        } else {
-		            setText(dateFormatter.format(date.toLocalDate()));
-		        }
-		    }
-		});
-		
-		//description
+		createat_col.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 		descip_col.setCellValueFactory(new PropertyValueFactory<>("description"));
-				
-		//action
+
+		// add cell of button edit
+
 		Callback<TableColumn<salary, String>, TableCell<salary, String>> cellFoctory = (
 				TableColumn<salary, String> param) -> {
 			// make cell containing buttons
@@ -270,48 +316,47 @@ public class salary_controller implements Initializable {
 						deleteIcon.getStyleClass().add("delete-label");
 						editIcon.getStyleClass().add("update-label");
 						// delete event
-//						deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-//							// Alert delete
-//							Alert alert1 = new Alert(AlertType.CONFIRMATION);
-//							alert1.setTitle("Delete File");
-//							alert1.setHeaderText("Are you sure want to move this file to the Recycle Bin?");
-//
-//							// option != null.
-//							Optional<ButtonType> option = alert1.showAndWait();
-//
-//							if (option.get() == ButtonType.OK) {
-//								employee employee = table_employee.getSelectionModel().getSelectedItem();
-//								boolean checkDelete = true;
-//								try {
-//									checkDelete = bo_employee.delete(employee.getId());
-//								} catch (SQLException e) {
-//									// TODO Auto-generated catch block
-//									e.printStackTrace();
-//								}
-//
-//								if (checkDelete == true) {
-//									alert.Success("Delete employee " + employee.getId() + " ");
-//								}
-//							}
-//
-//						});
+						deleteIcon.setOnMouseClicked((MouseEvent event) -> {
+							// Alert delete
+							Alert alert1 = new Alert(AlertType.CONFIRMATION);
+							alert1.setTitle("Delete File");
+							alert1.setHeaderText("Are you sure want to move this file to the Recycle Bin?");
+
+							// option != null.
+							Optional<ButtonType> option = alert1.showAndWait();
+
+							if (option.get() == ButtonType.OK) {
+								salary Salary = table_salary.getSelectionModel().getSelectedItem();
+								boolean checkDelete = dataDAO.delete(Salary);
+
+								if (checkDelete == true) {
+									alert.Success("Delete Salary at  " + Salary.getId() + " ");
+									clean();
+								}
+							}
+
+						});
 
 						// update event
 
-//						editIcon.setOnMouseClicked((MouseEvent event) -> {
-//
-//							department Department = table_department.getSelectionModel().getSelectedItem();
-//							depast_name.setText(Department.getDepartment_name());
-//							depast_name1.setText(String.valueOf(Department.getId()));
-//							// setdatepciker fomat date sql
-//							DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//							LocalDate localDate = LocalDate.parse(String.valueOf(Department.getCreated_at()),
-//									formatter);
-//
-//							create_at_field.setValue(formatDate(String.valueOf(Department.getCreated_at())));
-//							description_field.setText(Department.getDescription());
-//
-//						});
+						editIcon.setOnMouseClicked((MouseEvent event) -> {
+
+							salary Salary = table_salary.getSelectionModel().getSelectedItem();
+
+							int index$ = Salary.getMoneyString().indexOf("$");
+							int index$1 = Salary.getRewardString().indexOf("$");
+
+							ID_field.setText(String.valueOf(Salary.getId()));
+							name_field.setText(String.valueOf(Salary.getEmployee_id()));
+							descip_field.setText(Salary.getDescription());
+							work_field.setText(String.valueOf(Salary.getWorking_day()));
+							timepay_fileld.setValue(formatDate(String.valueOf(Salary.getTime_to_pay())));
+							createat_field.setValue(formatDate(String.valueOf(Salary.getCreated_at())));
+							money_field.setText(Salary.getMoneyString().substring(0, index$));
+							reward_field.setText(Salary.getRewardString().substring(0, index$1));
+							whopay_field.setText(Salary.getWho_pay());
+
+						});
 						HBox managebtn = new HBox(editIcon, deleteIcon);
 						managebtn.setStyle("-fx-alignment:center");
 						HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
@@ -330,18 +375,19 @@ public class salary_controller implements Initializable {
 		};
 
 		action_col.setCellFactory(cellFoctory);
+		// set page in table view
+		int totalPage = (int) (Math.ceil(masterData.size() * 1.0 / ROWS_PER_PAGE));
+		pagiaton.setCurrentPageIndex(0);
+		pagiaton.setPageCount(totalPage);
+		changeTableView(0, ROWS_PER_PAGE);
+		pagiaton.currentPageIndexProperty()
+				.addListener((observable, oldValue, newValue) -> changeTableView(newValue.intValue(), ROWS_PER_PAGE));
 	}
-	
-	public void refreshTable() throws SQLException {
-		salary_table_obList.clear();
-		ArrayList<salary> listSalary = bo_salary.getListSalary();
-		for (salary salary : listSalary) {
-			salary_table_obList.add(salary);
-			table_salary.setItems(salary_table_obList);
-		}
-		
+
+	public void getList() {
+		masterData = dataDAO.getAll();
 	}
-	
+
 	// change table view Method
 	private void changeTableView(int index, int limit) {
 		int fromIndex = index * limit;
@@ -352,7 +398,12 @@ public class salary_controller implements Initializable {
 		sortedData.comparatorProperty().bind(table_salary.comparatorProperty());
 		table_salary.setItems(sortedData);
 	}
-	
 
+	private LocalDate formatDate(String string) {
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.parse(string, formatter);
+		return localDate;
+	}
 
 }

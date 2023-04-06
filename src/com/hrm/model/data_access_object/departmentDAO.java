@@ -48,8 +48,8 @@ public class departmentDAO implements DAO<department> {
 		return departmentList;
 	}
 
-	public ObservableList<department> getDepartment(int id) {
-		ObservableList<department> departmentList = FXCollections.observableArrayList();
+	public department getDepartment(int id) {
+		department depar = new department();
 		// TODO Auto-generated method stub
 		try {
 
@@ -63,21 +63,19 @@ public class departmentDAO implements DAO<department> {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				department depar = new department();
 
 				depar.setId(rs.getInt(1));
 				depar.setDepartment_name(rs.getString(2));
 				depar.setDescription(rs.getString(3));
 				depar.setCreated_at(rs.getDate(4));
-				departmentList.add(depar);
 
 			}
 			// Step 5
-			conn.close();
+//			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return departmentList;
+		return depar;
 
 	}
 

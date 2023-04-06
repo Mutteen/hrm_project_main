@@ -18,12 +18,12 @@ public class show_data<T> {
 	public show_data(Connection connection) {
 		this.connection = connection;
 	}
-
+// sua monthhhhhhhhhhhhhhhhhhhhhhhhhhhh//////////////////////////
 	public ArrayList<T> getProfile(int idUser) throws SQLException {
 
 		ArrayList<T> result = new ArrayList<>();
 
-		String query = "SELECT employee.id, employee.last_name,employee.middle_name,employee.first_name, employee.dob, employee.email, employee.telephone, employee.address, employee.on_leave, employee.description,employee.`status`, employee.hire_date,\r\n"
+		String query = "SELECT employee.id, employee.last_name,employee.middle_name,employee.first_name, employee.dob, employee.email, employee.telephone, employee.address, employee.on_leave, employee.description,employee.`status`, employee.hire_date, employee.avatar,\r\n"
 				+ "		 department.department_name,\r\n"
 				+ "		 all_position_name.position_name,\r\n"
 				+ "		 salary.value_money,\r\n"
@@ -34,7 +34,7 @@ public class show_data<T> {
 				+ "INNER JOIN all_position_name ON all_position_name.employee_id = employee.id\r\n"
 				+ "INNER JOIN salary  ON salary.employee_id  = employee.id\r\n"
 				+ "INNER JOIN value_money_principal ON value_money_principal.employee_id = employee.id\r\n"
-				+ "WHERE MONTH(time_to_pay) = MONTH(CURRENT_TIMESTAMP()) AND employee.id = ?\r\n"
+				+ "WHERE employee.id = ?\r\n"
 				+ "GROUP BY employee.id;";
 		
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -47,22 +47,22 @@ public class show_data<T> {
 		}		
 		return result;
 	}
-	
+	//////////////////////////add db vô xong sửa lại câu query thành MONTH(CURRENT_TIMESTAMP())//////////////////////////////////////////////////////////////////
 	public ArrayList<T> getAllEmployee() throws SQLException{
 		ArrayList<T> result = new ArrayList<>();
 		String query = "SELECT employee.id ,employee.last_name,employee.middle_name,employee.first_name, employee.dob, employee.email, employee.telephone, employee.address, employee.on_leave, employee.description,employee.`status`, employee.hire_date,\r\n"
-				+ "		 department.department_name,\r\n"
-				+ "		 all_position_name.position_name,\r\n"
-				+ "		 salary.value_money,\r\n"
-				+ "		 value_money_principal.value_money_update AS 'principal'\r\n"
-				+ "FROM position_employee `N`\r\n"
-				+ "INNER JOIN employee  ON `N`.employee_id = employee.id\r\n"
-				+ "INNER JOIN department  ON department.id = employee.department_id\r\n"
-				+ "INNER JOIN all_position_name ON all_position_name.employee_id = employee.id\r\n"
-				+ "INNER JOIN salary  ON salary.employee_id  = employee.id\r\n"
-				+ "INNER JOIN value_money_principal ON value_money_principal.employee_id = employee.id\r\n"
-				+ "WHERE MONTH(time_to_pay) = MONTH(CURRENT_TIMESTAMP())"
-				+ "GROUP BY employee.id;";
+				+ "	 department.department_name,\r\n"
+				+ "	 all_position_name.position_name,\r\n"
+				+ "	 salary.value_money,\r\n"
+				+ "	 value_money_principal.value_money_update AS 'principal'\r\n"
+				+ "FROM employee\r\n"
+				+ "LEFT JOIN  position_employee `N`  ON `N`.employee_id = employee.id\r\n"
+				+ "LEFT JOIN department  ON department.id = employee.department_id\r\n"
+				+ "LEFT JOIN all_position_name ON all_position_name.employee_id = employee.id\r\n"
+				+ "LEFT JOIN salary  ON salary.employee_id  = employee.id\r\n"
+				+ "LEFT JOIN value_money_principal ON value_money_principal.employee_id = employee.id\r\n"
+				+ "GROUP BY employee.id\r\n"
+				+ "ORDER BY employee.id desc;";
 		
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet rs = statement.executeQuery();
@@ -110,7 +110,7 @@ public class show_data<T> {
 			employee.setEmail(rs.getString("email"));
 			employee.setAddress(rs.getString("address"));
 			employee.setTelephone(rs.getString("telephone"));
-//			employee.setAvatar(rs.getString("avatar"));
+			employee.setAvatar(rs.getString("avatar"));
 			employee.setDescription(rs.getString("description"));
 			employee.setDob(rs.getDate("dob"));
 			employee.setHire_date(rs.getDate("hire_date"));

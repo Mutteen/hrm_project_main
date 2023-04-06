@@ -12,25 +12,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1125.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.position_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1150.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hrm.controller.position_controller">
    <children>
       <Label layoutX="29.0" layoutY="14.0" prefHeight="36.0" prefWidth="175.0" text="Position" textFill="#0277bd">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="10.0" layoutY="53.0" prefHeight="760.0" prefWidth="1105.0" style="-fx-background-color: #FFFF;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
+      <AnchorPane layoutX="23.0" layoutY="50.0" prefHeight="760.0" prefWidth="1105.0" style="-fx-background-color: #FFFF;" styleClass="semi-top-form" stylesheets="@../assets/css/DashboarDesign.css">
          <children>
             <TableView fx:id="table_position" layoutX="395.0" layoutY="40.0" prefHeight="602.0" prefWidth="688.0">
-
               <columns>
-                <TableColumn fx:id="ID_col" prefWidth="45.0" text="ID" />
-                <TableColumn fx:id="position_col" prefWidth="164.0" text="Position name" />
+                <TableColumn fx:id="ID_col" prefWidth="115.0" text="ID" />
+                <TableColumn fx:id="position_col" prefWidth="157.0" text="Position name" />
                   <TableColumn minWidth="0.0" prefWidth="0.0" />
-                  <TableColumn fx:id="create_coll" prefWidth="109.0" text="Create at" />
-                  <TableColumn fx:id="who_col" prefWidth="148.0" text="Who create" />
-                  <TableColumn fx:id="descrip_col" prefWidth="127.0" text="Description" />
-                  <TableColumn fx:id="action_col" prefWidth="91.0" text="Action" />
+                  <TableColumn fx:id="create_coll" prefWidth="141.0" text="Create at" />
+                  <TableColumn fx:id="descrip_col" prefWidth="171.0" text="Description" />
+                  <TableColumn fx:id="action_col" prefWidth="100.0" text="Action" />
               </columns>
             </TableView>
             <Button fx:id="save_btn" layoutX="899.0" layoutY="707.0" mnemonicParsing="false" onAction="#SavePosition" prefHeight="40.0" prefWidth="59.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
@@ -58,13 +56,13 @@
                   <TextField fx:id="iD_field" layoutX="37.0" layoutY="56.0" prefHeight="26.0" prefWidth="264.0" promptText="ID" styleClass="textfield" stylesheets="@../assets/css/login.css" />
                </children>
             </AnchorPane>
-            <TextField fx:id="search_field" layoutX="32.0" layoutY="24.0" prefHeight="32.0" prefWidth="334.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
+            <TextField fx:id="search_field" layoutX="32.0" layoutY="40.0" prefHeight="32.0" prefWidth="334.0" promptText="Search" style="-fx-background-color: #ffff;" styleClass="textfield" stylesheets="@../assets/css/DashboarDesign.css" />
             <Button fx:id="create_user_btn" layoutX="829.0" layoutY="707.0" mnemonicParsing="false" onAction="#PositionEmpoyee" prefHeight="36.0" prefWidth="63.0" styleClass="insert-btn" stylesheets="@../assets/css/DashboarDesign.css">
                <graphic>
                   <FontAwesomeIcon fill="#2f9c83" glyphName="USER_PLUS" size="2em" />
                </graphic>
             </Button>
-            <FontAwesomeIcon glyphName="SEARCH" layoutX="341.0" layoutY="46.0" size="1.5em" text="" />
+            <FontAwesomeIcon glyphName="SEARCH" layoutX="339.0" layoutY="62.0" size="1.5em" text="" />
          </children>
       </AnchorPane>
    </children>

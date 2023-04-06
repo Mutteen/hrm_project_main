@@ -205,8 +205,8 @@ public class role_module_controller implements Initializable {
 
 	private void clean() {
 		ID_field.setText("");
-		role_field.setValue(null);
-		module_field.setValue(null);
+//		role_field.setValue(null);
+//		module_field.setValue(null);
 		descip_field.setText("");
 		search_field.setText("");
 		getList();

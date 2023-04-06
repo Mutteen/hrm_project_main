@@ -2,14 +2,19 @@ package com.hrm.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.hrm.assets.lib.alert;
 import com.hrm.model.usersession;
+import com.hrm.model.beans.employee;
+import com.hrm.model.business_objects.bo_employee;
 import com.hrm.model.business_objects.bo_module;
-import com.hrm.model.business_objects.bo_modulerole;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -27,6 +32,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -40,6 +47,8 @@ import javafx.util.Duration;
 public class home implements Initializable {
 	@FXML
 	public TreeView<String> menuTreeView;
+	@FXML
+	private Button btnTask;
 	@FXML
 	public Button btnInfo;
 	@FXML
@@ -77,6 +86,8 @@ public class home implements Initializable {
 	@FXML
 	private AnchorPane mainCenter_form;
 	@FXML
+	private ImageView image_login;
+	@FXML
 	private BorderPane minizius;
 
 	@FXML
@@ -90,6 +101,7 @@ public class home implements Initializable {
 
 	@FXML
 	private Button btnSetting;
+	static ArrayList<employee> getProfile = null;
 
 	public home() {
 		// TODO Auto-generated constructor stub
@@ -97,8 +109,36 @@ public class home implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		DateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+		try {
+			getProfile = bo_employee.getProfile(usersession.getIdUser());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// TODO Auto-generated catch block
+
 		initClock();
-		name_user.setText("Hi " + usersession.getUserName() + "  ");
+		for (employee E : getProfile) {
+			name_user.setText("" + E.getLast_name() + " " + E.getMiddle_name() + " " + E.getFirst_name() + "  ");
+			if (E.getAvatar() == null) {
+				// demo addimage
+				Image image1 = new Image("./com/hrm/assets/avatar/avatarnul.png");
+				image_login.setImage(image1);
+			} else {
+				// demo addimage
+				System.out.print(E.getAvatar());
+				Image image1 = new Image(E.getAvatar());
+				image_login.setImage(image1);
+			}
+		}
+		// Load dashboard
+		FxmlLoader oblectFxmlLoader = new FxmlLoader();
+		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("dashboad");
+		mainPane.setCenter(viewAnchorPane);
+
 	}
 
 	private void initClock() {
@@ -143,6 +183,7 @@ public class home implements Initializable {
 		slide.play();
 
 	}
+//    Sugggoooiiii!! : ) 
 
 	public void sliderBars() {
 
@@ -184,7 +225,7 @@ public class home implements Initializable {
 		try {
 
 			// TO SWAP FROM DASHBOARD TO LOGIN FORM
-			usersession.cleanUserSession();
+
 			Parent root = FXMLLoader.load(this.getClass().getResource("../view/login.fxml"));
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -199,7 +240,7 @@ public class home implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@FXML
 	public void Dashboard(ActionEvent event) {
 		if (bo_module.checkRole("dashboard")) {
@@ -257,7 +298,7 @@ public class home implements Initializable {
 			alert.Decentralization();
 		}
 	}
-
+	
 	@FXML
 	public void ProfieView(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(this.getClass().getResource("../view/profile.fxml"));
@@ -268,11 +309,10 @@ public class home implements Initializable {
 
 	@FXML
 	public void Salary(ActionEvent event) {
-		if (bo_module.checkRole("salary")) {
-	
-		FxmlLoader oblectFxmlLoader = new FxmlLoader();
-		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("salary");
-		mainPane.setCenter(viewAnchorPane);
+		if (bo_module.checkRole("salary")) {			
+			FxmlLoader oblectFxmlLoader = new FxmlLoader();
+			AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("salary");
+			mainPane.setCenter(viewAnchorPane);
 		}else {
 			alert.Decentralization();
 		}
@@ -281,9 +321,9 @@ public class home implements Initializable {
 	@FXML
 	public void Setting(ActionEvent event) {
 		if (bo_module.checkRole("setting")) {
-		FxmlLoader oblectFxmlLoader = new FxmlLoader();
-		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("setting");
-		mainPane.setCenter(viewAnchorPane);
+			FxmlLoader oblectFxmlLoader = new FxmlLoader();
+			AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("setting");
+			mainPane.setCenter(viewAnchorPane);
 		}else {
 			alert.Decentralization();
 		}
@@ -291,13 +331,19 @@ public class home implements Initializable {
 
 	@FXML
 	public void SignOut(ActionEvent event) throws IOException {
-		usersession.cleanUserSession();
 		Parent root = FXMLLoader.load(this.getClass().getResource("../view/login.fxml"));
 		Stage owner = (Stage) signout_btn.getParentPopup().getOwnerWindow();
 		Scene scene = new Scene(root);
 		owner.setScene(scene);
 		owner.show();
 		usersession.cleanUserSession();
+	}
+
+	@FXML
+	void Task(ActionEvent event) {
+		FxmlLoader oblectFxmlLoader = new FxmlLoader();
+		AnchorPane viewAnchorPane = oblectFxmlLoader.getPane("task");
+		mainPane.setCenter(viewAnchorPane);
 	}
 
 	@FXML

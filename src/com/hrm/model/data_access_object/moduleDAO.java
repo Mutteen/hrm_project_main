@@ -73,38 +73,6 @@ public class moduleDAO implements DAO<module> {
 		}
 		return Module;
 	}
-	
-	public static ObservableList<module> getModuleName(int role_id) {
-		ObservableList<module> moduleNameList = FXCollections.observableArrayList();
-		// TODO Auto-generated method stub
-		try {
-			Connection conn = connection_db.getConnection();
-			
-			sql = "SELECT module.module_name\r\n"
-					+ "FROM module_role\r\n"
-					+ "INNER JOIN role ON role.id = module_role.role_id\r\n"
-					+ "INNER JOIN module ON module.id = module_role.module_id\r\n"
-					+ "INNER JOIN employee ON employee.role_id = role.id\r\n"
-					+ "WHERE employee.role_id = ?\r\n"
-					+ "GROUP BY module.module_name\r\n"
-					+ "ORDER BY module.module_name";
-			
-			PreparedStatement pst = conn.prepareStatement(sql);
-			
-			pst.setInt(1, role_id);
-			ResultSet rs = pst.executeQuery();
-
-			while (rs.next()) {
-				module module = new module();
-				module.setModule_name(rs.getString("module_name"));
-				moduleNameList.add(module);
-			}
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return moduleNameList;
-	}
 
 	@Override
 	public boolean save(module t) {
@@ -175,6 +143,39 @@ public class moduleDAO implements DAO<module> {
 			e.printStackTrace();
 		}
 		return check;
+	}
+
+		
+	public static ObservableList<module> getModuleName(int role_id) {
+		ObservableList<module> moduleNameList = FXCollections.observableArrayList();
+		// TODO Auto-generated method stub
+		try {
+			Connection conn = connection_db.getConnection();
+			
+			sql = "SELECT module.module_name\r\n"
+					+ "FROM module_role\r\n"
+					+ "INNER JOIN role ON role.id = module_role.role_id\r\n"
+					+ "INNER JOIN module ON module.id = module_role.module_id\r\n"
+					+ "INNER JOIN employee ON employee.role_id = role.id\r\n"
+					+ "WHERE employee.role_id = ?\r\n"
+					+ "GROUP BY module.module_name\r\n"
+					+ "ORDER BY module.module_name";
+			
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			pst.setInt(1, role_id);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				module module = new module();
+				module.setModule_name(rs.getString("module_name"));
+				moduleNameList.add(module);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return moduleNameList;
 	}
 
 }

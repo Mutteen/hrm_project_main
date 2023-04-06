@@ -9,8 +9,8 @@ import com.hrm.model.usersession;
 import com.hrm.model.beans.employee;
 import com.hrm.model.beans.salary;
 import com.hrm.model.beans.task;
-import com.hrm.model.data_access_object.employeeDao;
-import com.hrm.model.data_access_object.salaryDao;
+import com.hrm.model.data_access_object.employeeDAO;
+import com.hrm.model.data_access_object.salaryDAO;
 import com.hrm.model.data_access_object.taskDAO;
 
 import javafx.beans.binding.Bindings;
@@ -23,6 +23,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 public class dashboad_controller implements Initializable {
 	 @FXML
@@ -31,6 +32,9 @@ public class dashboad_controller implements Initializable {
     @FXML
     private BarChart<String, Number> barChartRole;
 
+    @FXML
+    private AnchorPane null_field;
+    
     @FXML
     private Label lb_total_employee;
 
@@ -56,14 +60,15 @@ public class dashboad_controller implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		if(usersession.getRole_id() == 1) {			
-			lb_total_employee.setText("Total employee: \n           "+employeeDao.getTotal());
-			lb_avg_dob.setText("Average age: \n    "+ employeeDao.getAvgDob());
-			lb_total_male.setText("Total male: \n       "+ employeeDao.getTotalMale());
-			lb_total_female.setText("Total female: \n         "+ employeeDao.getTotalFemale());
+			lb_total_employee.setText("Total employee: \n           "+employeeDAO.getTotal());
+			lb_avg_dob.setText("Average age: \n    "+ employeeDAO.getAvgDob());
+			lb_total_male.setText("Total male: \n       "+ employeeDAO.getTotalMale());
+			lb_total_female.setText("Total female: \n         "+ employeeDAO.getTotalFemale());
 			initlineChart(); 
 			initBarChart();
 			initPieChart();			
 		}else if(usersession.getRole_id() == 2) {
+			null_field.setVisible(false);
 			lb_total_employee.setVisible(false);
 			lb_avg_dob.setVisible(false);
 			lb_total_male.setVisible(false);
@@ -73,6 +78,7 @@ public class dashboad_controller implements Initializable {
 			pieChart.setVisible(false);
 			initBarChartManager();
 		}else {
+			null_field.setVisible(false);
 			lb_total_employee.setVisible(false);
 			lb_avg_dob.setVisible(false);
 			lb_total_male.setVisible(false);
@@ -80,15 +86,14 @@ public class dashboad_controller implements Initializable {
 			lineChart.setVisible(false);
 			barChart.setVisible(false);
 			pieChart.setVisible(false);
-			initBarChartManager();
-//			initBarChartStaff();
+			initBarChartStaff();
 		}
 
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void initlineChart() {
-		employeeDao employeeDao = new employeeDao();
+		employeeDAO employeeDao = new employeeDAO();
 		ObservableList<employee> listHire = employeeDao.getHireDate();
 		ObservableList<employee> listTer =  employeeDao.getTerDate();
 		
@@ -115,7 +120,7 @@ public class dashboad_controller implements Initializable {
 	}
 
 	public void initPieChart(){
-		ObservableList<employee> listData = employeeDao.getData(); 
+		ObservableList<employee> listData = employeeDAO.getData(); 
 		pieChart.setTitle("Quatity of department");
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
@@ -136,7 +141,7 @@ public class dashboad_controller implements Initializable {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void initBarChart() {
-		ObservableList<salary> listData = salaryDao.getData();
+		ObservableList<salary> listData = salaryDAO.getData();
 		
 		barChart.setTitle("Salary to be paid in a month");
 		XYChart.Series series = new XYChart.Series();
@@ -189,7 +194,7 @@ public class dashboad_controller implements Initializable {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void initBarChartStaff() {
 		barChartRole.setVisible(true);
-		ObservableList<task> listData = taskDAO.getMonthByTask();
+		ObservableList<task> listData = taskDAO.getMonthByTaskStaff(usersession.getDepartment_id());
 		
 		XYChart.Series seriesDone = new XYChart.Series();
 		seriesDone.setName("Done");

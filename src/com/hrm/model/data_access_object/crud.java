@@ -162,6 +162,7 @@ public abstract class crud<T> {
 			item = (T) new employee();
 			((employee)item).setId(rs.getInt("id"));
 			((employee)item).setRole_id(rs.getInt("role_id"));
+			((employee)item).setDepartment_id(rs.getInt("department_id"));
 			((employee)item).setUsername(rs.getString("username"));
 			((employee)item).setPassword(rs.getString("password"));
 			((employee)item).setOn_leave(rs.getInt("on_leave"));
